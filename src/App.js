@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+
+import Home from './views/Home/Home.jsx'
+import Competitions from './views/Competitions/Competitions.jsx'
+import Community from './views/Community/Community.jsx';
+import Landing from './views/Landing/Landing.jsx'
+import NavBar from './components/NavBar/NavBar';
+
 
 function App() {
+
+  const location = useLocation()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      {location.pathname === '/' ? <Landing/> : <NavBar/>}
+
+      <Routes>
+        <Route exact path='/home' element={<Home/>}/>
+        <Route exact path='/competitions' element={<Competitions/>}/>
+        <Route exact path='/community' element={<Community/>}/>
+        
+      </Routes>
+
     </div>
   );
 }
