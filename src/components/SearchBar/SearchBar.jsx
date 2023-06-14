@@ -2,7 +2,12 @@ import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div>SearchBar</div>
+    <div>
+
+      <input type="text" />
+      <button>Buscar</button>
+      
+    </div>
   )
 }
 
