@@ -1,1 +1,40 @@
-h1{width: 10;}
+
+
+.navContainer{
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    background-color: var(--blue);
+    border-bottom: 1px black solid;
+}
+
+.logo{
+    width: 40%;
+}
+
+.user{
+    width: 4rem;
+    margin: 2rem;
+}
+
+.links{
+    font-family: var(--main-font);
+    margin: 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.links:hover{
+
+}
+
+.containerSearchAndUser{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
