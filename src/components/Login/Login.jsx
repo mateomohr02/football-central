@@ -25,6 +25,7 @@ const Login = ({login}) => {
   }
   return (
     <div>
+      {/* faltan estilos */}
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>E-MAIL: </label>
         <input type='email' name='email' placeholder='Ingresa tu email' value={userData.email} onChange={handleChange}/>

@@ -3,6 +3,7 @@ const validation = (userData) => {
 
   if (!/\S+@\S+\.\S+/.test(userData.email)) {
     errors.email = "el email ingresado no es valido";
+    // validacion email
   }
   if (!userData.email) {
     errors.email = "debe ingresar un email";
