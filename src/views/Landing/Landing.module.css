@@ -10,4 +10,15 @@
 
 .shape{
   height: 100vh;
+  position:absolute;
+  top: 0px;
+
 }
+
+.logo{
+  height: 400px;
+  position: absolute;
+  left: 550px;
+  top: 350px;
+}
+
