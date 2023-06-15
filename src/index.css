@@ -24,4 +24,8 @@ code {
 
   --main-font: "Geologica", sans-serif;
   --text-font: "Montserrat", sans-serif;
+
+  --bs-blue: #293851;
+  --bs-gray: #3e3f41;
+  --bs-gray-dark: #2d2e2e;
 }

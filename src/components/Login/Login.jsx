@@ -31,32 +31,42 @@ const Login = ({ login }) => {
     <div>
       {/* faltan estilos */}
       <Form onSubmit={handleSubmit} className={style.login}>
-        <label htmlFor="email">E-MAIL: </label>
+       
+
+        <Form.Label htmlFor="email">E-MAIL: </Form.Label>
         <Form.Control
           type="email"
           name="email"
           placeholder="Ingresa tu email"
           value={userData.email}
           onChange={handleChange}
+          className={style.input}
         />
-        {errors.email && <p>{errors.email}</p>}
-        <label htmlFor="password">CONTRASEÑA: </label>
+        {errors.email && <p className={style.errors}>{errors.email}</p>}
+       
+
+        <Form.Label htmlFor="password">CONTRASEÑA: </Form.Label>
         <Form.Control
           type="password"
           name="password"
           placeholder="Ingresa tu contraseña"
           value={userData.password}
           onChange={handleChange}
+          className={style.input}
         />
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className={style.errors}>{errors.password}</p>}
+      
         <div>
-          <Button variant="primary" className={style.button}>
-            LOGIN
+          <Button
+            className={style.button}
+            style={{ backgroundColor: "var(--white)", color: "black" }}
+          >
+            INICIAR SESIÓN
           </Button>
         </div>
-        <div>
-          <h2>¿OLVIDASTE TU CONTRASEÑA?</h2>
-          <h3>¿NO TIENES UNA CUENTA? REGISTRATE</h3>
+        <div className={style.helpContainer}>
+          <h5 className={style.helpLinks}>¿OLVIDASTE TU CONTRASEÑA?</h5>
+          <h5 className={style.helpLinks}>¿NO TIENES UNA CUENTA? REGISTRATE</h5>
         </div>
       </Form>
     </div>
