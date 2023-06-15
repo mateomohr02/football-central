@@ -11,7 +11,7 @@ const Navbar = () => {
     <div className={style.navContainer}>
         <Link className={style.links} to='/home' ><img className={style.logo} src={logo} alt="Logo/Home"/></Link>
       <div className={style.containerLeft} >
-        <Link className={style.links} to='/competitions'>COMPETITIONS</Link>
+        <Link className={style.links} to='/competitions'>Competitions</Link>
         <Link className={style.links} to='/community'>Community</Link>
       </div>
       <div className={style.containerSearchAndUser}>
