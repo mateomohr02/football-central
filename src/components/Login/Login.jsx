@@ -1,48 +1,76 @@
-import React from 'react'
-import { useState } from 'react'
-import validation from './validation.js'
+import React from "react";
+import { useState } from "react";
+import validation from "./validation.js";
+import style from "./Login.module.css";
+import { Button, Form } from "react-bootstrap";
 
-const Login = ({login}) => {
-  const [errors, setErrors] = useState({})
+const Login = ({ login }) => {
+  const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const handleChange = (event) => {
     setUserData({
       ...userData,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-    setErrors(validation({
-      ...userData,
-      [event.target.name]: event.target.value
-    }));
-  }
+    setErrors(
+      validation({
+        ...userData,
+        [event.target.name]: event.target.value,
+      })
+    );
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     login(userData);
-  }
+  };
   return (
     <div>
       {/* faltan estilos */}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>E-MAIL: </label>
-        <input type='email' name='email' placeholder='Ingresa tu email' value={userData.email} onChange={handleChange}/>
-        {errors.email && <p>{errors.email}</p>}
-        <label htmlFor='password'>CONTRASEÑA: </label>
-        <input type='password' name='password' placeholder='Ingresa tu contraseña' value={userData.password} onChange={handleChange}/>
-        {errors.password && <p>{errors.password}</p>}
-        <div>
-          <button>LOGIN</button>
-        </div>
-        <div>
-          <h2>¿OLVIDASTE TU CONTRASEÑA?</h2>
-          <h3>¿NO TIENES UNA CUENTA? REGISTRATE</h3>
-        </div>
-      </form>
-    </div>
-  )
-}
+      <Form onSubmit={handleSubmit} className={style.login}>
+       
 
-export default Login
+        <Form.Label htmlFor="email">E-MAIL: </Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          placeholder="Ingresa tu email"
+          value={userData.email}
+          onChange={handleChange}
+          className={style.input}
+        />
+        {errors.email && <p className={style.errors}>{errors.email}</p>}
+       
+
+        <Form.Label htmlFor="password">CONTRASEÑA: </Form.Label>
+        <Form.Control
+          type="password"
+          name="password"
+          placeholder="Ingresa tu contraseña"
+          value={userData.password}
+          onChange={handleChange}
+          className={style.input}
+        />
+        {errors.password && <p className={style.errors}>{errors.password}</p>}
+      
+        <div>
+          <Button
+            className={style.button}
+            style={{ backgroundColor: "var(--white)", color: "black" }}
+          >
+            INICIAR SESIÓN
+          </Button>
+        </div>
+        <div className={style.helpContainer}>
+          <h5 className={style.helpLinks}>¿OLVIDASTE TU CONTRASEÑA?</h5>
+          <h5 className={style.helpLinks}>¿NO TIENES UNA CUENTA? REGISTRATE</h5>
+        </div>
+      </Form>
+    </div>
+  );
+};
+
+export default Login;
