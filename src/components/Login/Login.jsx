@@ -33,7 +33,7 @@ const Login = ({ login }) => {
       <form onSubmit={handleSubmit} className={style.login}>
        
 
-        <label htmlFor="email">E-MAIL: </label>
+        <label htmlFor="email" className={style.label}>E-MAIL: </label>
         <input
           type="email"
           name="email"
@@ -45,7 +45,7 @@ const Login = ({ login }) => {
         {errors.email && <p className={style.errors}>{errors.email}</p>}
        
 
-        <label htmlFor="password">CONTRASEÑA: </label>
+        <label htmlFor="password" className={style.label}>CONTRASEÑA: </label>
         <input
           type="password"
           name="password"
