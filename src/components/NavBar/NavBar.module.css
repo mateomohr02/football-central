@@ -1,32 +1,22 @@
 
 
 .navContainer{
-    /* height: 12vh;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    justify-content: space-between;
     background-color: var(--blue);
-    border-bottom: 1px black solid; */
-
+    font-family: var(--main-font);
     height: 12vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--blue);
 }
 
 .containerLeft{
-    position: absolute;
+    display: flex;
     align-items: center;
-    left: 23vw;
-    margin-left: 2rem;
+    justify-content: flex-start;
 }
 
-.logo{
-    width: 80%;
+.img{
+    width: 20vw;
 }
 
 .user{
@@ -51,5 +41,5 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
