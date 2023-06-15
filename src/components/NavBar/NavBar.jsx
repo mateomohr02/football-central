@@ -9,8 +9,8 @@ import SearchBar from '../SearchBar/SearchBar';
 const Navbar = () => {
   return (
     <div className={style.navContainer}>
-        <Link className={style.links} to='/home' ><img className={style.logo} src={logo} alt="Logo/Home"/></Link>
       <div className={style.containerLeft} >
+        <Link className={style.links} to='/home' ><img className={style.img} src={logo} alt="Logo/Home"/></Link>
         <Link className={style.links} to='/competitions'>Competitions</Link>
         <Link className={style.links} to='/community'>Community</Link>
       </div>
