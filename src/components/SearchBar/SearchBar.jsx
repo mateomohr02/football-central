@@ -1,8 +1,9 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./SearchBar.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
+import { searchTeam } from "../../redux/actions/searchTeamLeague";
 //crear action
 
 
@@ -12,14 +13,16 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
+    e.preventDefault();
     setSearch(e.target.value);
   };
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
-    dispatch();
+    dispatch(searchTeam(search));
   };
+
+  const team = useSelector(state => state.showedTeams)
 
   return (
     <div className={style.searchBar}>
@@ -28,7 +31,7 @@ const SearchBar = () => {
         type="text"
         onChange={handleChange}
         className={style.searchInput}
-        placeholder="Buscar equipo/liga..."
+        placeholder="Buscar equipo"
       />
       <button onClick={handleSubmit} className={style.searchButton}>
         <SearchIcon/>

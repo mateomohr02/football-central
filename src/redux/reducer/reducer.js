@@ -4,6 +4,7 @@ const initialState = {
     teams: [],
     showedLeagues: [],
     showedTeams : [],
+    detailLeague: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +12,12 @@ const reducer = (state = initialState, action) => {
 
         case 'SEARCH_TEAM_LEAGUE':
             return {...state,
-                showedLeagues: action.payload
+                showedTeams: action.payload
+            }
+        
+        case 'DETAIL_LEAGUE':
+            return{...state,
+                detailLeague: action.payload
             }
 
         default:
