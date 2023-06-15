@@ -12,7 +12,7 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
-    setSearch(e.targer.value)
+    setSearch(e.target.value)
   }
   
   const handleSubmit = (e) => {
