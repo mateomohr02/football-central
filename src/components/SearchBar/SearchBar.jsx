@@ -1,8 +1,10 @@
+
 import React, { useState } from "react";
 import style from "./SearchBar.module.css";
 import { useDispatch } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 //crear action
+
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const SearchBar = () => {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     dispatch();
   };
@@ -33,5 +36,6 @@ const SearchBar = () => {
     </div>
   );
 };
+
 
 export default SearchBar;

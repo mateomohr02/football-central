@@ -4,7 +4,6 @@ const initialState = {
     teams: [],
     showedLeagues: [],
     showedTeams : [],
-    
 }
 
 const reducer = (state = initialState, action) => {
