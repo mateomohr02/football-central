@@ -10,6 +10,7 @@ import SearchBar from "../SearchBar/SearchBar";
 const Navbar = () => {
   return (
     <div className={style.navContainer}>
+
       <Link className={style.links} to="/home">
         <img className={style.logo} src={logo} alt="Logo/Home" />
       </Link>
@@ -20,6 +21,7 @@ const Navbar = () => {
         <Link className={style.links} to="/community">
           COMMUNITY
         </Link>
+
       </div>
       <div className={style.containerSearchAndUser}>
         <SearchBar />
