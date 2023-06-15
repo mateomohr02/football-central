@@ -59,8 +59,8 @@
 }
 
 .links:hover {
-  font-size: 100.05%;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.831);
+  color:#CA9E19;
 }
 
 .containerSearchAndUser {
