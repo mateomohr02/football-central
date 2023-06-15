@@ -1,14 +1,15 @@
-*{
+* {
   font-family: var(--main-font);
-  font-size: 65px;
+  font-size: 15px;
   color: var(--white);
+  font-weight: 400;
 }
 .login {
 
   position: absolute;
-  width: 1400px;
-  left: 900px;
-  top: 1000px;
+  width: 500px;
+  left: 240px;
+  top: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,38 +17,51 @@
   font-size: 15px;
 }
 
+.label{
+  margin-top: 10px;
+}
 
-
-.input{
-  margin-top: -10px;
-  margin-bottom: 20px;
+.input {
+  margin-top: 1px;
+  margin-bottom: 5px;
+  height: 35px;
+  width: 320px;
+  border-radius: 3px;
+  border: none;
+}
+.input::placeholder {
+  padding-left: 10px;
 }
 .button {
-  margin-top: 30px;
-  width: 800px;
-  border:none;
-  
+  margin-top: 5px;
+  width: 180px;
+  border: none;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  color: black;
+  cursor: pointer;
 }
 
-
-.helpContainer{
-  margin-top: 50px;
+.helpContainer {
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.helpLinks{
+.helpLinks {
   margin-top: -5px;
-  font-size: 55px;
+  font-size: 12px;
 }
 
-.errors{
-  font-size: 50px;
+.errors {
+  font-size: 12px;
   color: rgb(247, 243, 243);
   text-decoration-line: underline;
-  
+  margin-top: 10px;
+  margin-bottom: -10px;
 }
-.errors::first-letter{
+.errors::first-letter {
   text-transform: capitalize;
 }

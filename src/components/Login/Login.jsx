@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import validation from "./validation.js";
 import style from "./Login.module.css";
-import { Button, Form } from "react-bootstrap";
+
 
 const Login = ({ login }) => {
   const [errors, setErrors] = useState({});
@@ -30,11 +30,11 @@ const Login = ({ login }) => {
   return (
     <div>
       {/* faltan estilos */}
-      <Form onSubmit={handleSubmit} className={style.login}>
+      <form onSubmit={handleSubmit} className={style.login}>
        
 
-        <Form.Label htmlFor="email">E-MAIL: </Form.Label>
-        <Form.Control
+        <label htmlFor="email" className={style.label}>E-MAIL: </label>
+        <input
           type="email"
           name="email"
           placeholder="Ingresa tu email"
@@ -45,8 +45,8 @@ const Login = ({ login }) => {
         {errors.email && <p className={style.errors}>{errors.email}</p>}
        
 
-        <Form.Label htmlFor="password">CONTRASEÑA: </Form.Label>
-        <Form.Control
+        <label htmlFor="password" className={style.label}>CONTRASEÑA: </label>
+        <input
           type="password"
           name="password"
           placeholder="Ingresa tu contraseña"
@@ -57,18 +57,18 @@ const Login = ({ login }) => {
         {errors.password && <p className={style.errors}>{errors.password}</p>}
       
         <div>
-          <Button
+          <button
             className={style.button}
-            style={{ backgroundColor: "var(--white)", color: "black" }}
+            
           >
             INICIAR SESIÓN
-          </Button>
+          </button>
         </div>
         <div className={style.helpContainer}>
           <h5 className={style.helpLinks}>¿OLVIDASTE TU CONTRASEÑA?</h5>
           <h5 className={style.helpLinks}>¿NO TIENES UNA CUENTA? REGISTRATE</h5>
         </div>
-      </Form>
+      </form>
     </div>
   );
 };
