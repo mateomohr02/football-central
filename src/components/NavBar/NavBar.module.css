@@ -1,18 +1,32 @@
 
 
 .navContainer{
-    height: 12vh;
+    /* height: 12vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100vw;
     background-color: var(--blue);
-    border-bottom: 1px black solid;
+    border-bottom: 1px black solid; */
+
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--blue);
+}
+
+.containerLeft{
+    position: absolute;
+    align-items: center;
+    left: 23vw;
+    margin-left: 2rem;
 }
 
 .logo{
-    width: 40%;
+    width: 80%;
 }
 
 .user{
