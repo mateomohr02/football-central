@@ -29,7 +29,8 @@
 }
 
 .links:hover{
-
+    font-size: 1.55rem;
+    text-shadow: 2px 2px 2px black;
 }
 
 .containerSearchAndUser{
