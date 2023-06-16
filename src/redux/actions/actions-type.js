@@ -1,0 +1,1 @@
+export const GET_FIXTURE_TODAY = "GET_FIXTURE_TODAY";
