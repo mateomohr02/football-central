@@ -9,7 +9,7 @@ import Community from './views/Community/Community.jsx';
 import Landing from './views/Landing/Landing.jsx'
 import NavBar from './components/NavBar/NavBar';
 import DetailCompetition from './views/DetailCompetition/DetailCompetition.jsx';
-
+import CountryCompetitions from './views/CountryCompetitions/CountryCompetitions';
 
 function App() {
 
@@ -24,8 +24,8 @@ function App() {
         <Route exact path='/home' element={<Home/>}/>
         <Route exact path='/competitions' element={<Competitions/>}/>
         <Route exact path='/community' element={<Community/>}/>
-        <Route exact path='/competitions/detail/:id' element={<DetailCompetition/>}/>
-        
+        <Route exact path='/competitions/country/:id' element={<CountryCompetitions/>}/>
+        <Route exact path='/competitions/league/:id' element={<DetailCompetition/>}/>        
       </Routes>
 
     </div>
