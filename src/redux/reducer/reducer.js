@@ -6,7 +6,8 @@ const initialState = {
     teams: [],
     showedLeagues: [],
     showedTeams : [],
-    fixtureToday:[]
+    fixtureToday:[],
+    fixtureByDateRange:[]
 }
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +23,7 @@ const reducer = (state = initialState, action) => {
                 fixtureToday:action.payload
             }
         }
+       
         default:
             return state;
     }

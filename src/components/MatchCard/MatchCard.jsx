@@ -1,6 +1,8 @@
+import style from './MatchCard.module.css'
+
 const MatchCard = ({name}) => {
-  return <div>
-    <p>Match : {name}</p>
+  return <div className={style.cardContainer}>
+    <p>{name}</p>
   </div>;
 };
 

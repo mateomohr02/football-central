@@ -1,0 +1,8 @@
+body{
+  background-color: var(--grey);
+}
+
+.newsContainer{
+  background-color: aliceblue;
+  width: 20vw;
+}

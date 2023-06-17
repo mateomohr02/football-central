@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  position: relative;
+  top: 5vh;
+  left: 2vw;
+  font-family: var(--text-font);
+  font-weight: 500;
+}
+
+.subtitleContainer {
+  background-color: var(--dark-grey);
+  padding-left: 1.5em;
+  font-size: 25px;
+  border-bottom: 1px solid white;
+}
+
+.fixtureContainer {
+  background-color: var(--dark-grey);
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  transition: width 0.3s, height 0.3s;
+}
+
+.fixtureContainer::-webkit-scrollbar{
+  width: 15px;
+  
+}
+.fixtureContainer::-webkit-scrollbar-thumb{
+  background-color: var(--dark-grey);
+  
+}
