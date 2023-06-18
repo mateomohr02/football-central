@@ -1,13 +1,22 @@
-.mainContainer{
-  background-image: url('../../assets/landing/background.png');
-  background-position: center bottom -90px; 
+.mainContainer {
+  background-image: url("../../assets/landing/background.png");
+  background-position: center bottom -90px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  width: 100vw;
+
   overflow: hidden;
 }
 
-.shape{
+.shape {
   height: 100vh;
+  position: absolute;
+  top: 0px;
+}
+
+.logo {
+  width: 500px;
+  position: absolute;
+  left: 180px;
+  top: 100px;
 }

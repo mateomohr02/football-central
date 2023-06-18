@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--blue);
+    margin: 2rem;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 83vh;
+}
+
+
+

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 body {
@@ -8,6 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #000;
+  background-color:#3e3f41;
 }
 
 code {
@@ -22,7 +24,10 @@ code {
   --dark-grey: #2d2e2e;
   --white: #d9d9d9;
 
-  --main-font: "Bebas Neue", sans-serif;
-  --main-font-v2: "Geologica", sans-serif;
+  --main-font: "Geologica", sans-serif;
   --text-font: "Montserrat", sans-serif;
+
+  --bs-blue: #293851;
+  --bs-gray: #3e3f41;
+  --bs-gray-dark: #2d2e2e;
 }
