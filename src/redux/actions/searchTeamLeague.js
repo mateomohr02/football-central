@@ -5,10 +5,6 @@ export function searchTeam (search) {
         try {
             const matchedTeam = await axios.get(`/team/search/${search}`)
             
-            //const matchedLeague = await axios.get(`/league/search/${search}`)
-
-            console.log(matchedTeam)
-
             if (matchedTeam){
                 return dispatch({
                     type: 'SEARCH_TEAM_LEAGUE',

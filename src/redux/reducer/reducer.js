@@ -6,8 +6,13 @@ const initialState = {
     teams: [],
     showedLeagues: [],
     showedTeams : [],
+
     fixtureToday:[],
     fixtureByDateRange:[]
+=======
+    detailLeague: [],
+    countryLeagues: []
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,8 +20,19 @@ const reducer = (state = initialState, action) => {
 
         case 'SEARCH_TEAM_LEAGUE':
             return {...state,
-                showedLeagues: action.payload
+                showedTeams: action.payload
             }
+        
+        case 'DETAIL_LEAGUE':
+            return{...state,
+                detailLeague: action.payload
+            }
+
+        case 'GET_LEAGUES_COUNTRY':
+            return{...state,
+                countryLeagues: action.payload
+            }
+
         case GET_FIXTURE_TODAY:{
             return{
                 ...state,
@@ -29,6 +45,13 @@ const reducer = (state = initialState, action) => {
                 fixtureByDateRange:action.payload
             }
         }
+=======
+
+        case 'RESET_LEAGUES_COUNTRY':
+            return{...state,
+                countryLeagues: action.payload
+            }
+
         default:
             return state;
     }

@@ -1,0 +1,62 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color:#3e3f41;
+    width: 100wh;
+    height: 100vh;
+}
+.secondContainer{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color:#293851;
+    align-items: center;
+    width: 100wh;
+    height: 100vh;
+    margin: 2rem 2rem
+}
+.containerLeagues{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1rem;
+    column-gap: 2rem;
+    width: 15wh;
+    height: 15vh;
+    margin: 2rem 2rem;
+}
+
+.league{
+    display: grid;
+    padding: 1.5rem;
+    border-radius: 10%;
+    color: black;
+    background-color: #d9d9d9;
+    place-items: center;
+    width: 20wh;
+    height: 20vh;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.button{
+    font-size: 2rem;
+    border: none;
+    color: #2d2e2e;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    cursor: pointer;
+}
+.img{
+    display: flex;
+    flex-direction: column;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+    width: 20wh;
+    height: 20vh;
+}
