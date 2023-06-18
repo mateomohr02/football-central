@@ -16,8 +16,11 @@ function App() {
 
   return (
     <div>
-      {location.pathname === '/' || '/register' ? location.pathname === '/' ? <Landing/> : "" : location.pathname === 'register' ? <Register/> :  <NavBar/>}
-
+      {location.pathname === '/' || location.pathname === '/register' ? (
+      location.pathname === '/' ? <Landing /> : <Register />
+      ) : (
+      <NavBar />
+      )}
       <Routes>
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/home" element={<Home />} />
