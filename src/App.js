@@ -8,7 +8,7 @@ import Competitions from "./views/Competitions/Competitions.jsx";
 import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
-import DetailCompetition from "./views/DetailCompetition/DetailCompetition.jsx";
+import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         <Route
           exact
           path="/competitions/league/:id"
-          element={<DetailCompetition />}
+          element={<DetailLeague />}
         />
       </Routes>
     </div>

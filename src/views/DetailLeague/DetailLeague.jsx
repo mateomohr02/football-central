@@ -22,7 +22,7 @@ const DetailCompetition = () => {
     console.log(league)
 
     return (
-    <div>DetailCompetition</div>
+    <div>DetailCompetition {`${id}`}</div>
   )
 }
 
