@@ -1,4 +1,4 @@
-import { GET_FIXTURE_TODAY } from "../actions/actions-type";
+import { GET_FIXTURE_TODAY,GET_FIXTURE_BY_DATE_RANGE } from "../actions/actions-type";
 
 const initialState = {
     nations : [],
@@ -23,7 +23,12 @@ const reducer = (state = initialState, action) => {
                 fixtureToday:action.payload
             }
         }
-       
+        case GET_FIXTURE_BY_DATE_RANGE:{
+            return{
+                ...state,
+                fixtureByDateRange:action.payload
+            }
+        }
         default:
             return state;
     }

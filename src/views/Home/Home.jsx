@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getFixtureToday } from "../../redux/actions/getFixtureToday";
+/* import { getFixtureToday } from "../../redux/actions/getFixtureToday"; */
+import { getFixtureByDateRange } from "../../redux/actions/getFixtureByDateRange";
 
 import style from "./Home.module.css";
 import MatchCards from "../../components/MatchCards/MatchCards";
@@ -11,7 +12,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFixtureToday());
+    dispatch(getFixtureByDateRange());
   }, [dispatch]);
 
   return (
