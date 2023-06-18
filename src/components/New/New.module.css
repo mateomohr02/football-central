@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  height: 35vh;
+  width: 94vw;
+  
+  border-radius: 0px 0px 3px 3px;
+}
+
+img {
+  max-height: 35vh;
+  border-radius: 0px 0px 3px 0px;
+}
+
+h1 {
+  color: black;
+  font-family: var(--main-font);
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+
+}

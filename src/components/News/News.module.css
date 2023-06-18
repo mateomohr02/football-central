@@ -1,0 +1,23 @@
+.container {
+  
+  width: 94vw;
+  margin-top: 1em;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+
+.newsTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--white);
+  height: 4vh;
+  border-radius: 3px 3px 0px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.574);
+}
+
+.newsTitle h4{
+  font-family: var(--main-font);
+  margin-left: 1em;
+  color: black;
+}
