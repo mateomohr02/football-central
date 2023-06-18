@@ -36,5 +36,3 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
-
-//esto es para que note los cambios
