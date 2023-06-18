@@ -34,13 +34,18 @@ const reducer = (state = initialState, action) => {
             return{...state,
                 countryLeagues: action.payload
             }
-            case 'GET_FIXTURE_TODAY':{
-                return{
-                    ...state,
-                    fixtureToday:action.payload
-                }
+        case 'RESET_LEAGUE_DETAIL':
+            return{...state,
+                detailLeague: []
             }
-            case GET_FIXTURE_BY_DATE_RANGE:{
+        
+        case GET_FIXTURE_TODAY:{
+            return{
+                ...state,
+                fixtureToday:action.payload
+            }
+        }
+        case GET_FIXTURE_BY_DATE_RANGE:{
                 return{
                     ...state,
                     fixtureByDateRange:action.payload

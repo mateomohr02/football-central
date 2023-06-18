@@ -30,13 +30,15 @@ const CountryCompetitions = () => {
 
         {leagues.map((l) => {
           return(
-            <CardLeaguesCountry 
-            
-            key = {l.id}
-            image_path = {l.image_path}
-            name = {l.name}
-            
-            />
+
+            <Link to={`/competitions/league/${l.id}`}>
+              <CardLeaguesCountry 
+              key = {l.id}
+              image_path = {l.image_path}
+              name = {l.name}
+              />
+            </Link>
+
           )
         })}
     </div>
