@@ -147,7 +147,7 @@ console.log(teams);
 
 
 const TeamCards = () => {
-  return <div className={style.container}>
+  return <div className={style.cardsContainer}>
     {
       teams.map(team =>{
         return <TeamCard

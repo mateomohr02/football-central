@@ -1,4 +1,4 @@
-.container{
+.cardContainer{
   
   height: 3em;
   margin-left: 1px;
@@ -6,7 +6,7 @@
  
 }
 
-img{
+.img{
   height: 3em;
 
 }
