@@ -1,4 +1,4 @@
-import { GET_FIXTURE_TODAY,GET_FIXTURE_BY_DATE_RANGE } from "../actions/actions-type";
+import { GET_FIXTURE_TODAY,GET_FIXTURE_BY_DATE_RANGE,GET_DETAIL_TEAM } from "../actions/actions-type";
 
 const initialState = {
     nations : [],
@@ -9,6 +9,7 @@ const initialState = {
     detailLeague: [],
     standings: [],
     detailCup: [],
+    detailTeam:[],
     countryLeagues: [],
     fixtureToday:[],
     fixtureByDateRange:[]
@@ -72,7 +73,13 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     fixtureByDateRange:action.payload
                 }
-            }    
+            }  
+        case GET_DETAIL_TEAM:{
+            return{
+                ...state,
+                detailTeam:action.payload
+            }
+        }
         default:
             return state;
     }
