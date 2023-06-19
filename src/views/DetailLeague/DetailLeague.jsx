@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getDetailLeague } from '../../redux/actions/getDetailLeague'
 import { resetDetailLeague } from '../../redux/actions/resetDetailLeague'
+import { getStandingsLeague } from '../../redux/actions/getStandingsLeague'
+import { resetStandingsLeague } from '../../redux/actions/resetStandingsLeague'
 
 const DetailCompetition = () => {
   
@@ -11,18 +13,25 @@ const DetailCompetition = () => {
     const { id } = useParams()
     
     const league = useSelector(state => state.detailLeague)
-    
+    const standings = useSelector(state => state.standingsLeague)
+
     useEffect(()=>{
         dispatch(getDetailLeague(id))
-
-        return () => dispatch(resetDetailLeague())
+        dispatch(getStandingsLeague(id))
+        return () => {
+          dispatch(resetStandingsLeague())
+          dispatch(resetDetailLeague());
+        }
         
     },[dispatch, id])
 
-    console.log(league)
+    //console.log(standings);
+
 
     return (
-    <div>DetailCompetition {`${id}`}</div>
+    <div>
+      <span>DetailCompetition {`${league?.name}`}</span>    
+    </div>
   )
 }
 
