@@ -9,6 +9,7 @@ import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
+import DetailCup from "./views/DetailCup/DetailCup.jsx"
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
 
 function App() {
@@ -36,6 +37,12 @@ function App() {
           path="/competitions/league/:id"
           element={<DetailLeague />}
         />
+        <Route
+          exact
+          path="/competitions/cup/:id"
+          element={<DetailCup />}
+        />  
+
       </Routes>
     </div>
   );

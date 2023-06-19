@@ -44,6 +44,11 @@ const reducer = (state = initialState, action) => {
             return{...state,
                 detailLeague: []
             }
+        case 'RESET_CUP_DETAIL':
+            return{
+                ...state,
+                detailCup: []
+            }    
         
         case GET_FIXTURE_TODAY:{
             return{
