@@ -7,6 +7,7 @@ const initialState = {
     showedLeagues: [],
     showedTeams : [],
     detailLeague: [],
+    detailCup: [],
     countryLeagues: [],
     fixtureToday:[],
     fixtureByDateRange:[]
@@ -23,6 +24,11 @@ const reducer = (state = initialState, action) => {
         case 'DETAIL_LEAGUE':
             return{...state,
                 detailLeague: action.payload
+            }
+        case 'DETAIL_CUP':
+            return {
+                ...state,
+                detailCup: action.payload
             }
 
         case 'GET_LEAGUES_COUNTRY':
