@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    height: 80vh;
+    position: relative;
+    top: 5vh;
+    left: 2vw;
+    font-family: var(--text-font);
+    font-weight: 500;
+    overflow: auto;
+    background-color: var(--grey);
+  }
+  
+  .subtitleContainer {
+    background-color: var(--dark-grey);
+    padding-left: 1em;
+    font-size: 25px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    height: 4vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .fixtureContainer {
+    /* contenedor de los partidos por dia */
+    background-color: var(--dark-grey);
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .fixtureContainer::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  .fixtureContainer::-webkit-scrollbar-thumb {
+    background-color: var(--dark-grey);
+  }
+  
+  .expandButton {
+    height: 1.5em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    border: none;
+    border-radius: 3px;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 60vw;
+   
+  }
+  
+  
+  
