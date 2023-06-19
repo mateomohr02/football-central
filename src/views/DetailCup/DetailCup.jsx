@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getDetailCup } from '../../redux/actions/getDetailCups'
-import { resetDetailCup, resetDetailLeague } from '../../redux/actions/resetDetailCup'
+import { resetDetailCup } from '../../redux/actions/resetDetailCup'
+import DetailCups from '../../components/DetailCups/DetailCups'
+import KeyDefinition from '../../components/KeyDefinition/KeyDefinition'
 
 const DetailCompetition = () => {
   
@@ -22,7 +24,11 @@ const DetailCompetition = () => {
     console.log(cup)
 
     return (
-    <div>DetailCompetition {`${id}`}</div>
+    <div>
+      DetailCompetition {`${id}`}
+      <DetailCups />
+      <KeyDefinition />
+    </div>
   )
 }
 
