@@ -1,4 +1,7 @@
 export const GET_FIXTURE_TODAY = "GET_FIXTURE_TODAY";
 export const GET_FIXTURE_BY_DATE_RANGE = "GET_FIXTURE_BY_DATE_RANGE";
 export const GET_DETAIL_TEAM = "GET_DETAIL_TEAM";
+export const GET_VENUE_BY_ID = "GET_VENUE_BY_ID";
+export const GET_PLAYER_BY_ID = "GET_PLAYER_BY_ID";
 export const SAVE_USER = "SAVE_USER";
+
