@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, venue: action.payload};
     }
     case GET_PLAYER_BY_ID: {
-      return { ...state, player: action.payload};
+      return { ...state, player: action.payload};}
     case 'RESET_CUP_DETAIL':
         return{ ...state, detailCup: [] }    
     case SAVE_USER:{
