@@ -14,7 +14,7 @@ const DetailLeague = () => {
     
     const league = useSelector(state => state.detailLeague)
     const standings = useSelector(state => state.standings)
-      
+
     useEffect(()=>{
       dispatch(getDetailLeague(id))
       dispatch(getStandingsLeague(id))
@@ -22,10 +22,19 @@ const DetailLeague = () => {
         dispatch(resetDetailLeague());
       }      
     },[dispatch, id])
-    
+
     return (
     <div>
-      <span>DetailLeague {`${league?.name}`}</span>    
+      <span>DetailLeague {`${league?.name}`}</span>
+      <span></span>
+      {standings.map(t => {
+        
+        return(
+          <div>
+            
+          </div>
+        )
+      })}   
     </div>
   )
 }
