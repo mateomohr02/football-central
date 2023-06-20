@@ -1,0 +1,57 @@
+.mainContainer {
+  font-family: var(--main-font);
+  margin-top: 1em;
+  background-color: var(--white);
+  width: 85vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.frontPage {
+  width: 85vw;
+  height: 45vh;
+  background-color: rgba(255, 255, 255, 0.457);
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ 
+}
+
+.imgContainer {
+  background-color: var(--grey);
+  border-radius: 50%;
+  height: 12em;
+  width: 12em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5em;
+}
+.teamImg {
+  max-height: 20vh;
+  position: relative;
+  top: 11px;
+}
+
+.dataContainer{
+  margin-left: 4em;
+  height: 30vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+
+.dataContainer h3{
+ 
+  font-size: 7vh;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.dataContainer p{
+  margin-top: 5px;
+  font-size: 2.5vh;
+}
