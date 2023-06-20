@@ -20,7 +20,7 @@ const DetailTeam = () => {
         console.error("Error al obtener el estadio:", error);
       });
     }
-  })
+  }, [dispatch, id, team, team.venue_id]);
 /* 
   const background = venue ? `url(${venue.image_path})` : ""; */
 
