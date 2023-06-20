@@ -12,6 +12,7 @@ import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
 import DetailCup from "./views/DetailCup/DetailCup.jsx"
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
 import DetailTeam from "./views/DetailTeam/DetailTeam";
+import TeamSearch from "./views/TeamSearch/TeamSearch";
 
 function App() {
   const location = useLocation();
@@ -44,6 +45,8 @@ function App() {
           element={<DetailCup />}
         />  
         <Route exact path="/team/:id" element={<DetailTeam/>}/>
+
+        <Route exact path="/search" element={<TeamSearch />}/>
       </Routes>
     </div>
   );
