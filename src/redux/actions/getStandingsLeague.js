@@ -15,13 +15,24 @@ export function getStandingsLeague(id){
         url = `http://localhost:3001/standings/19743?league_id=${id}`
     }
     if (id === '8'){
-        url = `http://localhost:3001/standings/21646?league_id=${id}`
+        url = `http://localhost:3001/standings/19734?league_id=${id}`
     }
     
     try {
         let apiData = await axios.get(url);
         let standings = apiData.data;
-  
+
+        for (const position of standings) {
+            if (position.points !== 0) {
+                const team = await axios.get(`http://localhost:3001/team/${position.participant_id}`);
+                position.teamInfo = team.data;
+            }
+        }
+
+        standings = standings.filter((position) => position.points !== 0);
+        
+
+
         return dispatch({
           type: 'GET_STANDINGS_LEAGUE',
           payload: standings
