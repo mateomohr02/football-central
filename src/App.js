@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
 import DetailCup from "./views/DetailCup/DetailCup.jsx"
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
+import DetailTeam from "./views/DetailTeam/DetailTeam";
 
 function App() {
   const location = useLocation();
@@ -42,7 +43,7 @@ function App() {
           path="/competitions/cup/:id"
           element={<DetailCup />}
         />  
-
+        <Route exact path="/team/:id" element={<DetailTeam/>}/>
       </Routes>
     </div>
   );
