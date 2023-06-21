@@ -1,5 +1,6 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import style from "./SearchBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
@@ -9,9 +10,11 @@ import { searchTeam } from "../../redux/actions/searchTeamLeague";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
 
   const [search, setSearch] = useState("");
-
+  
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
@@ -20,9 +23,8 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchTeam(search));
+    navigate('/search')
   };
-
-  const team = useSelector(state => state.showedTeams)
 
   return (
     <div className={style.searchBar}>

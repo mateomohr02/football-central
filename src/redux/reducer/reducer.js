@@ -64,6 +64,12 @@ const reducer = (state = initialState, action) => {
     case SAVE_USER:{
         return{ ...state, users:action.payload }
     }
+    case 'RESET_SHOWED_TEAMS':
+      return{...state, showedTeams: [] }
+    case 'RESET_DETAIL_TEAM':
+      return{...state, detailTeam: [] }
+    case 'RESET_VENUE':
+      return{...state, venue: {}}
     default:
         return state;
     
