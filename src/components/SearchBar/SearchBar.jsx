@@ -30,7 +30,7 @@ const SearchBar = () => {
         onChange={handleChange}
         className="flex justify-between text-right sm:w-full py-2 pl-10 pr-4 text-gray-700 bg-pf-white border rounded-lg dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none  focus:ring-opacity-40 focus:ring-blue-300"
         placeholder="Buscar"
-        onKeyDown={handleSubmit}
+        //onKeyDown={handleSubmit}
       />
 
       <button

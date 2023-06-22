@@ -4,7 +4,7 @@ import { GET_VENUE_BY_ID } from "./actions-type";
 export const getVenueById = (id) => {
   return async function (dispatch) {
     try {
-    const response = await axios.get(`http://localhost:3001/venues/${id}`);
+    const response = await axios.get(`/venues/${id}`);
     const data = response.data;
     dispatch({
       type: GET_VENUE_BY_ID,
