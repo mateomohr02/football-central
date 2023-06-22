@@ -43,7 +43,7 @@ const DetailLeague = () => {
       }      
     },[dispatch, id])
 
-    console.log(standings)
+    console.log(standings, 'Componente')
 
     return (
     <div className={style.container}>
@@ -60,11 +60,12 @@ const DetailLeague = () => {
           </thead>
           <tbody>
             {standings.map(p => {
+              console.log(p, 'Posición')
               return (
-                <tr key={p.participant_id}>
-                  <td className={style.colTeam} ><img className={style.teamImg} src={p.teamInfo.image_path} alt={`Escudo ${p.teamInfo.name}`} /></td>
-                  <td className={style.colName} >{p.teamInfo.name}</td>
-                  <td className={style.colPoints} >{p.points}</td>
+                <tr key={p?.participant_id}>
+                  <td className={style.colTeam} ><img className={style.teamImg} src={p?.teamInfo?.image_path} alt={`Escudo ${p?.teamInfo?.name}`} /></td>
+                  <td className={style.colName} >{p?.teamInfo?.name}</td>
+                  <td className={style.colPoints} >{p?.points}</td>
                 </tr>
               )
             })}
