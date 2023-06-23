@@ -89,7 +89,7 @@ const Login = ({ login }) => {
               type="submit"
               className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-pf-white hover:bg-blue-900 rounded py-2 w-8/12 transition duration-150 ease-in"
             >
-              <span className="mr-2 uppercase text-black font-medium">Login</span>
+              <span className="mr-2 uppercase text-black font-medium">Iniciar sesion</span>
               <span>
                 <svg
                   className="h-6 w-6"
@@ -123,6 +123,7 @@ const Login = ({ login }) => {
                 </svg>
               </span>
               <span className="ml-2">¿NO TIENES UNA CUENTA? REGÍSTRATE</span>
+
             </Link>
           </div>
 
