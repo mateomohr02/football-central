@@ -9,24 +9,28 @@ import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
-import DetailCup from "./views/DetailCup/DetailCup.jsx"
+import DetailCup from "./views/DetailCup/DetailCup.jsx";
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
 import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 
+
 function App() {
   const location = useLocation();
-
   return (
     <div>
-      {location.pathname === '/' || location.pathname === '/register' ? (
-      location.pathname === '/' ? <Landing /> : <Register />
+      {location.pathname === "/" || location.pathname === "/register" ? (
+        location.pathname === "/" ? (
+          <Landing />
+        ) : (
+          <Register />
+        )
       ) : (
-      <NavBar />
+        <NavBar />
       )}
       <Routes>
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/home" element={<Home/>} />
         <Route exact path="/competitions" element={<Competitions />} />
         <Route exact path="/community" element={<Community />} />
         <Route
@@ -39,14 +43,10 @@ function App() {
           path="/competitions/league/:id"
           element={<DetailLeague />}
         />
-        <Route
-          exact
-          path="/competitions/cup/:id"
-          element={<DetailCup />}
-        />  
-        <Route exact path="/team/:id" element={<DetailTeam/>}/>
+        <Route exact path="/competitions/cup/:id" element={<DetailCup />} />
+        <Route exact path="/team/:id" element={<DetailTeam />} />
 
-        <Route exact path="/search" element={<TeamSearch />}/>
+        <Route exact path="/search" element={<TeamSearch />} />
       </Routes>
     </div>
   );
