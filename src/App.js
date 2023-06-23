@@ -8,16 +8,22 @@ import Competitions from "./views/Competitions/Competitions.jsx";
 import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
-import DetailCompetition from "./views/DetailCompetition/DetailCompetition.jsx";
+import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
+import DetailCup from "./views/DetailCup/DetailCup.jsx"
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
+import DetailTeam from "./views/DetailTeam/DetailTeam";
+import TeamSearch from "./views/TeamSearch/TeamSearch";
 
 function App() {
   const location = useLocation();
 
   return (
     <div>
-      {location.pathname === '/' || '/register' ? location.pathname === '/' ? <Landing/> : "" : location.pathname === 'register' ? <Register/> :  <NavBar/>}
-
+      {location.pathname === '/' || location.pathname === '/register' ? (
+      location.pathname === '/' ? <Landing /> : <Register />
+      ) : (
+      <NavBar />
+      )}
       <Routes>
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/home" element={<Home />} />
@@ -31,8 +37,16 @@ function App() {
         <Route
           exact
           path="/competitions/league/:id"
-          element={<DetailCompetition />}
+          element={<DetailLeague />}
         />
+        <Route
+          exact
+          path="/competitions/cup/:id"
+          element={<DetailCup />}
+        />  
+        <Route exact path="/team/:id" element={<DetailTeam/>}/>
+
+        <Route exact path="/search" element={<TeamSearch />}/>
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 export const getFixtureToday = () => {
   return async function (dispatch) {
     try {
-      const apiData = await axios.get("http://localhost:3001/fixture/today");
+      const apiData = await axios.get("/fixture/today");
       const fixture = apiData.data;
       dispatch({ type: GET_FIXTURE_TODAY, payload: fixture });
     } catch (error) {

@@ -18,12 +18,6 @@ code {
 }
 
 :root {
-  /*  --pale-pink-grey: #e2d9ce; */
-  --blue: #293851;
-  --grey: #3e3f41;
-  --dark-grey: #2d2e2e;
-  --white: #d9d9d9;
-
   --main-font: "Geologica", sans-serif;
   --text-font: "Montserrat", sans-serif;
 
@@ -31,3 +25,7 @@ code {
   --bs-gray: #3e3f41;
   --bs-gray-dark: #2d2e2e;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

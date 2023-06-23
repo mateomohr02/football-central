@@ -4,14 +4,19 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-
   overflow: hidden;
 }
 
-.shape {
+.backgroundShape {
   height: 100vh;
+  width: 75vw;
   position: absolute;
   top: 0px;
+  left: 0px;
+  background-image: url("../../assets/landing/shape.svg");
+  
+  background-size: cover;
+  overflow: hidden;
 }
 
 .logo {
