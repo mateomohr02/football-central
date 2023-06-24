@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
@@ -14,17 +14,37 @@ import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions
 import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 import NotFound from "./views/404/NotFound";
+import { useEffect } from "react";
 
 function App() {
   const location = useLocation();
 
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
+
+    // Verificar si el usuario no está logueado y se encuentra en una página distinta de inicio de sesión
+    if (
+      loggedIn !== "true" &&
+      location.pathname !== "/" &&
+      location.pathname !== "/register"
+    ) {
+      // Redirigir al usuario a la página de inicio de sesión
+      window.location.href = "/";
+    }
+  }, [location.pathname]);
   return (
     <div>
-      {location.pathname === '/' || location.pathname === '/register' ? (
-      location.pathname === '/' ? <Landing /> : <Register />
+     {localStorage.getItem("loggedIn") === "true" ? (
+        <NavBar />
       ) : (
-      <NavBar />
+        (location.pathname === '/' || location.pathname === '/register') ? (
+          location.pathname === '/' ? <Landing /> : <Register />
+        ) : (
+          // Redirigir al usuario a la página de inicio de sesión
+          <Navigate to="/" />
+        )
       )}
+      
       <Routes>
         <Route exact path="/registro" element={<Register />} />
         <Route exact path="/inicio" element={<Home />} />

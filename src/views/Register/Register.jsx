@@ -3,17 +3,19 @@ import { useState } from "react";
 import validation from "./validation.js";
 import style from "./Register.module.css"
 import logo from "../../assets/logo.svg";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/actions/register.js";
 
 
-const Register = ({ register }) => {
+const Register = () => {
 
     const [errors, setErrors] = useState({});
     const [userData, setUserData] = useState({
-        user: "",
+        username: "",
         email: "",
         password: "",
     });
-
+    const dispatch = useDispatch();
     const handleChange = (event) => {
         setUserData({
             ...userData,
@@ -28,7 +30,7 @@ const Register = ({ register }) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        register(userData);
+        dispatch(register(userData));
     };
     return (
         <div className={style.mainContainer}>
