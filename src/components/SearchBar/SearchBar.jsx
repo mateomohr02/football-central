@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import { searchTeam } from "../../redux/actions/searchTeamLeague";
-//crear action
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -12,7 +11,6 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
-    e.preventDefault();
     setSearch(e.target.value);
   };
 
@@ -22,15 +20,21 @@ const SearchBar = () => {
     navigate("/search");
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="flex h-10">
       <input
         value={search}
         type="text"
         onChange={handleChange}
-        className="flex justify-between text-right sm:w-full py-2 pl-10 pr-4 text-gray-700 bg-pf-white border rounded-lg dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none  focus:ring-opacity-40 focus:ring-blue-300"
+        onKeyPress={handleKeyPress}
+        className="flex justify-between text-right sm:w-full py-2 pl-10 pr-4 text-black bg-pf-white border rounded-lg dark:text-black dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none  focus:ring-opacity-40 focus:ring-blue-300"
         placeholder="Buscar"
-        //onKeyDown={handleSubmit}
       />
 
       <button
@@ -44,3 +48,4 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+

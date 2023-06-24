@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="relative bg-white shadow dark:bg-gray-800">
       <div className="container py-3 mx-auto md:flex">
         <div className="flex items-center justify-between">
-          <Link to="/home">
+          <Link to="/inicio">
             <img
               className="w-auto h-9 pl-3 sm:pl-0 sm:h-12"
               src={logo}
@@ -77,7 +77,6 @@ const Navbar = () => {
           }`}
         >
           <div className=" flex w-full items-end flex-col pr-2 mx-4 md:flex-row md:justify-end md:items-center md:mr-6 md:py-0">
-            
             <Link
               to="/"
               className=" h-12 w-12 flex justify-center items-center sm:absolute -right-6"
@@ -88,12 +87,14 @@ const Navbar = () => {
               />
             </Link>
 
-            <Link
-              to="/competitions"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2 "
-            >
-              Competiciones
-            </Link>
+            
+              <Link
+                to="/competiciones"
+                className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2 "
+              >
+                Competiciones
+              </Link>
+           
             <Link
               to="/community"
               className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2 "
