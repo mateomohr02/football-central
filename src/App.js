@@ -25,28 +25,29 @@ function App() {
       <NavBar />
       )}
       <Routes>
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/competitions" element={<Competitions />} />
-        <Route exact path="/community" element={<Community />} />
+        <Route exact path="/registro" element={<Register />} />
+        <Route exact path="/inicio" element={<Home />} />
+        <Route exact path="/comunidad" element={<Community />} />
+        <Route path="/competiciones" element={<Competitions />} />
         <Route
           exact
-          path="/competitions/country/:id"
+          path="/competiciones/paises/:id"
           element={<CountryCompetitions />}
         />
         <Route
           exact
-          path="/competitions/league/:id"
+          path="/competiciones/ligas/:id"
           element={<DetailLeague />}
         />
         <Route
           exact
-          path="/competitions/cup/:id"
+          path="/competiciones/copas/:id"
           element={<DetailCup />}
-        />  
-        <Route exact path="/team/:id" element={<DetailTeam/>}/>
+        /> 
+        
+        <Route exact path="/equipo/:id" element={<DetailTeam/>}/>
 
-        <Route exact path="/search" element={<TeamSearch />}/>
+        <Route exact path="/busqueda" element={<TeamSearch />}/>
       </Routes>
     </div>
   );
