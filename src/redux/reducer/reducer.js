@@ -4,10 +4,11 @@ import {
   GET_DETAIL_TEAM,
   GET_VENUE_BY_ID,
   GET_PLAYER_BY_ID,
-  SAVE_USER,
   GET_LIVESCORES,
   RESET_LIVESCORES,
   GET_TEAM_BY_NAME,
+  LOGIN,
+  REGISTER
 } from "../actions/actions-type";
 
 const initialState = {
@@ -26,7 +27,8 @@ const initialState = {
   venue: {},
   player: {},
   livescores: [],
-  team:[]
+  team:[],
+  users: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,8 +52,18 @@ const reducer = (state = initialState, action) => {
     case "RESET_STANDINGS":
       return { ...state, standings: [] };
     case GET_FIXTURE_TODAY: {
-      return { ...state, fixtureToday: action.payload };
-    }
+      return { ...state, fixtureToday: action.payload }}
+    case REGISTER: {
+        return { ...state, 
+          users: action.payload 
+        };
+      }
+      case LOGIN:
+      return { 
+        ...state,
+        user: action.payload 
+      };
+    
     case GET_FIXTURE_BY_DATE_RANGE: {
       return { ...state, fixtureByDateRange: action.payload };
     }
@@ -63,9 +75,6 @@ const reducer = (state = initialState, action) => {
     }
     case GET_PLAYER_BY_ID: {
       return { ...state, player: action.payload };
-    }
-    case SAVE_USER: {
-      return { ...state, users: action.payload };
     }
     case "RESET_SHOWED_TEAMS":
       return { ...state, showedTeams: [] };

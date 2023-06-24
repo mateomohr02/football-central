@@ -3,14 +3,17 @@ import { useState } from "react";
 import validation from "./validation.js";
 import style from "./Login.module.css";
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import { login } from "../../redux/actions/login.js";
 
-const Login = ({ login }) => {
+const Login = () => {
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
+  const dispatch = useDispatch();
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -25,7 +28,7 @@ const Login = ({ login }) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(userData);
+    dispatch(login(userData));
   };
   return (
     <div>

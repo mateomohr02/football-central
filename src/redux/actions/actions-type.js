@@ -3,8 +3,8 @@ export const GET_FIXTURE_BY_DATE_RANGE = "GET_FIXTURE_BY_DATE_RANGE";
 export const GET_DETAIL_TEAM = "GET_DETAIL_TEAM";
 export const GET_VENUE_BY_ID = "GET_VENUE_BY_ID";
 export const GET_PLAYER_BY_ID = "GET_PLAYER_BY_ID";
-export const SAVE_USER = "SAVE_USER";
 export const GET_LIVESCORES = "GET_LIVESCORES";
 export const RESET_LIVESCORES = "RESET_LIVESCORES";
 export const GET_TEAM_BY_NAME = "GET_TEAM_BY_NAME";
-
+export const LOGIN = "LOGIN";
+export const REGISTER = "REGISTER";
