@@ -1,36 +1,84 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import Form from "react-validation/build/form.js";
+import Input from "react-validation/build/input.js";
+import CheckButton from "react-validation/build/button.js"
 import validation from "./validation.js";
 import style from "./Login.module.css";
 import { Link } from "react-router-dom";
+import AuthService from "../Service/AuthService.js"
+
+const require = (value) => {
+  if (!value) {
+    return (
+      <div className="invalid-feedback d-block">
+        This field is required!
+      </div>
+    );
+  }
+};
+
 
 const Login = ({ login }) => {
-  const [errors, setErrors] = useState({});
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
+  const form = useRef();
+  const checkBtn = useRef();
 
-  const handleChange = (event) => {
-    setUserData({
-      ...userData,
-      [event.target.name]: event.target.value,
-    });
-    setErrors(
-      validation({
-        ...userData,
-        [event.target.name]: event.target.value,
-      })
-    );
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
+  
+  const onChangeEmail = (event) => {
+    const email = event.target.value;
+    setEmail(email);
   };
-  const handleSubmit = (event) => {
+
+  const onChangePassword = (event) => {
+    const password = event.target.value;
+    setPassword(password);
+  };
+  
+  const handleLogin = (event) => {
     event.preventDefault();
-    login(userData);
+
+    setMessage("");
+    setLoading(true);
+
+    form.current.validateAll();
+
+    if (checkBtn.current.context._errors.length === 0) {
+      AuthService.login(email, password).then(
+        () => {
+          navigate("/home");
+          window.location.reload();
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+
+          setLoading(false);
+          setMessage(resMessage);
+        }
+      );
+    } else {
+      setLoading(false);
+      navigate("/register");
+      window.location.reload();
+    }
   };
+
+
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin} ref={form}
         className="min-h-screen flex flex-col items-start justify-center ml-60 mt-20 "
       >
         <div className="flex flex-col shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md"> {/* form container */}
@@ -46,8 +94,9 @@ const Login = ({ login }) => {
               type="email"
               name="email"
               placeholder="Ingresa tu email"
-              value={userData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={onChangeEmail}
+              validation={[require]}
               className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
             />
             {errors.email && <p className={style.errors}>{errors.email}</p>}
@@ -65,8 +114,9 @@ const Login = ({ login }) => {
               type="password"
               name="password"
               placeholder="Ingresa tu contraseña"
-              value={userData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={onChangePassword}
+              validation={[require]}
               className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
             />
             {errors.password && (
@@ -79,6 +129,7 @@ const Login = ({ login }) => {
             <div className="flex ml-auto">
               <Link className="inline-flex text-xs sm:text-sm text-white hover:text-blue-700">
                 ¿OLVIDASTE TU CONTRASEÑA?
+               
               </Link>
             </div>
           </div>
@@ -88,7 +139,10 @@ const Login = ({ login }) => {
             <button
               type="submit"
               className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-pf-white hover:bg-blue-900 rounded py-2 w-8/12 transition duration-150 ease-in"
-            >
+              disabled={loading}>
+              {loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
               <span className="mr-2 uppercase text-black font-medium">Iniciar sesion</span>
               <span>
                 <svg
@@ -104,6 +158,14 @@ const Login = ({ login }) => {
                 </svg>
               </span>
             </button>
+            {message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {message}
+                </div>
+              </div>
+            )}
+            <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </div>
 
 
@@ -122,7 +184,10 @@ const Login = ({ login }) => {
                   <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                 </svg>
               </span>
-              <span className="ml-2">¿NO TIENES UNA CUENTA? REGÍSTRATE</span>
+              <span className="ml-2">
+                ¿NO TIENES UNA CUENTA? REGÍSTRATE
+                navigate("/register");
+              </span>
 
             </Link>
           </div>
