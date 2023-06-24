@@ -1,11 +1,13 @@
-
 import {
   GET_FIXTURE_TODAY,
   GET_FIXTURE_BY_DATE_RANGE,
   GET_DETAIL_TEAM,
   GET_VENUE_BY_ID,
   GET_PLAYER_BY_ID,
-  SAVE_USER
+  SAVE_USER,
+  GET_LIVESCORES,
+  RESET_LIVESCORES,
+  GET_TEAM_BY_NAME,
 } from "../actions/actions-type";
 
 const initialState = {
@@ -23,6 +25,8 @@ const initialState = {
   fixtureByDateRange: [],
   venue: {},
   player: {},
+  livescores: [],
+  team:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -49,30 +53,47 @@ const reducer = (state = initialState, action) => {
       return { ...state, fixtureToday: action.payload };
     }
     case GET_FIXTURE_BY_DATE_RANGE: {
-      return { ...state, fixtureByDateRange: action.payload};
+      return { ...state, fixtureByDateRange: action.payload };
     }
     case GET_DETAIL_TEAM: {
       return { ...state, detailTeam: action.payload };
     }
     case GET_VENUE_BY_ID: {
-      return { ...state, venue: action.payload};
+      return { ...state, venue: action.payload };
     }
     case GET_PLAYER_BY_ID: {
-      return { ...state, player: action.payload};}
-    case 'RESET_CUP_DETAIL':
-        return{ ...state, detailCup: [] }    
-    case SAVE_USER:{
-        return{ ...state, users:action.payload }
+      return { ...state, player: action.payload };
     }
-    case 'RESET_SHOWED_TEAMS':
-      return{...state, showedTeams: [] }
-    case 'RESET_DETAIL_TEAM':
-      return{...state, detailTeam: [] }
-    case 'RESET_VENUE':
-      return{...state, venue: {}}
-    default:
-        return state;
+    case SAVE_USER: {
+      return { ...state, users: action.payload };
+    }
+    case "RESET_SHOWED_TEAMS":
+      return { ...state, showedTeams: [] };
+    case "RESET_DETAIL_TEAM":
+      return { ...state, detailTeam: [] };
+    case "RESET_VENUE":
+      return { ...state, venue: {} };
+    case GET_LIVESCORES: {
+      return {
+        ...state,
+        livescores: action.payload,
+      };
+    }
+    case RESET_LIVESCORES: {
+      return {
+        ...state,
+        livescores: [],
+      };
+    }
+    case GET_TEAM_BY_NAME:{
+      return{
+        ...state,
+        team:action.payload
+      }
+    }
     
+    default:
+      return state;
   }
 };
 

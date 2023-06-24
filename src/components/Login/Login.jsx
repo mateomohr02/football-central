@@ -139,6 +139,7 @@ const Login = ({ login }) => {
             <button
               type="submit"
               className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-pf-white hover:bg-blue-900 rounded py-2 w-8/12 transition duration-150 ease-in"
+
               disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
