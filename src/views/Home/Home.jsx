@@ -19,7 +19,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-pf-grey md:h-screen">
+    <div >
       {/* <TeamCards /> */}
       <News />
       <MatchCards />
