@@ -11,7 +11,6 @@ const Register = () => {
 
     const [errors, setErrors] = useState({});
     const [userData, setUserData] = useState({
-        username: "",
         email: "",
         password: "",
     });
@@ -37,7 +36,7 @@ const Register = () => {
             <img src={logo} alt="logo" className={style.logo} />
             <form onSubmit={handleSubmit} className={style.register}>
                 <label htmlFor="user" className={style.label}>USERNAME: </label>
-                <input type="text" name="user" placeholder="Ingresa tu nombre de usuario" value={userData.name} onChange={handleChange} className={style.input} />
+            <input type="text" name="username" placeholder="Ingresa tu nombre de usuario" value={userData.username} onChange={handleChange} className={style.input} />
                 {errors.user && <p className={style.errors}>{errors.user}</p>}
                 <label htmlFor="email" className={style.label}>E-MAIL: </label>
                 <input
