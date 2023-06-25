@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import ImageIcon from '@mui/icons-material'
+import ImageIcon from '@mui/icons-material/Image';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import style from "./ProfileInfo.module.css"
 
 const ProfileInfo = () => {
@@ -31,7 +32,7 @@ const ProfileInfo = () => {
                 />
             </div>
             <div className={style.imgProfile}>
-                <ImageIcon />
+                <AccountCircleIcon />
                 <input
                     type='text'
                     placeholder='subir imagen'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import ImageIcon from '@mui/icons-material'
-import ArrowDropUpIcon from '@mui/icons-material'
+import ImageIcon from '@mui/icons-material/Image';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const NewPost = () => {
     const [showInput, setShowInput] = useState(false);
