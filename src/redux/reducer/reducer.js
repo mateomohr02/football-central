@@ -8,7 +8,8 @@ import {
   RESET_LIVESCORES,
   GET_TEAM_BY_NAME,
   LOGIN,
-  REGISTER
+  REGISTER,
+  LOGOUT,
 } from "../actions/actions-type";
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   livescores: [],
   team:[],
   users: {},
+  isAuthenticated: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,56 +53,53 @@ const reducer = (state = initialState, action) => {
       return { ...state, standings: action.payload };
     case "RESET_STANDINGS":
       return { ...state, standings: [] };
-    case GET_FIXTURE_TODAY: {
-      return { ...state, fixtureToday: action.payload }}
-    case REGISTER: {
-        return { ...state, 
-          users: action.payload 
-        };
-      }
-      case LOGIN:
-      return { 
+    case GET_FIXTURE_TODAY:
+      return { ...state, fixtureToday: action.payload };
+    case REGISTER:
+      return {
         ...state,
-        user: action.payload 
+        users: action.payload,
       };
-    
-    case GET_FIXTURE_BY_DATE_RANGE: {
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+      };
+    case LOGIN:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case GET_FIXTURE_BY_DATE_RANGE:
       return { ...state, fixtureByDateRange: action.payload };
-    }
-    case GET_DETAIL_TEAM: {
+    case GET_DETAIL_TEAM:
       return { ...state, detailTeam: action.payload };
-    }
-    case GET_VENUE_BY_ID: {
+    case GET_VENUE_BY_ID:
       return { ...state, venue: action.payload };
-    }
-    case GET_PLAYER_BY_ID: {
+    case GET_PLAYER_BY_ID:
       return { ...state, player: action.payload };
-    }
     case "RESET_SHOWED_TEAMS":
       return { ...state, showedTeams: [] };
     case "RESET_DETAIL_TEAM":
       return { ...state, detailTeam: [] };
     case "RESET_VENUE":
       return { ...state, venue: {} };
-    case GET_LIVESCORES: {
+    case GET_LIVESCORES:
       return {
         ...state,
         livescores: action.payload,
       };
-    }
-    case RESET_LIVESCORES: {
+    case RESET_LIVESCORES:
       return {
         ...state,
         livescores: [],
       };
-    }
-    case GET_TEAM_BY_NAME:{
-      return{
+    case GET_TEAM_BY_NAME:
+      return {
         ...state,
-        team:action.payload
-      }
-    }
-    
+        team: action.payload,
+      };
     default:
       return state;
   }
