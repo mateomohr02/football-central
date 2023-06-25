@@ -26,7 +26,7 @@ function App() {
     if (
       loggedIn !== "true" &&
       location.pathname !== "/" &&
-      location.pathname !== "/register"
+      location.pathname !== "/registro"
     ) {
       // Redirigir al usuario a la página de inicio de sesión
       window.location.href = "/";
@@ -37,7 +37,7 @@ function App() {
      {localStorage.getItem("loggedIn") === "true" ? (
         <NavBar />
       ) : (
-        (location.pathname === '/' || location.pathname === '/register') ? (
+        (location.pathname === '/' || location.pathname === '/registro') ? (
           location.pathname === '/' ? <Landing /> : <Register />
         ) : (
           // Redirigir al usuario a la página de inicio de sesión
@@ -46,7 +46,6 @@ function App() {
       )}
       
       <Routes>
-        <Route exact path="/registro" element={<Register />} />
         <Route exact path="/inicio" element={<Home />} />
         <Route exact path="/comunidad" element={<Community />} />
         <Route path="/competiciones" element={<Competitions />} />

@@ -34,11 +34,13 @@ const Register = () => {
     };
     return (
         <div className={style.mainContainer}>
+
             <img src={logo} alt="logo" className={style.logo} />
+
             <form onSubmit={handleSubmit} className={style.register}>
-                <label htmlFor="user" className={style.label}>USERNAME: </label>
-                <input type="text" name="user" placeholder="Ingresa tu nombre de usuario" value={userData.name} onChange={handleChange} className={style.input} />
-                {errors.user && <p className={style.errors}>{errors.user}</p>}
+                <label htmlFor="username" className={style.label}>USERNAME: </label>
+                <input type="text" name="username" placeholder="Ingresa tu nombre de usuario" value={userData.username} onChange={handleChange} className={style.input} />
+                
                 <label htmlFor="email" className={style.label}>E-MAIL: </label>
                 <input
                     type="email"
@@ -48,7 +50,7 @@ const Register = () => {
                     onChange={handleChange}
                     className={style.input}
                 />
-                {errors.email && <p className={style.errors}>{errors.email}</p>}
+                
                 <label htmlFor="password" className={style.label}>CONTRASEÑA: </label>
                 <input
                     type="password"
@@ -58,11 +60,14 @@ const Register = () => {
                     onChange={handleChange}
                     className={style.input}
                 />
-                {errors.password && <p className={style.errors}>{errors.password}</p>}
+                <div>
+                    {errors.user && <p className={style.errors}>{errors.user}</p>}
+                    {errors.email && <p className={style.errors}>{errors.email}</p>}
+                    {errors.password && <p className={style.errors}>{errors.password}</p>}
+                </div>
                 <div>
                     <button
                         className={style.button}
-
                     >
                         REGISTRARSE
                     </button>

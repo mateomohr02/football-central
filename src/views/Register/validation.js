@@ -4,10 +4,10 @@ const validation = (userData) => {
     const errors = {};
     
     // validacion username
-    if(!userData.user){
+    if(!userData.username){
         errors.user = "debe ingresar un nombre de usuario";
     }
-    if(userData.user.length < 6 && userData.user.length > 10){
+    if(userData.username.length < 6 && userData.username.length > 10){
         errors.user = "el nombre de usuario tiene que tener entre 6 y 10 caracteres";
     }
 
