@@ -8,3 +8,4 @@ export const RESET_LIVESCORES = "RESET_LIVESCORES";
 export const GET_TEAM_BY_NAME = "GET_TEAM_BY_NAME";
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
+export const LOGOUT = "LOGOUT";
