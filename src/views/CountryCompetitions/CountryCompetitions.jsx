@@ -20,6 +20,7 @@ const CountryCompetitions = () => {
   }, [dispatch, id]);
 
   const leagues = useSelector((state) => state.countryLeagues);
+
   console.log(leagues);
 
   return (
@@ -38,13 +39,12 @@ const CountryCompetitions = () => {
         {/* container de cards de ligas */}
         <div className=" md:w-full md:h-[80%] md:px-5 md:gap-5 md:flex md:flex-row md:justify-start md:mt-4">
           {leagues.map((l) => {
-            console.log(l);
             return (
-              <Link to={`/competitions/leagues/${l.id}`}>
+              <Link to={`/competitions/leagues/${l[0].id}`}>
                 <CardLeaguesCountry
-                  key={l.id}
-                  image_path={l.image_path}
-                  name={l.name}
+                  key={l[0].id}
+                  image_path={l[0].image_path}
+                  name={l[0].name}
                 />
               </Link>
             );
