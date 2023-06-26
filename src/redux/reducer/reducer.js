@@ -8,6 +8,7 @@ import {
   GET_LIVESCORES,
   RESET_LIVESCORES,
   GET_TEAM_BY_NAME,
+  GET_LIVESCORES_LATEST,
 } from "../actions/actions-type";
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   venue: {},
   player: {},
   livescores: [],
+  latestLivescores:[],
   team:[]
 };
 
@@ -91,7 +93,12 @@ const reducer = (state = initialState, action) => {
         team:action.payload
       }
     }
-    
+    case GET_LIVESCORES_LATEST:{
+      return{
+        ...state,
+        latestLivescores:action.payload
+      }
+    }
     default:
       return state;
   }
