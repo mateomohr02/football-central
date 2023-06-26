@@ -45,7 +45,7 @@ const MatchCard = ({
           <div className=" w-[70%] border-l h-full flex md:flex-col md:justify-center items-center text-base font-semibold text-pf-white">
             <div className="w-full h-[50%] flex md:justify-center items-center"><p>ST</p></div>
             <div className="w-full h-[50%] flex md:justify-center items-center border-t">
-              <p>20'</p>
+              <p>{hour}</p>
             </div>
           </div>
         </div>
