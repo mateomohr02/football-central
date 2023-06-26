@@ -34,10 +34,10 @@ const MatchCard = ({
         <div className=" md:w-[30%] md:flex  md:justify-center my-2 mr-[2px] md:item-center">
           <div className=" flex md:flex-col md:justify-center items-center gap-y-1 w-[30%] ">
             <h1 className="my-auto text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">
-              {/* {homeScore} */}11
+               {homeScore} 
             </h1>
             <h1 className="my-auto text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">
-              {/* {awayScore} */}11
+              {awayScore}
             </h1>
           </div>
 
