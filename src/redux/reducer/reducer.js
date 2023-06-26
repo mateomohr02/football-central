@@ -10,6 +10,9 @@ import {
   LOGIN,
   REGISTER,
   LOGOUT,
+  PREMIUM,
+  GET_PROFILE,
+  UPDATE_USER_PROFILE
 } from "../actions/actions-type";
 
 const initialState = {
@@ -28,9 +31,12 @@ const initialState = {
   venue: {},
   player: {},
   livescores: [],
-  team:[],
-  users: {},
+  team: [],
+  registeredUser: {}, 
   isAuthenticated: false,
+  isPremium: false,
+  user: {}, 
+  userProfile: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -58,7 +64,7 @@ const reducer = (state = initialState, action) => {
     case REGISTER:
       return {
         ...state,
-        users: action.payload,
+        registeredUser: action.payload, 
       };
     case LOGOUT:
       return {
@@ -66,11 +72,29 @@ const reducer = (state = initialState, action) => {
         isAuthenticated: false,
         user: null,
       };
-    case LOGIN:
-      return {
-        ...state,
-        user: action.payload,
-      };
+      case LOGIN:
+        return {
+          ...state,
+          user: action.payload,
+          isAuthenticated: true,
+        };
+      case GET_PROFILE:
+        console.log("DATA?",action.payload);
+        console.log("DATA?",action);
+        return {
+          ...state,
+          userProfile: action.payload,
+
+        };
+        case UPDATE_USER_PROFILE:
+          return {
+            ...state,
+            user: {
+              ...state.user,
+              username: action.payload.username,
+            },
+          };
+        
     case GET_FIXTURE_BY_DATE_RANGE:
       return { ...state, fixtureByDateRange: action.payload };
     case GET_DETAIL_TEAM:
@@ -99,6 +123,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         team: action.payload,
+      };
+    case PREMIUM:
+      return {
+        ...state,
+        isPremium: true,
       };
     default:
       return state;

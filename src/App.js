@@ -15,6 +15,9 @@ import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 import NotFound from "./views/404/NotFound";
 import { useEffect } from "react";
+import Premium from "./views/Premium/Premium";
+import Success from "./views/Premium/Success";
+import Profile from "./views/Profile/Profile";
 
 
 function App() {
@@ -60,6 +63,9 @@ function App() {
         <Route path="/competitions/cups/:id" element={<DetailCup />} />
         <Route path="/team/:id" element={<DetailTeam />} />
         <Route path="/search" element={<TeamSearch />} />
+        <Route path="/premium" element={<Premium />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

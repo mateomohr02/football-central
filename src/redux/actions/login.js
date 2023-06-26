@@ -12,7 +12,10 @@ export const login = (payload) => {
         type: LOGIN,
         payload: response.data,
       });
+      
+      
       localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("id", response.data.user.id);
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
