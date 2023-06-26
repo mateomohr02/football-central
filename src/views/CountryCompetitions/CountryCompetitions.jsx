@@ -22,7 +22,7 @@ const CountryCompetitions = () => {
   const leagues = useSelector((state) => state.countryLeagues);
 
   return (
-    <div className="bg-pf-grey md:h-[90vh] md:overflow-hidden md:flex md:justify-center md:items-center ">
+    <div className=" md:h-[90vh] md:overflow-hidden md:flex md:justify-center md:items-center ">
       <div className="bg-pf-blue md:w-[90%] md:h-[90%] md:rounded-xl">
         {/* barra de breadcrumb y filters */}
         <div className=" md:flex md:justify-end md:items-center md:pr-5 md:flex-row md:gap-x-5 md:h-[12%] md:w-[98%] md:mx-auto md:mb-5 border-b-2 ">

@@ -10,6 +10,8 @@ import {
   LOGIN,
   REGISTER,
   LOGOUT,
+  GET_LIVESCORES_LATEST,
+
 } from "../actions/actions-type";
 
 const initialState = {
@@ -31,6 +33,8 @@ const initialState = {
   team:[],
   users: {},
   isAuthenticated: false,
+  latestLivescores:[],
+  team:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -100,6 +104,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         team: action.payload,
       };
+    case GET_LIVESCORES_LATEST:{
+      return{
+        ...state,
+        latestLivescores:action.payload
+      }
+    }
     default:
       return state;
   }

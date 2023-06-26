@@ -111,10 +111,10 @@ const Login = () => {
 
 
           <div className="flex justify-center items-center mt-6"> {/* container help link not account */}
-          <Link
-              to="/register"
-              className="inline-flex items-center font-bold text-white hover:text-blue-700 text-xs text-center"
-            >              <span>
+
+            <Link to='/registro' className="inline-flex items-center font-bold text-white hover:text-blue-700 text-xs text-center">
+              <span>
+
                 <svg
                   className="h-6 w-6"
                   fill="none"
