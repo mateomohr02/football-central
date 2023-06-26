@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import MatchCard from "../MatchCard/MatchCard";
-/* import { getTeamNames } from "./getTeamNames"; */
+
 
 const MatchCards = () => {
   const fixtureByDateRange = useSelector((state) => state.fixtureByDateRange);
-  const livescores = useSelector((state) => state.livescores);
-  console.log("el livescoreee", livescores);
+  const livescores = useSelector((state) => state.latestLivescores);
+
+
   const timeZone = 3;
   const [showAllMatches, setShowAllMatches] = useState(false);
 
@@ -25,10 +26,9 @@ const MatchCards = () => {
 
   const fixture = formatMatch(fixtureByDateRange);
   const fixtureLive = formatMatch(livescores);
-  console.log("el fixture de hoy", fixture);
+ 
 
-  /*  const fixtureTeamNames = getTeamNames(fixture);
-  const teamNamesLive = getTeamNames(fixtureLive); */
+
 
   const today = moment().format("YYYY-MM-DD");
   const tomorrow = moment().add(1, "day").format("YYYY-MM-DD");
@@ -36,48 +36,63 @@ const MatchCards = () => {
 
   const todayMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === today /* && match.league_id === 636 */;
+    return matchDate === today /* && match.league_id === 636 && match.state !== 5  */;
   });
 
   const tomorrowMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === tomorrow /* && match.league_id === 636 */;
+    return matchDate === tomorrow /* && match.league_id === 636 && match.state !== 5 */;
   });
 
   const dayAfterTomorrowMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === dayAfterTomorrow /* && match.league_id === 636 */;
+    return matchDate === dayAfterTomorrow /* && match.league_id === 636 && match.state !== 5*/;
   });
 
   const toggleShowAllMatches = () => {
     setShowAllMatches((prevShowAllMatches) => !prevShowAllMatches);
   };
 
+
+ 
+
   const renderMatches = (matches) => {
+    if (!matches || matches.length === 0) {
+      // Si matches es undefined o está vacío, mostrar un mensaje o componente alternativo
+      return <p>No hay partidos disponibles.</p>;
+    }
+    
     if (showAllMatches) {
       return matches.map((match) => (
         <MatchCard
-          key={match.id}
-          home={match.name.split("vs")[0].trim()}
-          away={match.name.split("vs")[1].trim()}
-          hour={match.starting_at.split(" ")[1].trim()}
-          league={match.league_id}
+        key={match.id}
+        home= {match.participants?.[0]?.name}
+        homeLogo={match.participants?.[0]?.image_path}
+        away={match.participants?.[1]?.name}
+        awayLogo={match.participants?.[1]?.image_path}
+        hour={match.starting_at.split(" ")[1].trim()}
+        homeScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "home")?.score?.goals}
+        awayScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "away")?.score?.goals}
+        time={match.periods}
         />
       ));
     } else {
-      return matches
-        .slice(0, 4)
-        .map((match) => (
-          <MatchCard
-            key={match.id}
-            home={match.name.split("vs")[0].trim()}
-            away={match.name.split("vs")[1].trim()}
-            hour={match.starting_at.split(" ")[1].trim()}
-            league={match.league_id}
-          />
-        ));
+      return matches.slice(0, 4).map((match) => (
+        <MatchCard
+          key={match.id}
+          home= {match.participants?.[0]?.name || match.name.split("vs")[0].trim()}
+          homeLogo={match.participants?.[0]?.image_path}
+          away={match.participants?.[1]?.name || match.name.split("vs")[1].trim()}
+          awayLogo={match.participants?.[1]?.image_path}
+          hour={match.starting_at.split(" ")[1].trim()}
+          homeScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "home")?.score?.goals}
+          awayScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "away")?.score?.goals}
+        />
+      ));
     }
   };
+  
+
 
   return (
     <div className="md:absolute md:top-[600px] md:w-[50%] md:ml-16 bg-pf-dark-grey md:flex md:flex-col md:justify-center pl-[10px] pt-3 md:rounded-xl">
