@@ -9,8 +9,8 @@ import { getPlayerById } from "../../redux/actions/getPlayerById";
 const DetailTeam = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const team = useSelector((state) => state.detailTeam);
-  const venue = useSelector((state) => state.venue);
+  const team = useSelector((state) => state.team.detailTeam);
+  const venue = useSelector((state) => state.venue.venue);
 
   useEffect(() => {
     dispatch(getDetailTeam(id));

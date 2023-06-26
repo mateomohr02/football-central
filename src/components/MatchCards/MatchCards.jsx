@@ -5,8 +5,8 @@ import MatchCard from "../MatchCard/MatchCard";
 import { getTeamNames } from "./getTeamNames";
 
 const MatchCards = () => {
-  const fixtureByDateRange = useSelector((state) => state.fixtureByDateRange);
-  const livescores = useSelector((state) => state.livescores);
+  const fixtureByDateRange = useSelector((state) => state.fixture.fixtureByDateRange);
+  const livescores = useSelector((state) => state.livescores.livescores);
   
   const timeZone = 3;
   const [showAllMatches, setShowAllMatches] = useState(false);
