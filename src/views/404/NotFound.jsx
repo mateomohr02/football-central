@@ -18,7 +18,7 @@ const NotFound = () => {
           </p>
           <Link
             to='/inicio'
-            className="flex items-center space-x-2 bg-pf-blue hover:bg-blue-800 text-gray-100 px-4 py-2 rounded transition duration-150"
+            className="flex items-center space-x-2 bg-pf-white hover:bg-blue-800 text-pf-blue px-4 py-2 rounded transition duration-150"
             title="Return Home"
           >
             <span>VOLVER AL INICIO</span>
