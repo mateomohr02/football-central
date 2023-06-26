@@ -1,16 +1,14 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import MatchCard from "../MatchCard/MatchCard";
-
+import LivescoreCard from '../../components/LivescoreCard/LivescoreCard'
 
 const MatchCards = () => {
   const fixtureByDateRange = useSelector((state) => state.fixtureByDateRange);
   const livescores = useSelector((state) => state.latestLivescores);
 
-
   const timeZone = 3;
-  const [showAllMatches, setShowAllMatches] = useState(false);
+ 
 
   const formatMatch = (matches) => {
     return matches.map((match) => {
@@ -26,9 +24,6 @@ const MatchCards = () => {
 
   const fixture = formatMatch(fixtureByDateRange);
   const fixtureLive = formatMatch(livescores);
- 
-
-
 
   const today = moment().format("YYYY-MM-DD");
   const tomorrow = moment().add(1, "day").format("YYYY-MM-DD");
@@ -36,63 +31,105 @@ const MatchCards = () => {
 
   const todayMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === today /* && match.league_id === 636 && match.state !== 5  */;
+    return (
+      matchDate === today /* && match.league_id === 636 && match.state !== 5  */
+    );
   });
 
   const tomorrowMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === tomorrow /* && match.league_id === 636 && match.state !== 5 */;
+    return (
+      matchDate ===
+      tomorrow /* && match.league_id === 636 && match.state !== 5 */
+    );
   });
 
   const dayAfterTomorrowMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
-    return matchDate === dayAfterTomorrow /* && match.league_id === 636 && match.state !== 5*/;
+    return (
+      matchDate ===
+      dayAfterTomorrow /* && match.league_id === 636 && match.state !== 5*/
+    );
   });
 
-  const toggleShowAllMatches = () => {
-    setShowAllMatches((prevShowAllMatches) => !prevShowAllMatches);
-  };
-
-
- 
 
   const renderMatches = (matches) => {
-    if (!matches || matches.length === 0) {
-      // Si matches es undefined o está vacío, mostrar un mensaje o componente alternativo
-      return <p>No hay partidos disponibles.</p>;
-    }
-    
-    if (showAllMatches) {
-      return matches.map((match) => (
-        <MatchCard
-        key={match.id}
-        home= {match.participants?.[0]?.name}
-        homeLogo={match.participants?.[0]?.image_path}
-        away={match.participants?.[1]?.name}
-        awayLogo={match.participants?.[1]?.image_path}
-        hour={match.starting_at.split(" ")[1].trim()}
-        homeScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "home")?.score?.goals}
-        awayScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "away")?.score?.goals}
-        time={match.periods}
-        />
-      ));
-    } else {
-      return matches.slice(0, 4).map((match) => (
+    return matches
+      .slice(0, 4)
+      .map((match) => (
         <MatchCard
           key={match.id}
-          home= {match.participants?.[0]?.name || match.name.split("vs")[0].trim()}
+          home={
+            match.participants?.[0]?.name || match.name.split("vs")[0].trim()
+          }
           homeLogo={match.participants?.[0]?.image_path}
-          away={match.participants?.[1]?.name || match.name.split("vs")[1].trim()}
+          away={
+            match.participants?.[1]?.name || match.name.split("vs")[1].trim()
+          }
           awayLogo={match.participants?.[1]?.image_path}
-          hour={match.starting_at.split(" ")[1].trim()}
-          homeScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "home")?.score?.goals}
-          awayScore={match.scores && match.scores.find(item => item.description === "CURRENT" && item.score.participant === "away")?.score?.goals}
+          homeScore={
+            match.scores &&
+            match.scores.find(
+              (item) =>
+                item.description === "CURRENT" &&
+                item.score.participant === "home"
+            )?.score?.goals
+          }
+          awayScore={
+            match.scores &&
+            match.scores.find(
+              (item) =>
+                item.description === "CURRENT" &&
+                item.score.participant === "away"
+            )?.score?.goals
+          }
+          hour={match.starting_at?.split(" ")[1]?.trim()}
         />
       ));
-    }
   };
-  
-
+  const renderLivescores = (matches) => {
+    return matches
+      .slice(0, 4)
+      .map((match) => (
+        <LivescoreCard
+          key={match.id}
+          home={
+            match.participants?.[0]?.name || match.name.split("vs")[0].trim()
+          }
+          homeLogo={match.participants?.[0]?.image_path}
+          away={
+            match.participants?.[1]?.name || match.name.split("vs")[1].trim()
+          }
+          awayLogo={match.participants?.[1]?.image_path}
+          homeScore={
+            match.scores &&
+            match.scores.find(
+              (item) =>
+                item.description === "CURRENT" &&
+                item.score.participant === "home"
+            )?.score?.goals
+          }
+          awayScore={
+            match.scores &&
+            match.scores.find(
+              (item) =>
+                item.description === "CURRENT" &&
+                item.score.participant === "away"
+            )?.score?.goals
+          }
+          state={
+            match.state?.id === 2
+              ? "PT"
+              : match.state?.id === 22
+              ? "ST"
+              : match.state?.id === 3
+              ? "ET"
+              : ""
+          }
+          time={match.periods?.[match.periods.length - 1]?.minutes || ""}
+        />
+      ));
+  };
 
   return (
     <div className="md:absolute md:top-[600px] md:w-[50%] md:ml-16 bg-pf-dark-grey md:flex md:flex-col md:justify-center pl-[10px] pt-3 md:rounded-xl">
@@ -104,7 +141,7 @@ const MatchCards = () => {
           </h3>
         </div>
         <div className="h-68 w-full px-2 gap-x-4 flex flex-row justify-start items-center whitespace-nowrap overflow-x-auto sm:w-full md:flex md:flex-row md:flex-wrap md:justify-start md:gap-2">
-          {renderMatches(fixtureLive)}
+          {renderLivescores(fixtureLive)}
         </div>
       </div>
 
@@ -141,16 +178,6 @@ const MatchCards = () => {
         </div>
         <div className="h-80 w-full px-2 gap-x-2 flex flex-row justify-start items-center whitespace-nowrap overflow-hidden sm:w-full md:flex md:flex-row md:flex-wrap md:justify-start md:gap-2">
           {renderMatches(dayAfterTomorrowMatches)}
-          {dayAfterTomorrowMatches.length > 4 && (
-            <div className="md:flex md:w-full md:justify-center md:items-center">
-              <button
-                className="bg-pf-white md:w-40 md:h-5 md:flex md:justify-center md:items-center md:rounded-l md:rounded-r"
-                onClick={toggleShowAllMatches}
-              >
-                {showAllMatches ? "Mostrar menos" : "Mostrar todos"}
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
