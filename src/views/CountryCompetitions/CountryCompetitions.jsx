@@ -38,7 +38,7 @@ const CountryCompetitions = () => {
         <div className=" md:w-full md:h-[80%] md:px-5 md:gap-5 md:flex md:flex-row md:justify-start md:mt-4">
           {leagues.map((l) => {
             return (
-              <Link to={`/competiciones/ligas/${l.id}`}>
+              <Link to={`/competiciones/liga/${l.id}`}>
                 <CardLeaguesCountry
                   key={l.id}
                   image_path={l.image_path}
