@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
@@ -9,48 +9,64 @@ import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
-import DetailCup from "./views/DetailCup/DetailCup.jsx"
+import DetailCup from "./views/DetailCup/DetailCup.jsx";
 import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions";
 import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 import NotFound from "./views/404/NotFound";
+import { useEffect } from "react";
+import Premium from "./views/Premium/Premium";
+import Success from "./views/Premium/Success";
+import Profile from "./views/Profile/Profile";
+
 
 function App() {
   const location = useLocation();
 
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
+
+    // Verificar si el usuario no está logueado y se encuentra en una página distinta de inicio de sesión
+    if (
+      loggedIn !== "true" &&
+      location.pathname !== "/" &&
+      location.pathname !== "/register"
+    ) {
+      // Redirigir al usuario a la página de inicio de sesión
+      window.location.href = "/";
+    }
+  }, [location.pathname]);
+
   return (
     <div>
-      {location.pathname === '/' || location.pathname === '/register' ? (
-      location.pathname === '/' ? <Landing /> : <Register />
+      {localStorage.getItem("loggedIn") === "true" ? (
+        <NavBar />
       ) : (
-      <NavBar />
+        (location.pathname === "/" || location.pathname === "/register") ? (
+          location.pathname === "/" ? <Landing /> : <Register />
+        ) : (
+          // Redirigir al usuario a la página de inicio de sesión
+          <Navigate to="/" />
+        )
       )}
+
       <Routes>
-        <Route exact path="/registro" element={<Register />} />
-        <Route exact path="/inicio" element={<Home />} />
-        <Route exact path="/comunidad" element={<Community />} />
+        <Route path="/registro" element={<Register />} />
+        <Route path="/inicio" element={<Home />} />
+        <Route path="/comunidad" element={<Community />} />
         <Route path="/competiciones" element={<Competitions />} />
         <Route
-          exact
-          path="/competiciones/paises/:id"
+          path="/competitions/countries/:id"
           element={<CountryCompetitions />}
         />
-        <Route
-          exact
-          path="/competiciones/ligas/:id"
-          element={<DetailLeague />}
-        />
-        <Route
-          exact
-          path="/competiciones/copas/:id"
-          element={<DetailCup />}
-        /> 
-        
-        <Route exact path="/equipo/:id" element={<DetailTeam/>}/>
-
-        <Route exact path="/busqueda" element={<TeamSearch />}/>
-
-        <Route exact path='*' element={<NotFound/>}/>
+        <Route path="/competitions/leagues/:id" element={<DetailLeague />} />
+        <Route path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route path="/team/:id" element={<DetailTeam />} />
+        <Route path="/search" element={<TeamSearch />} />
+        <Route path="/premium" element={<Premium />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

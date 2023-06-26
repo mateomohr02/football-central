@@ -1,0 +1,13 @@
+.custom-button {
+    /* Estilos personalizados para los botones de PayPal */
+    /* Por ejemplo: */
+    
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 600px;
+  }
+  
