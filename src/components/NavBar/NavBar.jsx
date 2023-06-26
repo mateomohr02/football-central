@@ -82,7 +82,7 @@ const Navbar = () => {
           <div className="flex w-full items-end flex-col pr-2 mx-4 md:flex-row md:justify-end md:items-center md:mr-6 md:py-0">
             {isAuthenticated ? (
               <>
-                <Link to="/" className="h-12 w-12 flex justify-center items-center sm:absolute -right-6">
+                <Link to="/profile" className="h-12 w-12 flex justify-center items-center sm:absolute -right-6">
                   <AccountCircleIcon fontSize="large" className="text-pf-white text-2xl" />
                 </Link>
                 <button
