@@ -9,3 +9,6 @@ export const GET_TEAM_BY_NAME = "GET_TEAM_BY_NAME";
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const LOGOUT = "LOGOUT";
+export const PREMIUM = "PREMIUM";
+export const GET_PROFILE = "GET_PROFILE";
+export const UPDATE_USER_PROFILE = "UPDATE_USER_PROFILE";

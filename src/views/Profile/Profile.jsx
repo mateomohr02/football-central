@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProfile } from '../../redux/actions/getProfile';
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  const user = useSelector(state => state.userProfile);
+  const dispatch = useDispatch();
+  const loggedUserID = localStorage.getItem("id");
+  console.log("LOGGED ID:", loggedUserID);
 
-export default Profile
+  useEffect(() => {
+    dispatch(getProfile(loggedUserID));
+  }, [dispatch, loggedUserID]);
+  console.log("USER LOGGED:", user);
+
+  return (
+    <div>
+      <h1>Profile</h1>
+    </div>
+  );
+};
+
+export default Profile;
