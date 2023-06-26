@@ -31,8 +31,8 @@ const DetailLeague = () => {
     const dispatch = useDispatch()
 
     const { id } = useParams()
-    const league = useSelector(state => state.detailLeague)
-    const standings = useSelector(state => state.standings)
+    const league = useSelector(state => state.leagueCup.detailLeague)
+    const standings = useSelector(state => state.standings.standings)
 
     useEffect(()=>{
       dispatch(getDetailLeague(id))
