@@ -10,7 +10,7 @@ import { updateUserProfile } from '../../redux/actions/updateUserProfile';
 const Premium = () => {
     const [error, setError] = useState(null);
     const [paidFor, setPaidFor] = useState(false);
-    const userProfile = useSelector(state => state.user);
+    const userProfile = useSelector(state => state.user.user);
     const dispatch = useDispatch();
     const loggedUserID = localStorage.getItem("id");
   

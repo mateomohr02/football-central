@@ -4,9 +4,9 @@ import MatchCard from "../MatchCard/MatchCard";
 import LivescoreCard from '../../components/LivescoreCard/LivescoreCard'
 
 const MatchCards = () => {
-  const fixtureByDateRange = useSelector((state) => state.fixtureByDateRange);
-  const livescores = useSelector((state) => state.latestLivescores);
-
+  const fixtureByDateRange = useSelector((state) => state.fixture.fixtureByDateRange);
+  const livescores = useSelector((state) => state.livescores.livescores);
+  
   const timeZone = 3;
  
 

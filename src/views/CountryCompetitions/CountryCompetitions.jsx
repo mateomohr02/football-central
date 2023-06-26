@@ -19,7 +19,7 @@ const CountryCompetitions = () => {
     return () => dispatch(resetLeaguesCountry());
   }, [dispatch, id]);
 
-  const leagues = useSelector((state) => state.countryLeagues);
+  const leagues = useSelector((state) => state.leagueCup.countryLeagues);
 
   return (
     <div className=" md:h-[90vh] md:overflow-hidden md:flex md:justify-center md:items-center ">
@@ -38,11 +38,11 @@ const CountryCompetitions = () => {
         <div className=" md:w-full md:h-[80%] md:px-5 md:gap-5 md:flex md:flex-row md:justify-start md:mt-4">
           {leagues.map((l) => {
             return (
-              <Link to={`/competiciones/ligas/${l.id}`}>
+              <Link to={`/competitions/leagues/${l[0].id}`}>
                 <CardLeaguesCountry
-                  key={l.id}
-                  image_path={l.image_path}
-                  name={l.name}
+                  key={l[0].id}
+                  image_path={l[0].image_path}
+                  name={l[0].name}
                 />
               </Link>
             );

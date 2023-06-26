@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getProfile } from '../../redux/actions/getProfile';
 
 const Profile = () => {
-  const user = useSelector(state => state.userProfile);
+  const user = useSelector(state => state.user.userProfile);
   const dispatch = useDispatch();
   const loggedUserID = localStorage.getItem("id");
   console.log("LOGGED ID:", loggedUserID);

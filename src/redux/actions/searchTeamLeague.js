@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import { SEARCH_TEAM_LEAGUE } from './actions-type'
 export function searchTeam (search) {
     return async function (dispatch) {
         try {
@@ -7,7 +7,7 @@ export function searchTeam (search) {
             
             if (matchedTeam){
                 return dispatch({
-                    type: 'SEARCH_TEAM_LEAGUE',
+                    type: SEARCH_TEAM_LEAGUE,
                     payload: matchedTeam.data,
                 })
             }
