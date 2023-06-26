@@ -19,8 +19,7 @@ const CountryCompetitions = () => {
     return () => dispatch(resetLeaguesCountry());
   }, [dispatch, id]);
 
-  const leagues = useSelector((state) => state.countryLeagues);
-  console.log(leagues);
+  const leagues = useSelector((state) => state.leagueCup.countryLeagues);
 
   return (
     <div className=" md:h-[90vh] md:overflow-hidden md:flex md:justify-center md:items-center ">

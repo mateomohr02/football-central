@@ -5,7 +5,7 @@ import MatchCard from '../MatchCard/MatchCard'
 import style from './DetailCups.module.css'
 
 const DetailCups = () => {
-  const fixtureByDateRange = useSelector((state) => state.fixtureByDateRange);
+  const fixtureByDateRange = useSelector((state) => state.fixture.fixtureByDateRange);
   let timeZone = 3;
 
   const [showAllMatches, setShowAllMatches] = useState(false);

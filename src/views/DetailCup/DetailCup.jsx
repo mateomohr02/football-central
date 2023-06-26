@@ -12,7 +12,7 @@ const DetailCompetition = () => {
 
     const { id } = useParams()
     
-    const cup = useSelector(state => state.detailCup)
+    const cup = useSelector(state => state.leagueCup.detailCup)
     
     useEffect(()=>{
         dispatch(getDetailCup(id))
