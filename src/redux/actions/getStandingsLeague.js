@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GET_STANDINGS_LEAGUE } from "./actions-type";
 
 export function getStandingsLeague(id){
     
@@ -53,7 +54,7 @@ export function getStandingsLeague(id){
         console.log(standings, 'Action')
 
         return dispatch({
-            type: 'GET_STANDINGS_LEAGUE',
+            type: GET_STANDINGS_LEAGUE,
             payload: standings
         })
         
