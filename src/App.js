@@ -7,6 +7,7 @@ import Home from "./views/Home/Home.jsx";
 import Competitions from "./views/Competitions/Competitions.jsx";
 import Community from "./views/Community/Community.jsx";
 import Landing from "./views/Landing/Landing.jsx";
+import Profile from "./views/Profile/Profile";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
 import DetailCup from "./views/DetailCup/DetailCup.jsx";
@@ -53,13 +54,14 @@ function App() {
         <Route path="/comunidad" element={<Community />} />
         <Route path="/competiciones" element={<Competitions />} />
         <Route
-          path="/competitions/countries/:id"
+          path="/competiciones/pais/:id"
           element={<CountryCompetitions />}
         />
-        <Route path="/competitions/leagues/:id" element={<DetailLeague />} />
-        <Route path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route path="/competiciones/liga/:id" element={<DetailLeague />} />
+        <Route path="/competiciones/copa/:id" element={<DetailCup />} />
         <Route path="/team/:id" element={<DetailTeam />} />
         <Route path="/search" element={<TeamSearch />} />
+        <Route path="/perfil" element={<Profile/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

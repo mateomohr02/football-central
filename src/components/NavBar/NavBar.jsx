@@ -82,7 +82,7 @@ const Navbar = () => {
           <div className="flex w-full items-end flex-col pr-2 mx-4 md:flex-row md:justify-end md:items-center md:mr-6 md:py-0">
             {isAuthenticated ? (
               <>
-                <Link to="/" className="h-12 w-12 flex justify-center items-center sm:absolute -right-6">
+                <Link to="/perfil" className="h-12 w-12 flex justify-center items-center sm:absolute -right-6">
                   <AccountCircleIcon fontSize="large" className="text-pf-white text-2xl" />
                 </Link>
                 <button
@@ -121,7 +121,7 @@ const Navbar = () => {
             >
               Noticias
             </Link>
-
+            
             <div className="relative mt-4 md:mt-0 pr-2">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
