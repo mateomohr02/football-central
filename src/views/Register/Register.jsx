@@ -97,7 +97,7 @@ const Register = ({ register }) => {
 
           <div>
             <button
-              className="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
+              className="w-full bg-pf-blue text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
               type="submit"
             >
               REGISTRARSE
