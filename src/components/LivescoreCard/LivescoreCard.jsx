@@ -3,7 +3,6 @@ const MatchCard = ({
   homeLogo,
   away,
   awayLogo,
-  hour,
   time,
   homeScore,
   awayScore,
@@ -32,25 +31,24 @@ const MatchCard = ({
 
         {/* container de resultado */}
         <div className=" md:w-[30%] md:flex  md:justify-center my-2 mr-[2px] md:item-center">
-          {/* <div className=" flex md:flex-col md:justify-center items-center gap-y-1 w-[30%] ">
+          <div className=" flex md:flex-col md:justify-center items-center gap-y-1 w-[30%] ">
             <h1 className="my-auto text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">
                {homeScore} 
             </h1>
             <h1 className="my-auto text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">
               {awayScore}
             </h1>
-          </div> */}
+          </div>
 
-          {/* container de la hora  */}
+          {/* container del minuto  */}
           <div className=" w-[70%] border-l h-full flex md:flex-col md:justify-center items-center text-base font-semibold text-pf-white">
-            <div className="w-full h-[50%] flex md:justify-center items-center"><p>{state}</p></div>
+            <div className="w-full h-[50%] flex md:justify-center items-center"><p>{state === 'ET' && state}</p></div>
             <div className="w-full h-[50%] flex md:justify-center items-center border-t">
-              <p>{hour}</p>
+              <p>{time}'</p>
             </div>
           </div>
         </div>
       </div>
-      {/* container de nombre de la liga */}
     </div>
   );
 };
