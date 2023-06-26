@@ -5,10 +5,12 @@ import style from "./Register.module.css"
 import logo from "../../assets/logo.svg";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/actions/register.js";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Register = () => {
-
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [userData, setUserData] = useState({
         email: "",
@@ -30,6 +32,8 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(register(userData));
+        navigate("/");
+
     };
     return (
         <div className={style.mainContainer}>

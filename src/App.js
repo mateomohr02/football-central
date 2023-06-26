@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
 import Competitions from "./views/Competitions/Competitions.jsx";
-import Community from "./views/Community/Community.jsx";
+import Teams from "./views/Teams/Teams"
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
@@ -53,7 +53,7 @@ function App() {
       <Routes>
         <Route path="/registro" element={<Register />} />
         <Route path="/inicio" element={<Home />} />
-        <Route path="/comunidad" element={<Community />} />
+        <Route path="/teams" element={<Teams />} />
         <Route path="/competiciones" element={<Competitions />} />
         <Route
           path="/competitions/countries/:id"
