@@ -1,6 +1,7 @@
 import TeamCard from "../TeamCard/TeamCard";
 import style from './TeamCards.module.css'
-const teams = [
+import { useSelector } from "react-redux";
+/* const teams = [
   {
     id: 1,
     name: "River Plate",
@@ -141,12 +142,14 @@ const teams = [
     name:'Arsenal de Sarandí',
     logo:'https://www.ligaprofesional.ar/wp-content/uploads/2020/11/ARS-escudo.png'
   }
-];
+]; */
 
-console.log(teams);
+
 
 
 const TeamCards = () => {
+  const teams = useSelector((state) => state.countryLeagues);
+
   return <div className={style.cardsContainer}>
     {
       teams.map(team =>{
