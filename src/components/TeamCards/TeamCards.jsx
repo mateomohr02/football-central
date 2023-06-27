@@ -148,7 +148,7 @@ import { useSelector } from "react-redux";
 
 
 const TeamCards = () => {
-  const teams = useSelector((state) => state.countryLeagues);
+  const teams = useSelector((state) => state.leagueCup.countryLeagues);
 
   return <div className={style.cardsContainer}>
     {
