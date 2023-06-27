@@ -10,8 +10,7 @@ const DetailLeague = () => {
 
     return (
     <div>
-      {id === "636"? <ArgSuperliga/> : ""}
-      {id === '1502' ? <ArgSupercup/> : ""}
+      {id === "636"? <ArgSuperliga/> : (id === '1502' ? <ArgSupercup/> : "")}
     </div>
   )
 }
