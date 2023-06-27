@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
-
+import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
 
 function App() {
   const location = useLocation();
@@ -59,6 +59,7 @@ function App() {
           path="/competitions/countries/:id"
           element={<CountryCompetitions />}
         />
+        <Route path="/competitions/international" element={<InternationalCompetitions/>}/>
         <Route path="/competitions/leagues/:id" element={<DetailLeague />} />
         <Route path="/competitions/cups/:id" element={<DetailCup />} />
         <Route path="/team/:id" element={<DetailTeam />} />
