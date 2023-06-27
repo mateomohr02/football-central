@@ -11,6 +11,7 @@ export const register = (payload) => {
         type: REGISTER,
         payload: newUser.data,
       });
+       localStorage.setItem("id", newUser.data.id);
 
       alert("Usuario creado con éxito");
     } catch (error) {
