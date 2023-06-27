@@ -21,6 +21,27 @@ export function getStandingsLeague(id){
     if (id === '8'){
         url = `/standings/19734?league_id=${id}`
     }
+    if (id === '9'){
+        url = `/standings/19793?league_id=${id}`
+    }
+    if (id === '12'){
+        url = `/standings/19794?league_id=${id}`
+    }
+    if (id === '17'){
+        url = `/standings/19917?league_id=${id}`
+    }
+    if (id === '23'){
+        url = `/standings/19652?league_id=${id}`
+    }
+    if (id === '24'){
+        url = `/standings/19652?league_id=${id}`
+    }
+    if (id === '27'){
+        url = `/standings/19652?league_id=${id}`
+    }
+    if (id === '45'){
+        url = `/standings/19989?league_id=${id}`
+    }
     
     try {
         //CÓDIGO ASYNC
