@@ -38,7 +38,7 @@ const teamReducer = (state = initialTeamState, action) => {
         team: action.payload,
       };
     case FILTER_TEAMSBYCOUNTRY: {
-      const teams = state.teams;
+      const teams = state.teams_filter;
       const filterByCountry =
         action.payload === "All"
           ? []
