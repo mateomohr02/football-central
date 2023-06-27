@@ -51,7 +51,7 @@ const Competitions = () => {
             </Link>
           </div>
           <div className="md:w-36 md:h-28 md:rounded-2xl bg-pf-white md:flex md:justify-center md:items-center transform hover:scale-[101%] transition-all duration-300">
-            <Link to="/competitions/countries/2">
+            <Link to="/competitions/international">
               <img
                 className="md:w-[60%] md:mx-auto"
                 src={imgInt}
