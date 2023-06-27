@@ -1,4 +1,4 @@
-import { GET_LIVESCORES, RESET_LIVESCORES } from "../actions/actions-type";
+import { GET_LIVESCORES_LATEST, RESET_LIVESCORES } from "../actions/actions-type";
 
 const initialLiveState = {
   livescores: [],
@@ -12,7 +12,7 @@ const livescoresReducer = (state = initialLiveState, action) => {
         livescores: action.payload,
       };
 
-    case GET_LIVESCORES:
+    case GET_LIVESCORES_LATEST:
       return {
         ...state,
         livescores: action.payload,
