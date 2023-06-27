@@ -25,8 +25,13 @@ const Home = () => {
         console.log(error.message);
       }
     };
-
+    
+    // Llama a la función por primera vez para obtener los datos inmediatamente
     fetchData();
+    
+    // Ejecuta la función cada 15 segundos
+    setInterval(fetchData, 15000);
+
   }, [dispatch]);
 
   return (
