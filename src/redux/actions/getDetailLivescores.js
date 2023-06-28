@@ -2,7 +2,7 @@ import { GET_DETAIL_LIVESCORES } from "./actions-type";
 import axios from "axios";
 
 
-export const getDetailLivescores = (id) => {
+export const getDetailLivescores = () => {
   return async function (dispatch) {
     try {
       const response = await axios.get(

@@ -1,39 +1,177 @@
 import New from "../New/New";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { getNews } from "../../redux/actions/action-news";
 import { ArticleRounded } from "@mui/icons-material";
 
+const news= [
+  {
+    "title": "El Barça recibe un aluvión de críticas por apoyar al colectivo LGBTI: \"Ridículo\"",
+    "description": "El FC Barcelona, como muchos clubes de fútbol y del deporte en general, celebra este 28 de junio el Día Internacional del Orgullo LGTBI. A través de sus...",
+    "content": "El FC Barcelona, como muchos clubes de fútbol y del deporte en general, celebra este 28 de junio el Día Internacional del Orgullo LGTBI. A través de sus redes sociales, el conjunto catalán lo ha querido conmemorar con un sinfín de mensajes e iniciati... [1283 chars]",
+    "url": "https://www.20minutos.es/deportes/noticia/5142345/0/barca-recibe-un-aluvion-criticas-por-apoyar-colectivo-lgbti-ridiculo/",
+    "image": "https://imagenes.20minutos.es/files/og_thumbnail_panoramic/files/og_20m/uploads/imagenes/2023/06/28/araujo-lamentandose.png",
+    "publishedAt": "2023-06-28T14:39:54Z",
+    "source": {
+      "name": "20 Minutos",
+      "url": "https://www.20minutos.es"
+    }
+  },
+  {
+    "title": "las claves de una 'Chichoneta' muy baja ante Paranaense | FUTBOL-INTERNACIONAL | DEPOR",
+    "description": "Alianza Lima | Ausencias, pasividad y decepciones: las claves de una 'Chichoneta' muy baja ante Paranaense",
+    "content": "Once diezmado por bajas\nSi bien no es comprobable, no cabe duda que presentar bajas de jugadores clave en el once titular resulta una desventaja en la previa del partido. Si bien Alianza Lima ya venía jugando varios partidos sin los lesionados Andrés... [2992 chars]",
+    "url": "https://depor.com/futbol-internacional/copa-libertadores/alianza-lima-ausencias-pasividad-y-decepciones-las-claves-de-un-alianza-lima-muy-bajo-ante-paranaense-rmmd-emcc-noticia/",
+    "image": "https://depor.com/resizer/WOSe9mZcCsdX0S9j_UClMnNxGGQ=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BNOLO4LJ3RHBTIAETVMEV7SL3E.jpg",
+    "publishedAt": "2023-06-28T14:22:26Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "Alianza Lima vs. Universitario: ¿qué resultados se necesita para un clásico en Copa Sudamericana?",
+    "description": "¡Es posible! Un clásico del fútbol peruano podría darse en un torneo internacional conmebol, conoce los escenarios que deberían darse para un partido ente cremas y blanquiazules.",
+    "content": "Alianza Lima y Universitario de Deportes jugarán la útima fecha de la Copa Libertadores y Copa Sudamericana, respectivamente, y lucharán para mantener su participación internacional. Pese a que los compadres disputan distintas competiciones, podrían ... [2984 chars]",
+    "url": "https://larepublica.pe/deportes/2023/06/27/alianza-lima-vs-universitario-de-deportes-que-resultados-se-necesita-para-un-clasico-peruano-en-copa-sudamericana-2023-2119635",
+    "image": "https://imgmedia.larepublica.pe/1200x630/larepublica/original/2023/06/27/649b137e1016db0ae0027259.jpg",
+    "publishedAt": "2023-06-27T16:51:37Z",
+    "source": {
+      "name": "LaRepública.pe",
+      "url": "https://larepublica.pe"
+    }
+  },
+  {
+    "title": "Ver VTV y Fútbol Libre, Uruguay vs. Nicaragua EN VIVO por amistoso",
+    "description": "Uruguay vs. Nicaragua juegan EN VIVO y EN DIRECTO este miércoles 14 de junio (6:30 p.m. hora peruana) en el Centenario, de Montevideo, vía VTV y AUF TV, por un amistoso internacional FIFA.",
+    "content": "En el Estadio Centenario, de Montevideo, Uruguay vs. Nicaragua se ven las caras EN VIVO / EN DIRECTO / ONLINE TV / GRATIS por un amistoso internacional FIFA. El partido, que será el debut de Marcelo Bielsa al mando de los ‘charrúas’, arrancará a las ... [2421 chars]",
+    "url": "https://depor.com/futbol-internacional/resto-del-mundo/uruguay-vs-nicaragua-en-vivo-via-vtv-fox-sports-auf-tv-y-futbol-libre-por-amistoso-internacional-ver-transmision-online-link-tv-y-a-que-hora-juegan-formaciones-deportes-noticia/",
+    "image": "https://depor.com/resizer/ttZP_he5iQ44BKYvYRHW2CLK2yc=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/W7N4ZSCC3VEK5NC7HT27EMFUB4.jpg",
+    "publishedAt": "2023-06-14T20:20:05Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "“Pasé cuatro años en prisión” | Deportes | FUTBOL-INTERNACIONAL | DEPOR",
+    "description": "El defensor francés del Lecce italiano ha recordado los duros momentos que vivió en el Barcelona durante los últimos años. No se imagina volviendo al Camp Nou.",
+    "content": "Samuel Umtiti llegó al FC Barcelona en el mercado de fichajes de verano de 2016 y al poco tiempo se convirtió en uno de los mejores del mundo en su posición. Las primeras temporadas del defensor francés fueron tan buenas que hasta llegó a ser compara... [1845 chars]",
+    "url": "https://depor.com/futbol-internacional/espana/fc-barcelona-umtiti-pase-cuatro-anos-en-prision-deportes-noticia/",
+    "image": "https://depor.com/resizer/OmLfXF01ogqk7JUtRpaNglyj-zg=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/RBA52ICUONGD3IIVWWADB7BSPI.jpg",
+    "publishedAt": "2023-05-26T12:22:22Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "Olga García, la magia del fútbol trasladada a los ‘esports’",
+    "description": "La delantera del DUX Logroño, ex del Barça o Atlético e internacional con España, Olga García, atiende a AS y repasa su trayectoria vital.",
+    "content": "El fútbol vive de historias. En España, durante mucho tiempo, una generación ha y sigue asombrando al mundo. Esa es la que se encuentra o procede de la cantera del FC Barcelona. Muchos conocen el nombre de Alexia Putellas, Vicky Losada… y dentro de e... [7497 chars]",
+    "url": "https://as.com/futbol/femenino/olga-garcia-la-magia-del-futbol-trasladada-a-los-esports-n/",
+    "image": "https://img.asmedia.epimg.net/resizer/Iglr-6DoTpR3Wj1RZrw4pSmMZcw=/1472x828/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/YS5OU3CASREPHH55MWYZPIADT4.jpg",
+    "publishedAt": "2023-05-13T11:15:37Z",
+    "source": {
+      "name": "AS ",
+      "url": "https://as.com"
+    }
+  },
+  {
+    "title": "La insólita reacción de Federico Salazar con Óscar del Portal tras derrota de Alianza Lima",
+    "description": "El conductor de América TV, Federico Salazar, manifestó en vivo que Óscar del Portal no hablará del fútbol internacional tras derrota de Alianza Lima.",
+    "content": "Alianza Lima no pudo celebrar en Brasil en su duelo ante Atlético Mineiro por la Copa Libertadores. Los blanquiazules se mantienen en los primeros lugares de la tabla, por lo que ahora darán todo de sí para sacar resultados positivos en los siguiente... [1137 chars]",
+    "url": "https://libero.pe/futbol-peruano/alianza-lima/2023/05/04/insolita-reaccion-federico-salazar-oscar-portal-derrota-alianza-lima-copa-libertadores-america-tv-video-388244",
+    "image": "https://libero.cronosmedia.glr.pe/original/2023/05/04/6453cb6cbc8d32328c22c4d8.jpg",
+    "publishedAt": "2023-05-04T15:23:23Z",
+    "source": {
+      "name": "Libero.pe",
+      "url": "https://libero.pe"
+    }
+  },
+  {
+    "title": "Xavi dice sí a la segunda venta | Deportes | FUTBOL-INTERNACIONAL | DEPOR",
+    "description": "Según el diario Sport, el entrenador del Barcelona está de acuerdo con la salida de un volante que no entra en sus planes de cara a la temporada 2023-24.",
+    "content": "Con el título de LaLiga Santander prácticamente en el bolsillo, y tras haber resignado las otras competencias de la temporada, Xavi Hernández ya empezó a pensar en la campaña 2023-24. Más allá de la vuelta de Lionel Messi, el entrenador del FC Barcel... [2206 chars]",
+    "url": "https://depor.com/futbol-internacional/espana/fc-barcelona-llego-gratis-y-se-ira-por-un-dineral-xavi-dice-si-a-la-segunda-venta-deportes-noticia/",
+    "image": "https://depor.com/resizer/cE3dHcoUM1G_tBFvkP5PUJW-DlU=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/5NTDA5LQLBCLLJWSVXL5BNPPIA.jpg",
+    "publishedAt": "2023-04-28T20:14:56Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "\"Este tío no para de cagarla\" | Deportes | FUTBOL-INTERNACIONAL | DEPOR",
+    "description": "El defensor argentino Marcos Rojo recordó su pasó por el Manchester United y el día que le reclamó al entrenador Ole Gunnar Solskjaer por preferir al central inglés. Y así le respondió.",
+    "content": "Harry Maguire sigue en boca de todos. Luego de haber sido el villano en la eliminatoria que el Manchester United perdió ante Sevilla, por los cuartos de final de la UEFA Europa League, el defensor inglés continúa siendo el protagonista de las noticia... [2110 chars]",
+    "url": "https://depor.com/futbol-internacional/inglaterra/manchester-united-el-reclamo-de-rojo-por-maguire-este-tio-no-para-de-cagarla-deportes-noticia/",
+    "image": "https://depor.com/resizer/Tie9jkMT9WLqo7_wF5FOe05hf5c=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/JLXJOVLA3ZDWTL2M4LL2U2FQCQ.jpg",
+    "publishedAt": "2023-04-28T14:41:52Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "¿por qué puede con todo? | Liga 1 | RMMD EMCC | FUTBOL-PERUANO | DEPOR",
+    "description": "A los blanquiazules hoy les está yendo bien tanto a nivel nacional como internacional, pero para lograrlo han tenido que superar una serie de adversidades. ¿Cuáles?",
+    "content": "“Todo lo que estamos viviendo no es fácil. No es fácil ir y ganar todos los partidos como lo hemos estado haciendo. Alianza siempre tiene mucho en contra. Pero no importa. Hay cosas en las que nosotros no podemos hacer nada. Solo queda seguir trabaja... [7874 chars]",
+    "url": "https://depor.com/futbol-peruano/descentralizado/alianza-lima-derechos-de-tv-walkover-lesiones-y-lios-del-fondo-por-que-puede-con-todo-liga-1-rmmd-emcc-noticia/",
+    "image": "https://depor.com/resizer/zKICqhgmF04cCpAtNTebAdNtFzM=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/QVEPOZAOBNDUHHIV5WENH7AJV4.jpg",
+    "publishedAt": "2023-04-27T03:01:17Z",
+    "source": {
+      "name": "Diario Depor",
+      "url": "https://depor.com"
+    }
+  }
+]
 
 const News = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const news= useSelector(state=>state.news.news)
-  const dispatch=useDispatch()
+ /*  
+  const news = useSelector((state) => state.news.news);
+
+  console.log('las news',news)
+
+  const dispatch = useDispatch();
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index);
+  };
+
+ 
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
+    }, 6000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [news.length]);
+
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]); */
+
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 0 ? news.length -1 : prevSlide - 1));
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? news.length - 1 : prevSlide - 1
+    );
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === news.length -1 ? 0 : prevSlide + 1));
+    setCurrentSlide((prevSlide) =>
+      prevSlide === news.length - 1 ? 0 : prevSlide + 1
+    );
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
-      dispatch(getNews())
-    }, 6000,[dispatch]);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <div
       id="default-carousel"
@@ -43,35 +181,31 @@ const News = () => {
       {" "}
       {/* main container */}
       <Carousel
-      selectedItem={currentSlide}
-      showArrows={false}
-      showStatus={false}
-      showIndicators={false}
-      showThumbs={false}
-      infiniteLoop
-      autoPlay
-      interval={5000}
-      transitionTime={500}
-      emulateTouch
-    >
+        selectedItem={currentSlide}
+        showArrows={false}
+        showStatus={false}
+        showIndicators={false}
+        showThumbs={false}
+        infiniteLoop
+        autoPlay
+        interval={5000}
+        transitionTime={500}
+        emulateTouch
+      >
         {/* container de news */}
         {news.map((article, index) => (
-          <div
-            key={article.id}
-          >
+          <div key={article.id}>
             <New
-              title= {article.title}
-              description= {article.description}
-              content= {article.content}
-              url= {article.url}
-              image= {article.image}
-              publishedAt= {article.publishedAt}
-                
-              
+              title={article.title}
+              description={article.description}
+              content={article.content}
+              url={article.url}
+              image={article.image}
+              publishedAt={article.publishedAt}
             />
           </div>
         ))}
-     </Carousel>
+      </Carousel>
       {/* Slider redondos*/}
       <div className=" absolute -bottom-5 z-30 flex space-x-3 -translate-x-1/2  left-1/2">
         <button

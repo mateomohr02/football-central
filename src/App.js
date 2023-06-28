@@ -56,7 +56,7 @@ function App() {
       )}
 
       <Routes>
-        <Route exact path="/registro" element={<Register />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/inicio" element={<Home />} />
         <Route exact path="/teams" element={<Teams />} />
         <Route exact path="/competiciones" element={<Competitions />} />
@@ -90,7 +90,7 @@ function App() {
         <Route
           path="*"
           element={
-            location.pathname !== "/" ? (
+            location.pathname !== "/" || location.pathname !== "/register" ? (
               <NotFound />
             ) : (
               <Navigate to="/" replace={true} />
