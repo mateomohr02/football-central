@@ -19,14 +19,13 @@ const DetailLivescore = () => {
 
   useEffect(() => {
     setInterval(() => {
-      dispatch(getDetailLivescores(id));
+      dispatch(getDetailLivescores());
     }, 15000);
     return () => {
       dispatch(resetLivescores());
     };
-  }, [dispatch, id]);
+  }, [dispatch]);
 
-  // Verificar si 'match' existe y asignar valores predeterminados en caso contrario
   const home = {
     name:
       match.participants?.[0]?.name ||
@@ -56,27 +55,28 @@ const DetailLivescore = () => {
   return (
     <div className="h-90vh w-full bg-blue-500 flex md:justify-center">
       <div className="h-[80vh] w-[80vw] bg-yellow-500 mt-5 ">
-       
         <div className=" h-[44%] bg-green-500 w-full flex md:justify-center items-center">
-          
-       {/* container de equipo y marcador */}
+          {/* container de equipo y marcador */}
           <div className="bg-red-500 w-[90%] h-40 flex  md:flex-row">
-          
-          <div className="bg-orange-500 w-[40%] flex md:flex-col md:justify-start items-center"> {/* nombre del local */}
-            <img src={home.logo} alt="" className="max-h-32"/>
-            <h1 className="text-2xl">{home.name}</h1>
-          </div>
+            <div className="bg-orange-500 w-[40%] flex md:flex-col md:justify-start items-center">
+              {" "}
+              {/* nombre del local */}
+              <img src={home.logo} alt="" className="max-h-32" />
+              <h1 className="text-2xl">{home.name}</h1>
+            </div>
 
-          <div className="bg-slate-500 w-[20%] flex gap-5">{/* marcadores */}
-            <h1>{home.score}</h1>
-            <h1>{away.score}</h1>
-          </div>
+            <div className="bg-slate-500 w-[20%] flex gap-5">
+              {/* marcadores */}
+              <h1>{home.score}</h1>
+              <h1>{away.score}</h1>
+            </div>
 
-          <div className="bg-orange-500 w-[40%] flex md:flex-col md:justify-end items-center">{/* nombre del visitante */}
-            <img src={away.logo} alt="" className="max-h-32"/>
-            <h1 className="text-2xl">{away.name}</h1>
+            <div className="bg-orange-500 w-[40%] flex md:flex-col md:justify-end items-center">
+              {/* nombre del visitante */}
+              <img src={away.logo} alt="" className="max-h-32" />
+              <h1 className="text-2xl">{away.name}</h1>
+            </div>
           </div>
-        </div>
         </div>
 
         <div className="flex overflow-x-auto whitespace-nowrap h-[16%] bg-orange-500">
