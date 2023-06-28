@@ -19,6 +19,10 @@ import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
 import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
+import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
+import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
+
+
 
 
 function App() {
@@ -52,6 +56,7 @@ function App() {
       )}
 
       <Routes>
+
         <Route path="/registro" element={<Register />} />
         <Route path="/inicio" element={<Home />} />
         <Route path="/teams" element={<Teams />} />
@@ -68,6 +73,20 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/partido/:id" element={<DetailLivescore/>}/>
+        <Route exact path="/registro" element={<Register />} />
+        <Route exact path="/inicio" element={<Home />} />
+        <Route exact path="/teams" element={<Teams />} />
+        <Route exact path="/competiciones" element={<Competitions />} />
+        <Route exact path="/competitions/countries/:id" element={<CountryCompetitions/>}/>
+        <Route exact path="/competitions/international" element={<InternationalCompetitions/>}/>
+        <Route exact path="/competitions/international/:id" element={<DetailInternationalLeagues/>}/>
+        <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
+        <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route exact path="/team/:id" element={<DetailTeam />} />
+        <Route exact path="/search" element={<TeamSearch />} />
+        <Route exact path="/premium" element={<Premium />} />
+        <Route exact path="/success" element={<Success />} />
+        <Route exact path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
         
       </Routes>
