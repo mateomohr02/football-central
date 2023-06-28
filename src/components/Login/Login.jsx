@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import validation from "./validation.js";
 import style from "./Login.module.css";
 import { Link } from "react-router-dom";
-import {useDispatch} from 'react-redux';
+import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/login.js";
 
-const Login = () => {
+function Login() {
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({
     email: "",
@@ -14,6 +14,7 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
+
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -26,19 +27,43 @@ const Login = () => {
       })
     );
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(login(userData));
   };
+
+  const handleCallbackResponse = (response) => {
+    console.log("Encoded JWT ID token: " + response.credential);
+  };
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "824712636886-5dlecueq2b9iq35rv1ok86i4jvcobm7l.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("googleSignInButton"), {
+      theme: "outline",
+      size: "large",
+    });
+
+    return () => {
+      // Realizar alguna limpieza si es necesario
+    };
+  }, []);
+
   return (
     <div>
       <form
         onSubmit={handleSubmit}
         className="min-h-screen flex flex-col items-start justify-center ml-60 mt-20 "
       >
-        <div className="flex flex-col shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md"> {/* form container */}
-
-          <div className="flex flex-col mb-6"> {/* container email */}
+        <div className="flex flex-col shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
+          {/* form container */}
+          <div className="flex flex-col mb-6">
+            {/* container email */}
             <label
               htmlFor="email"
               className="mb-1 text-medium sm:text-[15px] tracking-wide text-white"
@@ -56,8 +81,8 @@ const Login = () => {
             {errors.email && <p className={style.errors}>{errors.email}</p>}
           </div>
 
-
-          <div className="flex flex-col mb-6"> {/* container password */}
+          <div className="flex flex-col mb-6">
+            {/* container password */}
             <label
               htmlFor="password"
               className="mb-1 text-medium sm:text-[15px] tracking-wide text-white"
@@ -77,8 +102,8 @@ const Login = () => {
             )}
           </div>
 
-
-          <div className="flex items- mb-6 -mt-4"> {/* container help link password */}
+          <div className="flex items- mb-6 -mt-4">
+            {/* container help link password */}
             <div className="flex ml-auto">
               <Link className="inline-flex text-xs sm:text-sm text-white hover:text-blue-700">
                 ¿OLVIDASTE TU CONTRASEÑA?
@@ -86,13 +111,15 @@ const Login = () => {
             </div>
           </div>
 
-
-          <div className="flex w-full justify-center"> {/* container button login */}
+          <div className="flex w-full justify-center">
+            {/* container button login */}
             <button
               type="submit"
               className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-pf-white hover:bg-blue-900 rounded py-2 w-8/12 transition duration-150 ease-in"
             >
-              <span className="mr-2 uppercase text-black font-medium">INICIAR SESIÓN</span>
+              <span className="mr-2 uppercase text-black font-medium">
+                INICIAR SESIÓN
+              </span>
               <span>
                 <svg
                   className="h-6 w-6"
@@ -101,15 +128,20 @@ const Login = () => {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
-                  stroke='black'
+                  stroke="black"
                 >
                   <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </span>
             </button>
           </div>
-          <div className="flex justify-center items-center mt-6"> {/* container help link not account */}
-            <Link to='/register' className="inline-flex items-center font-bold text-white hover:text-blue-700 text-xs text-center">
+
+          <div className="flex justify-center items-center mt-6">
+            {/* container help link not account */}
+            <Link
+              to="/register"
+              className="inline-flex items-center font-bold text-white hover:text-blue-700 text-xs text-center"
+            >
               <span>
                 <svg
                   className="h-6 w-6"
@@ -126,12 +158,11 @@ const Login = () => {
               <span className="ml-2">¿NO TIENES UNA CUENTA? REGÍSTRATE</span>
             </Link>
           </div>
-
-
         </div>
       </form>
+      <div id="googleSignInButton"></div>
     </div>
   );
-};
+}
 
 export default Login;

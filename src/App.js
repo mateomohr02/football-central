@@ -14,13 +14,14 @@ import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions
 import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 import NotFound from "./views/404/NotFound";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
-
+import jwt_decode from "jwt-decode";
 
 function App() {
+  const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
   const location = useLocation();
 
   useEffect(() => {
@@ -37,6 +38,27 @@ function App() {
     }
   }, [location.pathname]);
 
+  // function handleCallbackResponse(response) {
+  //   console.log("Encoded JWT ID token: " + response.credential);
+  //   const decoded = jwt_decode(response.credential);
+  //   console.log(decoded);
+  //   setUser(decoded);
+  //   }
+      
+  //  useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "824712636886-5dlecueq2b9iq35rv1ok86i4jvcobm7l.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   });
+
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("signInDiv"),
+  //     { theme: "outline", size: "large"}
+  //   );
+  // }, []);
+
+
   return (
     <div>
       {localStorage.getItem("loggedIn") === "true" ? (
@@ -49,7 +71,7 @@ function App() {
           <Navigate to="/" />
         )
       )}
-
+      <div id="signInDiv"></div>
       <Routes>
         <Route path="/registro" element={<Register />} />
         <Route path="/inicio" element={<Home />} />
