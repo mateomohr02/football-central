@@ -2,6 +2,7 @@ import {
   FILTER_TEAMS,
   FILTER_TEAMSBYCOUNTRY,
   GET_DETAIL_TEAM,
+  GET_TEAM_BY_COUNTRY_ID,
   GET_TEAM_BY_NAME,
   RESET_DETAIL_TEAM,
   RESET_SHOWED_TEAMS,
@@ -16,6 +17,7 @@ const initialTeamState = {
   team: [],
   teams_filter: [],
   team_filter_combinados: [],
+  teamByCountryId:[]
 };
 
 const teamReducer = (state = initialTeamState, action) => {
@@ -76,6 +78,12 @@ const teamReducer = (state = initialTeamState, action) => {
 
     case TEAMS:
       return { ...state, teams_filter: action.payload };
+    case GET_TEAM_BY_COUNTRY_ID:{
+      return{
+        ...state,
+        teamByCountryId:action.payload
+      }
+    }  
     default:
       return state;
   }

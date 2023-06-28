@@ -13,6 +13,7 @@ const initialLeagueCupState = {
   detailLeague: [],
   detailCup: [],
   countryLeagues: [],
+  internationalLeagues: []
 };
 
 const leagueCupReducer = (state = initialLeagueCupState, action) => {
@@ -34,6 +35,10 @@ const leagueCupReducer = (state = initialLeagueCupState, action) => {
 
     case RESET_CUP_DETAIL:
       return { ...state, detailCup: action.payload };
+    case 'GET_INTERNATIONAL_LEAGUES':
+      return {...state, internationalLeagues: action.payload};
+    case 'RESET_INTERNATIONAL_LEAGUES':
+      return {...state, internationalLeagues: []}
     default:
       return state;
   }
