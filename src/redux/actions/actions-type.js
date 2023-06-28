@@ -29,4 +29,5 @@ export const RESET_VENUE = "RESET_VENUE"
 export const TEAMS="TEAMS";
 export const FILTER_TEAMS="FILTER_TEAMS";
 export const FILTER_TEAMSBYCOUNTRY="FILTER_TEAMSBYCOUNTRY"
+export const NEWS="NEWS"
 
