@@ -11,7 +11,7 @@ export const getFixtureByDateRange = (startDate, endDate) => {
     endDate = endDate || dayAfterTomorrow;//si no se pasa parametros, se asigna dayAfterTomorrow a endDate
 
     const apiData = await axios.get(
-      `http://localhost:3001/fixture/dates/${startDate}/${endDate}`
+      `/fixture/dates/${startDate}/${endDate}`
     );
     const fixtureByDateRange = apiData.data;
     dispatch({
