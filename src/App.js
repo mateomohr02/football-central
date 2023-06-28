@@ -18,8 +18,11 @@ import { useEffect } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
+import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
 import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
+
+
 
 
 function App() {
@@ -53,6 +56,23 @@ function App() {
       )}
 
       <Routes>
+
+        <Route path="/registro" element={<Register />} />
+        <Route path="/inicio" element={<Home />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/competiciones" element={<Competitions />} />
+        <Route
+          path="/competitions/countries/:id"
+          element={<CountryCompetitions />}
+        />
+        <Route path="/competitions/leagues/:id" element={<DetailLeague />} />
+        <Route path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route path="/team/:id" element={<DetailTeam />} />
+        <Route path="/search" element={<TeamSearch />} />
+        <Route path="/premium" element={<Premium />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/partido/:id" element={<DetailLivescore/>}/>
         <Route exact path="/registro" element={<Register />} />
         <Route exact path="/inicio" element={<Home />} />
         <Route exact path="/teams" element={<Teams />} />
@@ -68,6 +88,7 @@ function App() {
         <Route exact path="/success" element={<Success />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </div>
   );

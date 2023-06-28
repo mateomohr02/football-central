@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const MatchCard = ({
+const LivescoreCard = ({
+  id,
   home,
   homeLogo,
   away,
@@ -10,9 +11,10 @@ const MatchCard = ({
   awayScore,
   state,
 }) => {
-  console.log("el logo local", homeLogo);
+  console.log('el id del partido',id)
   return (
-    <Link>
+    <Link to={`/partido/${id}`} >
+      
       <div className="flex flex-row w-[300px] md:h-28 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         {/* container de la imagen */}
         <div className="bg-pf-white w-[16%] bg-cover flex md:flex-col ">
@@ -46,7 +48,7 @@ const MatchCard = ({
 
             {/* container del minuto  */}
             <div className=" w-[70%] border-l h-full flex md:flex-col md:justify-center items-center text-base font-semibold text-pf-white">
-              {state === "ET" ? <p>ET</p> : <p>{time}'</p>}
+              {state === "ET" ? <p>ET</p> : state === "Finalizó" ? <p>Finalizó</p> :  state === "Pronto" ? <p>Pronto</p> : <p>{time}'</p>}
             </div>
           </div>
         </div>
@@ -55,4 +57,4 @@ const MatchCard = ({
   );
 };
 
-export default MatchCard;
+export default LivescoreCard;
