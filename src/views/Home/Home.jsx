@@ -7,6 +7,7 @@ import MatchCards from "../../components/MatchCards/MatchCards";
 import News from "../../components/News/News";
 import TeamCards from "../../components/TeamCards/TeamCards";
 import {getTeamByCountryId} from '../../redux/actions/getTeamByCountryId'
+import { getNews } from "../../redux/actions/action-news";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Home = () => {
         await Promise.all([
           dispatch(getTeamByCountryId(44)),
           dispatch(getFixtureByDateRange()),
+          dispatch(getNews())
         ]);
       } catch (error) {
         console.log(error.message);

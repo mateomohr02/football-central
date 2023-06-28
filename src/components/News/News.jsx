@@ -1,38 +1,48 @@
 import New from "../New/New";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { getNews } from "../../redux/actions/action-news";
 import { ArticleRounded } from "@mui/icons-material";
 
-
 const News = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const news= useSelector(state=>state.news.news)
-  const dispatch=useDispatch()
+  const news = useSelector((state) => state.news.news);
+
+  console.log('las news',news)
+
+  const dispatch = useDispatch();
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 0 ? news.length -1 : prevSlide - 1));
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? news.length - 1 : prevSlide - 1
+    );
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === news.length -1 ? 0 : prevSlide + 1));
+    setCurrentSlide((prevSlide) =>
+      prevSlide === news.length - 1 ? 0 : prevSlide + 1
+    );
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
-      dispatch(getNews())
-    }, 6000,[dispatch]);
+    const interval = setInterval(
+      () => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
+        dispatch(getNews());
+      },
+      6000,
+      [dispatch]
+    );
 
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [dispatch, news.length]);
 
   return (
     <div
@@ -43,35 +53,31 @@ const News = () => {
       {" "}
       {/* main container */}
       <Carousel
-      selectedItem={currentSlide}
-      showArrows={false}
-      showStatus={false}
-      showIndicators={false}
-      showThumbs={false}
-      infiniteLoop
-      autoPlay
-      interval={5000}
-      transitionTime={500}
-      emulateTouch
-    >
+        selectedItem={currentSlide}
+        showArrows={false}
+        showStatus={false}
+        showIndicators={false}
+        showThumbs={false}
+        infiniteLoop
+        autoPlay
+        interval={5000}
+        transitionTime={500}
+        emulateTouch
+      >
         {/* container de news */}
         {news.map((article, index) => (
-          <div
-            key={article.id}
-          >
+          <div key={article.id}>
             <New
-              title= {article.title}
-              description= {article.description}
-              content= {article.content}
-              url= {article.url}
-              image= {article.image}
-              publishedAt= {article.publishedAt}
-                
-              
+              title={article.title}
+              description={article.description}
+              content={article.content}
+              url={article.url}
+              image={article.image}
+              publishedAt={article.publishedAt}
             />
           </div>
         ))}
-     </Carousel>
+      </Carousel>
       {/* Slider redondos*/}
       <div className=" absolute -bottom-5 z-30 flex space-x-3 -translate-x-1/2  left-1/2">
         <button
