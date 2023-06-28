@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.tableContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--blue);
+    width: 69vw;
+    border-radius: 5px;
+    margin: 1.5rem;    
+}
+
+.table{
+    background-color: var(--dark-grey);
+    width: 60vw;
+    margin-bottom: 2rem;
+}
+
+
+.teamImg{
+    width: 2rem;
+}
+
+.colTeam{
+    width: 1.5rem;
+    border-right: 2px solid black;
+    text-align: center;
+}
+
+.rowTr{
+    border-bottom: 2px black solid
+}
+
+.rowTrPts{
+    border-bottom: 2px black solid;
+    border-left: 2px black solid;
+    justify-content: center;
+}
+
+.colName{
+    width: 15rem;
+}
+
+.colPoints{
+    width: 2rem;
+    border-left: 2px solid black;
+    text-align: center;
+}

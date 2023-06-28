@@ -1,4 +1,5 @@
 import axios from "axios"
+import { DETAIL_CUP } from "./actions-type"
 
 export function getDetailCup(id){
     return async function(dispatch) {
@@ -7,7 +8,7 @@ export function getDetailCup(id){
         let cup = cupDetail.data
 
         return dispatch({
-            type: 'DETAIL_CUP',
+            type: DETAIL_CUP,
             payload: cup
         })
     }

@@ -9,8 +9,6 @@ const DropdownButton = ({ buttonLabel, options, showIcon }) => {
     setIsOpen(!isOpen);
   };
 
- 
-
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -19,7 +17,6 @@ const DropdownButton = ({ buttonLabel, options, showIcon }) => {
           className="bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center w-full rounded-md px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none duration-600"
           id="options-menu"
           onClick={handleToggleMenu}
-          
         >
           {buttonLabel}
           {showIcon && <ArrowDropDownRoundedIcon />}
@@ -42,7 +39,7 @@ const DropdownButton = ({ buttonLabel, options, showIcon }) => {
                 onClick={handleToggleMenu}
               >
                 <span className="flex flex-col">
-                  <span>{option}</span>
+                  <span className="text-white">{option}</span> {/* Aquí se muestra cada opción individual */}
                 </span>
               </Link>
             ))}

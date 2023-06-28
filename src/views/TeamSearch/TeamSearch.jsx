@@ -11,7 +11,7 @@ const TeamSearch = () => {
 
     const dispatch = useDispatch();
 
-    const matchedTeams = useSelector(state => state.showedTeams)
+    const matchedTeams = useSelector(state => state.team.showedTeams)
 
     useEffect(() => {
         return () => {

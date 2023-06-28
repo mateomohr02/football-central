@@ -1,79 +1,27 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getDetailLeague } from '../../redux/actions/getDetailLeague'
-import { resetDetailLeague } from '../../redux/actions/resetDetailLeague'
-import { getStandingsLeague } from '../../redux/actions/getStandingsLeague.js'
-import { resetStandingsLeague } from '../../redux/actions/resetStandingsLeague'
 
-import style from './DetailLeague.module.css'
+import ArgSuperliga from '../../components/ArgSuperliga/ArgSuperliga'
+import ArgSupercup from '../../components/ArgSupercup/ArgSupercup'
+import Bundesliga1 from '../../components/Bundesliga1/Bundesliga1'
+import Bundesliga2 from '../../components/Bundesliga2/Bundesliga2'
+import GerDBFPokal from '../../components/GerDBFPokal/GerDBFPokal'
+import EngPremier from '../../components/EngPremier/EngPremier'
+import EngChamp from '../../components/EngChamp/EngChamp'
+import EngLeagueOne from '../../components/EngLeagueOne/EngLeagueOne'
+import EngNationalLeague from '../../components/EngNationalLeague/EngNationalLeague'
+import EngCommunityShield from '../../components/EngCommunityShield/EngCommunityShield'
+import EngFACup from '../../components/EngFACup/EngFACup'
+import EngCarabaoCup from '../../components/EngCarabaoCup/EngCarabaoCup'
+import EngWomenSuperLeague from '../../components/EngWomenSuperLeague/EngWomenSuperLeague'
 
 const DetailLeague = () => {
-  
-    // const standings = [{
-    // participant_id: 10002,
-    // points: 46,
-    // position: 1,
-    // teamInfo:{
-    //   name: 'River Plate',
-    //   image_path: 'https://cdn.sportmonks.com/images/soccer/teams/18/10002.png'
-    //   }
-    // },{
-    //   participant_id: 3393,
-    //   points: 0,
-    //   position: 1,
-    //   teamInfo:{
-    //     name: 'Belgrano',
-    //     image_path: 'https://cdn.sportmonks.com/images/soccer/teams/13/6829.png'
-    //     }
-    // }]
 
-    const dispatch = useDispatch()
-
-    const { id } = useParams()
-    const league = useSelector(state => state.detailLeague)
-    const standings = useSelector(state => state.standings)
-
-    useEffect(()=>{
-      dispatch(getDetailLeague(id))
-      dispatch(getStandingsLeague(id))
-      return () => {
-        dispatch(resetDetailLeague());
-        dispatch(resetStandingsLeague())
-      }      
-    },[dispatch, id])
-
-    console.log(standings, 'Componente')
+    const { id } = useParams()    
 
     return (
-    <div className={style.container}>
-    <div className={style.tableContainer}>
-      <h2>{`Tabla de posiciones de ${league.name}`}</h2>
-      <div>
-        <table className={style.table}>
-          <thead>
-            <tr>
-              <th className={`${style.rowTr} ${style.colTeam}`}></th>
-              <th className={`${style.rowTr} ${style.colName}`}>Equipo</th>
-              <th className={`${style.rowTrPts} ${style.colPoints}`}>Pts</th>
-            </tr>
-          </thead>
-          <tbody>
-            {standings.map(p => {
-              console.log(p, 'Posición')
-              return (
-                <tr key={p?.participant_id}>
-                  <td className={style.colTeam} ><img className={style.teamImg} src={p?.teamInfo?.image_path} alt={`Escudo ${p?.teamInfo?.name}`} /></td>
-                  <td className={style.colName} >{p?.teamInfo?.name}</td>
-                  <td className={style.colPoints} >{p?.points}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-      
-        </table>
-      </div>
-    </div>
+    <div>
+      {id === "636"? <ArgSuperliga/> : (id === '1502' ? <ArgSupercup/> : (id === "82" ? <Bundesliga1/> : (id === '85' ? <Bundesliga2/> : (id === "109" ? <GerDBFPokal/> : (id === "8" ? <EngPremier/> : (id === "9" ? <EngChamp/> : (id === "12" ? <EngLeagueOne/> : (id === "17" ? <EngNationalLeague/> : (id === "23" ? <EngCommunityShield/> : (id === "24" ? <EngFACup/> : (id === '27' ? <EngCarabaoCup/> : (id === "45" ? <EngWomenSuperLeague/> : ""))))))))))))}
     </div>
   )
 }

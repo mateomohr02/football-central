@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
 import Competitions from "./views/Competitions/Competitions.jsx";
-import Community from "./views/Community/Community.jsx";
+import Teams from "./views/Teams/Teams"
 import Landing from "./views/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar";
 import DetailLeague from "./views/DetailLeague/DetailLeague.jsx";
@@ -18,6 +18,11 @@ import { useEffect } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
+import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
+import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
+import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
+
+
 
 
 function App() {
@@ -51,23 +56,51 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/registro" element={<Register />} />
-        <Route path="/inicio" element={<Home />} />
-        <Route path="/comunidad" element={<Community />} />
-        <Route path="/competiciones" element={<Competitions />} />
+        <Route exact path="/registro" element={<Register />} />
+        <Route exact path="/inicio" element={<Home />} />
+        <Route exact path="/teams" element={<Teams />} />
+        <Route exact path="/competiciones" element={<Competitions />} />
         <Route
-          path="/competitions/countries/:id"
+          exact path="/competitions/countries/:id"
           element={<CountryCompetitions />}
         />
-        <Route path="/competitions/leagues/:id" element={<DetailLeague />} />
-        <Route path="/competitions/cups/:id" element={<DetailCup />} />
-        <Route path="/team/:id" element={<DetailTeam />} />
-        <Route path="/search" element={<TeamSearch />} />
-        <Route path="/premium" element={<Premium />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
+        <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
+        <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route exact path="/team/:id" element={<DetailTeam />} />
+        <Route exact path="/search" element={<TeamSearch />} />
+        <Route exact path="/premium" element={<Premium />} />
+        <Route exact path="/success" element={<Success />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/partido/:id" element={<DetailLivescore/>}/>
+        <Route exact path="/registro" element={<Register />} />
+        <Route exact path="/inicio" element={<Home />} />
+        <Route exact path="/teams" element={<Teams />} />
+        <Route exact path="/competiciones" element={<Competitions />} />
+        <Route exact path="/competitions/countries/:id" element={<CountryCompetitions/>}/>
+        <Route exact path="/competitions/international" element={<InternationalCompetitions/>}/>
+        <Route exact path="/competitions/international/:id" element={<DetailInternationalLeagues/>}/>
+        <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
+        <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
+        <Route exact path="/team/:id" element={<DetailTeam />} />
+        <Route exact path="/search" element={<TeamSearch />} />
+        <Route exact path="/premium" element={<Premium />} />
+        <Route exact path="/success" element={<Success />} />
+        <Route exact path="/profile" element={<Profile />} />
+
+        <Route
+          path="*"
+          element={
+            location.pathname !== "/" ? (
+              <NotFound />
+            ) : (
+              <Navigate to="/" replace={true} />
+            )
+          }
+        />
+
       </Routes>
+
+
     </div>
   );
 }
