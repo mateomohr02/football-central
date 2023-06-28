@@ -19,6 +19,8 @@ import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
 import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
+import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
+
 
 function App() {
   const location = useLocation();
@@ -57,6 +59,7 @@ function App() {
         <Route exact path="/competiciones" element={<Competitions />} />
         <Route exact path="/competitions/countries/:id" element={<CountryCompetitions/>}/>
         <Route exact path="/competitions/international" element={<InternationalCompetitions/>}/>
+        <Route exact path="/competitions/international/:id" element={<DetailInternationalLeagues/>}/>
         <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
         <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
         <Route exact path="/team/:id" element={<DetailTeam />} />
