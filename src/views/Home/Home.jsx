@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getFixtureByDateRange } from "../../redux/actions/getFixtureByDateRange";
-import { getLivescores } from "../../redux/actions/getLiveScores";
 import { getLivescoresLatest } from "../../redux/actions/getLivescoresLatest";
 import MatchCards from "../../components/MatchCards/MatchCards";
 import News from "../../components/News/News";
@@ -17,22 +16,27 @@ const Home = () => {
       try {
         await Promise.all([
           dispatch(getTeamByCountryId(44)),
-          dispatch(getLivescores()),
-          dispatch(getLivescoresLatest()),
           dispatch(getFixtureByDateRange()),
         ]);
       } catch (error) {
         console.log(error.message);
       }
     };
-    
-    // Llama a la función por primera vez para obtener los datos inmediatamente
-    fetchData();
-    
-    // Ejecuta la función cada 15 segundos
-    setInterval(fetchData, 15000);
-
+  
+    const fetchDataInterval = setInterval(fetchData, 3600000);
+  
+    const getLivescoresLatestInterval = setInterval(() => {
+      dispatch(getLivescoresLatest());
+    }, 15000);
+  
+    fetchData(); // Llamada inicial para obtener los datos inmediatamente
+  
+    return () => {
+      clearInterval(fetchDataInterval);
+      clearInterval(getLivescoresLatestInterval);
+    };
   }, [dispatch]);
+  
 
   return (
     <div>

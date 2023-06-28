@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
+import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
 
 
 function App() {
@@ -66,7 +67,9 @@ function App() {
         <Route path="/premium" element={<Premium />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/partido/:id" element={<DetailLivescore/>}/>
         <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </div>
   );

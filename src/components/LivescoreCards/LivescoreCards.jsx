@@ -4,9 +4,11 @@ import { formatMatch } from "../MatchCards/formatMatch";
 
 const LivescoreCards = () => {
   const livescores = useSelector((state) => state.livescores.livescores);
-  console.log('livescores sin formatear',livescores)
+
   const fixtureLive = formatMatch(livescores);
-  console.log('livescores formateados',fixtureLive)
+
+  if (fixtureLive.length === 0) {return null; 
+  }
   return (
       <div className="md:h-72 flex md:flex-col justify-start gap-3 pt-3">{/* partidos en vivo */}
         <div className="md:flex md:justify-start md:items-center md:w-[85%] text-lg md:ml-1 bg-transparent md:border-2 md:border-y-2 md:border-x-0 border-b-pf-white">
@@ -18,12 +20,13 @@ const LivescoreCards = () => {
           {fixtureLive.slice(0, 4).map((match) => (
             <LivescoreCard
               key={match.id}
+              id={match.id}
               home={
-               ( match.participants?.[0].meta?.location === "home" && match.participants?.[0]?.name) || match.name.split("vs")[0].trim()
+               ( match.participants?.[0].meta?.location === "home" ? match.participants?.[0]?.name : match.participants?.[1]?.name) || match.name.split("vs")[0].trim()
               }
               homeLogo={match.participants?.[0]?.image_path}
               away={
-                match.participants?.[1]?.name || match.name.split("vs")[1].trim()
+               ( match.participants?.[1].meta?.location === "away" ? match.participants?.[1]?.name : match.participants?.[0]?.name) || match.name.split("vs")[1].trim()
               }
               awayLogo={match.participants?.[1]?.image_path}
               homeScore={
@@ -49,6 +52,10 @@ const LivescoreCards = () => {
                   ? "ST"
                   : match.state?.id === 3
                   ? "ET"
+                  : match.state?.id === 5 
+                  ? "Finalizó"
+                  : match.state?.id === 1
+                  ? "Pronto"
                   : ""
               }
               time={match.periods?.[match.periods.length - 1]?.minutes || ""}
