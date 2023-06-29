@@ -46,6 +46,10 @@ const Profile = () => {
     window.location.reload();
   };
 
+  const openFileInput = () => {
+    document.getElementById("fileInput").click();
+  };
+
   useEffect(() => {
     dispatch(getProfile(loggedUserID)); // Verifica que loggedUserID tenga un valor válido
   }, [dispatch, loggedUserID]);
@@ -57,12 +61,14 @@ const Profile = () => {
       <div className="bg-white rounded-lg p-8">
         <div>
           {/* <h3>ID: {user?.id}</h3> */}
-          <div style={{
-              width: "200px", 
-              height: "200px", 
+          <div
+            style={{
+              width: "200px",
+              height: "200px",
               borderRadius: "50%",
               overflow: "hidden",
-            }}>
+            }}
+          >
             {currentProfilePic && (
               <img
                 src={currentProfilePic}
@@ -72,6 +78,7 @@ const Profile = () => {
                   height: "100%",
                   objectFit: "cover",
                 }}
+                onClick={openFileInput}
               />
             )}
           </div>
@@ -93,13 +100,30 @@ const Profile = () => {
             </span>
           </h3>
           <form onSubmit={(event) => handleFileSubmit(event)}>
+            <label
+              htmlFor="fileInput"
+              className="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              Add Profile Pic
+            </label>
             <input
+              id="fileInput"
               type="file"
               onChange={(event) => handleFile(event)}
               required
               accept="image/png, image/jpg, image/jpeg"
+              style={{ display: "none" }} // Hide the file input
             />
-            {image && <img src={image} alt="profilePicture" style={{width: "200px", height: "200px"}}/>}
+            {image && (
+              <img
+                src={image}
+                alt="profilePicture"
+                style={{ width: "200px", height: "200px", objectFit: "cover" }}
+              />
+            )}
             <button className="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Add Profile Pic
             </button>
