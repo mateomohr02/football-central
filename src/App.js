@@ -21,6 +21,7 @@ import Profile from "./views/Profile/Profile";
 import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
 import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
+import Store from './views/Store/Store';
 
 
 
@@ -86,6 +87,7 @@ function App() {
         <Route exact path="/premium" element={<Premium />} />
         <Route exact path="/success" element={<Success />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/store" element={<Store />} />
 
         <Route
           path="*"
