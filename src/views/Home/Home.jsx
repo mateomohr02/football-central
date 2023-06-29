@@ -10,6 +10,7 @@ import {getTeamByCountryId} from '../../redux/actions/getTeamByCountryId'
 import { getNews } from "../../redux/actions/action-news";
 
 const Home = () => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,11 +41,12 @@ const Home = () => {
   }, [dispatch]);
   
 
+
   return (
     <div>
-      <TeamCards />
+      {<TeamCards />
       <News />
-      <MatchCards />
+      <MatchCards /> */}
     </div>
   );
 };

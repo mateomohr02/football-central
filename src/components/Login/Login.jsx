@@ -2,17 +2,23 @@ import React from "react";
 import { useState } from "react";
 import validation from "./validation.js";
 import style from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { login } from "../../redux/actions/login.js";
-
+import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import axios from "axios";
+import { useEffect } from "react";
+import {useLocation} from 'react-router-dom';
+import { setLoggedInUser } from "../../redux/actions/setLoggedInUser.js";
 const Login = () => {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-
+  
   const dispatch = useDispatch();
   const handleChange = (event) => {
     setUserData({
@@ -30,6 +36,10 @@ const Login = () => {
     event.preventDefault();
     dispatch(login(userData));
   };
+  const googleLogin = async (response) => {
+    dispatch(login(response));
+  };
+  
   return (
     <div>
       <form
@@ -108,6 +118,28 @@ const Login = () => {
               </span>
             </button>
           </div>
+          <div className="flex justify-center mt-5">
+          <GoogleOAuthProvider clientId="824712636886-5dlecueq2b9iq35rv1ok86i4jvcobm7l.apps.googleusercontent.com">
+        <GoogleLogin
+          onSuccess={async (credentialResponse) => {
+            try {
+              localStorage.setItem("loggedIn", "true");
+              console.log("CREDENTIAL",credentialResponse); // Asegúrate de que puedes ver el token en la consola
+                const tokenId = credentialResponse.credential; // Aquí obtenemos el token de la respuesta
+               const response = await axios.post("/users/login/google", { tokenId });
+               console.log("Logeado"); // Datos de usuario devueltos por el servidor
+               console.log("DATA",response.data); // Datos de usuario devueltos por el servidor
+               localStorage.setItem("id", response.data.id);
+               localStorage.setItem("token", tokenId);
+               navigate("/inicio");
+              } catch (error) {
+            console.error(error);
+           }
+          }}
+        onFailure={(response) => console.error(response)}
+        />
+      </GoogleOAuthProvider>
+        </div>
           <div className="flex justify-center items-center mt-6"> {/* container help link not account */}
             <Link to='/register' className="inline-flex items-center font-bold text-white hover:text-blue-700 text-xs text-center">
               <span>
@@ -129,6 +161,7 @@ const Login = () => {
 
 
         </div>
+      
       </form>
     </div>
   );
