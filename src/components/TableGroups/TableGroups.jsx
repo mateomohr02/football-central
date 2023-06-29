@@ -2,10 +2,8 @@ import React from 'react'
 
 const TableGroups = ({group}) => {
   
-  console.log(group);
-
   return (
-    <div>
+    <div key={group?.group_id}>
         <h3>Grupo {group?.name}</h3>
     <table >
           <thead>

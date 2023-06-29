@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
 import { getChampions } from '../../redux/actions/getChampions';
 import TableGroups from '../TableGroups/TableGroups'
+import PlayOffMatchCard from '../PlayOffMatchCard/PlayOffMatchCard';
 
 
 const ChampionsLeague = () => {
@@ -13,14 +13,14 @@ const ChampionsLeague = () => {
     dispatch(getChampions())
   }, [dispatch])  
 
-  const detailGroups = useSelector(state => state.leagueCup.detailCup)
+  const detailCup = useSelector(state => state.leagueCup.detailCup)
 
   return (
     <div>
       {/* CONTAINER GRUPOS */}
     <div>
         {
-          detailGroups.map( g => {
+          detailCup?.groupStage?.map( g => {
               return (
               <TableGroups group = {g}/>
               )
@@ -28,7 +28,36 @@ const ChampionsLeague = () => {
         }
     </div>
 
-    {/* ELIMINATORIAS */}
+    {/* OCTAVOS */}
+    <div>
+    <h3>Octavos de Final</h3>
+      <PlayOffMatchCard
+      arrMatches={detailCup?.quarterFinals}
+      />
+    </div>
+
+    {/* CUARTOS */}
+    <div>
+    <h3>Cuarts de Final</h3>
+      <PlayOffMatchCard
+      arrMatches={detailCup?.quarterFinals}
+      />
+    </div>
+    {/* SEMIFINAL */}
+    <div>
+    <h3>Semi-Final</h3>
+      <PlayOffMatchCard
+      arrMatches={detailCup?.semiFinal}
+      />
+    </div>
+    {/* FINAL */}
+    <div>
+      <h3>Final</h3>
+      <PlayOffMatchCard
+      arrMatches={detailCup?.final}
+      />
+    </div>
+
     </div>
   )
 }
