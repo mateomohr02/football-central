@@ -13,6 +13,11 @@ module.exports = {
         88: "23rem",
         176: "46rem",
       },
+      fontFamily:{
+        "main-font":["Geologica", "sans-serif"],
+        "text-font":["Montserrat", "sans-serif"],
+        "bebas-font":['Bebas Neue', "sans-serif"]
+      }
     },
   },
   plugins: [],
