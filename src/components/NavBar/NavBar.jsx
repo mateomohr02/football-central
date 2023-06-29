@@ -5,6 +5,7 @@ import { logout } from "../../redux/actions/auth.js";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchBar from "../SearchBar/SearchBar";
 import logo from "../../assets/logo.svg";
+import { getProfile } from "../../redux/actions/getProfile.js";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,14 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const loggedUserID = localStorage.getItem("id");
+  console.log("LOGGED ID:", loggedUserID);
+
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
+    dispatch(getProfile(loggedUserID)); // Verifica que loggedUserID tenga un valor válido
     setIsAuthenticated(loggedIn === "true");
-  }, []);
+  }, [dispatch, loggedUserID]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -27,7 +32,10 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   const image = useSelector((state) => state.user.userProfile.image.imageUrl);
+
+  console.log(image);
   return (
     <nav className="relative bg-white shadow dark:bg-gray-800">
       <div className="container py-3 mx-auto md:flex">
@@ -98,8 +106,16 @@ const Navbar = () => {
                   to="/profile"
                   className="h-12 w-12 flex justify-center items-center sm:absolute -right-6"
                 >
-                  {image !== "" ? (
-                    <img src={image} alt="ProfilePicture" style={{ borderRadius: '50%', width: '100%', height: '100%' }}/>
+                  {image !== "" || !image ? (
+                    <img
+                      src={image}
+                      alt="ProfilePicture"
+                      style={{
+                        borderRadius: "50%",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
                   ) : (
                     <AccountCircleIcon
                       fontSize="large"
