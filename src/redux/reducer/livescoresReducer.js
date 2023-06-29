@@ -17,6 +17,7 @@ const livescoresReducer = (state = initialLiveState, action) => {
       return {
         ...state,
         livescores: action.payload,
+        detailLivescores:action.payload
       };
     case GET_DETAIL_LIVESCORES:{
       return{
