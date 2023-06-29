@@ -1,6 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
@@ -14,10 +13,15 @@ import CountryCompetitions from "./views/CountryCompetitions/CountryCompetitions
 import DetailTeam from "./views/DetailTeam/DetailTeam";
 import TeamSearch from "./views/TeamSearch/TeamSearch";
 import NotFound from "./views/404/NotFound";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import axios from "axios";
 import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
 import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
@@ -25,10 +29,10 @@ import Store from './views/Store/Store';
 import Reviews from "./views/Reviews/Reviews";
 
 
-
-
 function App() {
+  const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
@@ -44,6 +48,8 @@ function App() {
     }
   }, [location.pathname]);
 
+
+  const isLoginPage = location.pathname === "/";
   return (
     <div>
       {localStorage.getItem("loggedIn") === "true" ? (
@@ -52,10 +58,10 @@ function App() {
         (location.pathname === "/" || location.pathname === "/register") ? (
           location.pathname === "/" ? <Landing /> : <Register />
         ) : (
-          // Redirigir al usuario a la página de inicio de sesión
           <Navigate to="/" />
         )
       )}
+      {isLoginPage && <div id="signInDiv"></div>}
 
       <Routes>
         <Route exact path="/inicio" element={<Home />} />
@@ -65,6 +71,7 @@ function App() {
           exact path="/competitions/countries/:id"
           element={<CountryCompetitions />}
         />
+
         <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
         <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
         <Route exact path="/team/:id" element={<DetailTeam />} />
