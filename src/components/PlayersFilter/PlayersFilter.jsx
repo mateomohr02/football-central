@@ -1,15 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { getPlayersCountry, getPlayersTeams, getPlayersHeight } from "../../redux/actions/playersFilter";
 
 function PlayersFilter(){
+
+    const dispatch = useDispatch();
+
     const handlePlayersCountry = (event) => {
         event.preventDefault();
         dispatch(getPlayersCountry(event.target.value));
     };
-    const handlePlayersTeams = (event) => {
-        event.preventDefault();
-        dispatch(getPlayersTeams(event.target.value));
-    };
+    
     const handlePlayersHeight = (event) => {
         event.preventDefault();
         dispatch(getPlayersHeight(event.target.value));
@@ -22,9 +23,7 @@ function PlayersFilter(){
             <select onChange={(event) => handlePlayersHeight(event)}>
                 <option value="height">JUGADORES POR ALTURA</option>
             </select>
-            <select onChange={(event) => handlePlayersTeams(event)}>
-                <option value="team">JUGADORES POR EQUIPO</option>
-            </select>
+            
         </div>
     )
 }

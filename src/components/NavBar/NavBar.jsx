@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/auth.js";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchBar from "../SearchBar/SearchBar";
+import PlayersFilter from "../PlayersFilter/PlayersFilter.jsx";
 import logo from "../../assets/logo.svg";
 import { getProfile } from "../../redux/actions/getProfile.js";
 
@@ -152,6 +153,13 @@ const Navbar = () => {
             >
               Equipos
             </Link>
+
+            <Link
+              to="#"
+              
+            >
+            <PlayersFilter />  
+            </Link>  
 
             <Link
               to="#"
