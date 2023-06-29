@@ -1,27 +1,29 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getChampions } from '../../redux/actions/getChampions';
-import TableGroups from '../TableGroups/TableGroups'
-import PlayOffMatchCard from '../PlayOffMatchCard/PlayOffMatchCard';
+import { useDispatch, useSelector } from 'react-redux'
+import { getEuropaLeague } from '../../redux/actions/getEuropaLeague'
 import { resetInternationalLeague } from '../../redux/actions/resetInternationalLeague'
 
+import PlayOffMatchCard from '../PlayOffMatchCard/PlayOffMatchCard'
+import TableGroups from '../TableGroups/TableGroups'
 
-const ChampionsLeague = () => {
-  
-  const dispatch = useDispatch()
+const EuropaLeague = () => {
 
-  useEffect(()=>{
-    dispatch(getChampions())
-    return () => {
-      dispatch(resetInternationalLeague())
-  }
-  }, [dispatch])  
+    const dispatch = useDispatch()
 
-  const detailCup = useSelector(state => state.leagueCup.detailCup)
+    useEffect(()=>{
+        dispatch(getEuropaLeague())
+        return () => {
+            dispatch(resetInternationalLeague())
+        }
+    },[dispatch])
+
+    const detailCup = useSelector(state => state.leagueCup.detailCup)
+    console.log(detailCup);
 
   return (
     <div>
-      {/* CONTAINER GRUPOS */}
+
+    {/* CONTAINER GRUPOS */}
     <div>
         {
           detailCup?.groupStage?.map( g => {
@@ -31,7 +33,7 @@ const ChampionsLeague = () => {
           })
         }
     </div>
-
+    
     {/* OCTAVOS */}
     <div>
     <h3>Octavos de Final</h3>
@@ -63,7 +65,7 @@ const ChampionsLeague = () => {
     </div>
 
     </div>
-  )
+    )
 }
 
-export default ChampionsLeague
+export default EuropaLeague
