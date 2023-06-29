@@ -137,6 +137,12 @@ const Navbar = () => {
 
               <SearchBar className="w-16 pr-2" />
             </div>
+            <Link
+              to="/store"
+              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
+            >
+              Tienda
+            </Link>
           </div>
         </div>
       </div>
