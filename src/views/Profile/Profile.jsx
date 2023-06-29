@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfile } from "../../redux/actions/getProfile";
-import { updateUserImage } from "../../redux/actions/updateUserImage";
 import { Link } from "react-router-dom";
 import StarsIcon from "@mui/icons-material/Stars";
 import axios from "axios";
