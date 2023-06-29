@@ -10,7 +10,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 import { useEffect } from "react";
 import {useLocation} from 'react-router-dom';
-import { setLoggedInUser } from "../../redux/actions/setLoggedInUser.js";
+
 const Login = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});

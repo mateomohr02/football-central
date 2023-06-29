@@ -64,11 +64,7 @@ const userReducer = (state = intialUserState, action) => {
         isPremium: true,
       };
       
-    case SET_LOGGED_IN_USER:
-      return {
-        ...state,
-        user: action.payload, // Aquí se actualiza el estado con el usuario logueado
-      };
+   
       
     default:
       return state;

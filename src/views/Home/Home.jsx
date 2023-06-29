@@ -44,9 +44,9 @@ const Home = () => {
 
   return (
     <div>
-      {<TeamCards />
+      <TeamCards />
       <News />
-      <MatchCards /> */}
+      <MatchCards /> 
     </div>
   );
 };
