@@ -22,6 +22,7 @@ import DetailLivescore from "./views/DetailLivescore/DetailLivescore";
 import InternationalCompetitions from './views/InternationalCompetitions/InternationalCompetitions'
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
 import Store from './views/Store/Store';
+import Reviews from "./views/Reviews/Reviews";
 
 
 
@@ -87,7 +88,7 @@ function App() {
         <Route exact path="/success" element={<Success />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/store" element={<Store />} />
-
+        <Route exact path="/reviews" element={<Reviews/>}/>
         <Route
           path="*"
           element={
