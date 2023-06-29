@@ -4,6 +4,7 @@ import {
   LOGOUT,
   PREMIUM,
   REGISTER,
+  UPDATED_USER_IMAGE,
   UPDATE_USER_PROFILE,
   SET_LOGGED_IN_USER
 } from "../actions/actions-type";
@@ -55,6 +56,8 @@ const userReducer = (state = intialUserState, action) => {
         },
       };
 
+      // case UPDATED_USER_IMAGE:
+      //   return{...state, user:{...state.user, image:{action.payload}}}
     case PREMIUM:
       return {
         ...state,

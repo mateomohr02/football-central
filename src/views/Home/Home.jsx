@@ -1,28 +1,50 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-/* import { getFixtureToday } from "../../redux/actions/getFixtureToday"; */
 import { getFixtureByDateRange } from "../../redux/actions/getFixtureByDateRange";
-import { getLivescores } from "../../redux/actions/getLiveScores";
 import { getLivescoresLatest } from "../../redux/actions/getLivescoresLatest";
 import MatchCards from "../../components/MatchCards/MatchCards";
 import News from "../../components/News/News";
 import TeamCards from "../../components/TeamCards/TeamCards";
-
+import {getTeamByCountryId} from '../../redux/actions/getTeamByCountryId'
+import { getNews } from "../../redux/actions/action-news";
 
 const Home = () => {
-  // const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await Promise.all([
+          dispatch(getTeamByCountryId(44)),
+          dispatch(getFixtureByDateRange()),
+          dispatch(getNews())
+        ]);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+  
+    const fetchDataInterval = setInterval(fetchData, 3600000);
+  
+    const getLivescoresLatestInterval = setInterval(() => {
+      dispatch(getLivescoresLatest());
+    }, 15000);
+  
+    fetchData(); // Llamada inicial para obtener los datos inmediatamente
+  
+    return () => {
+      clearInterval(fetchDataInterval);
+      clearInterval(getLivescoresLatestInterval);
+    };
+  }, [dispatch]);
   
 
-  // useEffect(() => {
-  //   dispatch(getLivescores());
-  //   dispatch(getLivescoresLatest());
-  //   dispatch(getFixtureByDateRange());
-  // }, [dispatch]);
 
   return (
     <div>
-      {/* <TeamCards />
+      {<TeamCards />
       <News />
       <MatchCards /> */}
     </div>

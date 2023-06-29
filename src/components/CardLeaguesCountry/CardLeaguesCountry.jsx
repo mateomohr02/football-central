@@ -2,7 +2,7 @@ import React from "react";
 
 const CardLeaguesCountry = (l) => {
   return (
-    <div className="md:w-40 md:h-32 md:rounded-2xl bg-pf-white md:flex md:flex-col md:gap-2 md:justify-between md:items-center transform hover:scale-[101%] transition-all duration-300">
+    <div className="md:w-40 md:h-32 md:rounded-2xl bg-pf-white md:flex md:flex-col md:gap-2 md:justify-between md:items-center transform hover:scale-[101%] transition-all duration-300" key={l.id}>
       {/* Cada componente estaría envuelto en una etiqueta link que me lleve al detial de la liga */}
       <img
         src={l.image_path}

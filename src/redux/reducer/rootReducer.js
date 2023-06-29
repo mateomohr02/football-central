@@ -7,7 +7,8 @@ import fixtureReducer from "./fixtureReducer";
 import livescoresReducer from "./livescoresReducer";
 import venueReducer from "./venueReducer";
 import playerReducer from "./playerReducer";
-
+import newsReducer from "./newsReducer";
+import reviewsReducer from "./reviewsReducer"
 //all reducers get sent dispatch, only one acts on it
 const rootReducer = combineReducers({
   team: teamReducer,
@@ -17,7 +18,9 @@ const rootReducer = combineReducers({
   fixture: fixtureReducer,
   livescores: livescoresReducer,
   venue: venueReducer,
-  player: playerReducer
+  player: playerReducer,
+  news: newsReducer,
+  reviews: reviewsReducer,
 });
 
 export default rootReducer;

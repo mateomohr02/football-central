@@ -6,7 +6,7 @@ export const getLivescoresLatest = () => {
     try {
       const response = await axios.get("/livescore/latest");
       const data = response.data;
-      console.log('la data',data)
+      console.log('la data de livescore desde action',data)
       dispatch({
         type: GET_LIVESCORES_LATEST,
         payload: data,

@@ -7,16 +7,40 @@ export function getStandingsLeague(id){
     let url;
 
     if (id === '636'){
-        url = `/standings/20873?league_id=${id}`
+        url = `/standings/season/20873?league_id=${id}`
+    }
+    if (id === '1502'){
+        url = `/standings/season/21050?league_id=${id}`
     }
     if (id === '82'){
-        url = `/standings/19744?league_id=${id}`
+        url = `/standings/season/19744?league_id=${id}`
     }
     if (id === '85'){
-        url = `/standings/19743?league_id=${id}`
+        url = `/standings/season/19743?league_id=${id}`
     }
     if (id === '8'){
-        url = `/standings/19734?league_id=${id}`
+        url = `/standings/season/19734?league_id=${id}`
+    }
+    if (id === '9'){
+        url = `/standings/season/19793?league_id=${id}`
+    }
+    if (id === '12'){
+        url = `/standings/season/19794?league_id=${id}`
+    }
+    if (id === '17'){
+        url = `/standings/season/19917?league_id=${id}`
+    }
+    if (id === '23'){
+        url = `/standings/season/19652?league_id=${id}`
+    }
+    if (id === '24'){
+        url = `/standings/season/19652?league_id=${id}`
+    }
+    if (id === '27'){
+        url = `/standings/season/19652?league_id=${id}`
+    }
+    if (id === '45'){
+        url = `/standings/season/19989?league_id=${id}`
     }
     
     try {
@@ -29,7 +53,7 @@ export function getStandingsLeague(id){
         const arrURLs = standings.map(t => {
             return `/team/${t.participant_id}`
         })
-
+        
         const fetchTeam = (url) => {
             return axios.get(url)
             .then(response => response.data)
@@ -51,32 +75,11 @@ export function getStandingsLeague(id){
             });
         })
 
-        console.log(standings, 'Action')
-
         return dispatch({
             type: GET_STANDINGS_LEAGUE,
             payload: standings
         })
         
-        //CÓDIGO SYNC
-        // let apiData = await axios.get(url);
-        // let standings = apiData.data;
-
-        // for (const position of standings) {
-        //     if (position.points !== 0) {
-        //         const team = await axios.get(`http://localhost:3001/team/${position.participant_id}`);
-        //         position.teamInfo = team.data;
-        //     }
-        // }
-
-        // standings = standings.filter((position) => position.points !== 0);
-        
-
-
-        // return dispatch({
-        //   type: 'GET_STANDINGS_LEAGUE',
-        //   payload: standings
-        // });
       } catch (error) {
         
         alert('No se puede acceder al detail de esta liga')
