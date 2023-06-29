@@ -33,7 +33,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const image = useSelector((state) => state.user.userProfile.image.imageUrl);
+  const image = useSelector((state) => state.user?.userProfile?.image?.imageUrl);
 
   console.log(image);
   return (
@@ -106,7 +106,7 @@ const Navbar = () => {
                   to="/profile"
                   className="h-12 w-12 flex justify-center items-center sm:absolute -right-6"
                 >
-                  {image !== "" || !image ? (
+                  {image !== "" ? (
                     <img
                       src={image}
                       alt="ProfilePicture"
