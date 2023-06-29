@@ -1,6 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
@@ -19,10 +18,15 @@ import Premium from "./views/Premium/Premium";
 import Success from "./views/Premium/Success";
 import Profile from "./views/Profile/Profile";
 import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import axios from "axios";
 
 function App() {
   const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
@@ -44,7 +48,7 @@ function App() {
   //   console.log(decoded);
   //   setUser(decoded);
   //   }
-      
+  
   //  useEffect(() => {
   //   /* global google */
   //   google.accounts.id.initialize({
@@ -58,7 +62,7 @@ function App() {
   //   );
   // }, []);
 
-
+  const isLoginPage = location.pathname === "/";
   return (
     <div>
       {localStorage.getItem("loggedIn") === "true" ? (
@@ -67,11 +71,27 @@ function App() {
         (location.pathname === "/" || location.pathname === "/register") ? (
           location.pathname === "/" ? <Landing /> : <Register />
         ) : (
-          // Redirigir al usuario a la página de inicio de sesión
           <Navigate to="/" />
         )
       )}
-      <div id="signInDiv"></div>
+      {isLoginPage && <div id="signInDiv"></div>}
+
+      {/* <GoogleOAuthProvider clientId="824712636886-5dlecueq2b9iq35rv1ok86i4jvcobm7l.apps.googleusercontent.com">
+        <GoogleLogin
+          onSuccess={async (credentialResponse) => {
+            try {
+              console.log(credentialResponse); // Asegúrate de que puedes ver el token en la consola
+                const tokenId = credentialResponse.credential; // Aquí obtenemos el token de la respuesta
+               const response = await axios.post("/users/login/google", { tokenId });
+                console.log(response.data); // Datos de usuario devueltos por el servidor
+               } catch (error) {
+            console.error(error);
+           }
+          }}
+        onFailure={(response) => console.error(response)}
+        />
+      </GoogleOAuthProvider> */}
+
       <Routes>
         <Route path="/registro" element={<Register />} />
         <Route path="/inicio" element={<Home />} />
@@ -88,7 +108,7 @@ function App() {
         <Route path="/premium" element={<Premium />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={location.pathname !== "/" && location.pathname !== "/register" && location.pathname !== "/home" && location.pathname !== "/Teams" && location.pathname !== "/CountryCompetitions" && <NotFound />} />
       </Routes>
     </div>
   );

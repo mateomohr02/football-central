@@ -30,4 +30,5 @@ export const TEAMS="TEAMS";
 export const FILTER_TEAMS="FILTER_TEAMS";
 export const FILTER_TEAMSBYCOUNTRY="FILTER_TEAMSBYCOUNTRY"
 export const NEWS="NEWS"
+export const SET_LOGGED_IN_USER = "SET_LOGGED_IN_USER";
 

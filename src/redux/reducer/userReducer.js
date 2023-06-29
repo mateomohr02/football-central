@@ -5,6 +5,7 @@ import {
   PREMIUM,
   REGISTER,
   UPDATE_USER_PROFILE,
+  SET_LOGGED_IN_USER
 } from "../actions/actions-type";
 
 const intialUserState = {
@@ -58,6 +59,12 @@ const userReducer = (state = intialUserState, action) => {
       return {
         ...state,
         isPremium: true,
+      };
+      
+    case SET_LOGGED_IN_USER:
+      return {
+        ...state,
+        user: action.payload, // Aquí se actualiza el estado con el usuario logueado
       };
       
     default:

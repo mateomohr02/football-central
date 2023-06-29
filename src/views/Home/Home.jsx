@@ -11,20 +11,20 @@ import TeamCards from "../../components/TeamCards/TeamCards";
 
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
 
-  useEffect(() => {
-    dispatch(getLivescores());
-    dispatch(getLivescoresLatest());
-    dispatch(getFixtureByDateRange());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getLivescores());
+  //   dispatch(getLivescoresLatest());
+  //   dispatch(getFixtureByDateRange());
+  // }, [dispatch]);
 
   return (
     <div>
-      <TeamCards />
+      {/* <TeamCards />
       <News />
-      <MatchCards />
+      <MatchCards /> */}
     </div>
   );
 };
