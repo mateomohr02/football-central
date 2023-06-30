@@ -21,7 +21,7 @@ const TeamCards = () => {
   return (
     <div className="bg-white w-full h-[60px] mt-5 flex md:justify-center md:items-center gap-1.5 ">
       {teamsAFA.map((team) => (
-        <TeamCard key={team.id} logo={team?.image_path} />
+        <TeamCard key={team.id} logo={team?.image_path} id={team.id} />
       ))}
     </div>
   );
