@@ -5,10 +5,9 @@ export function getInternationalCompetitions (){
     return async function (dispatch){
 
     try {
-        let competitions= ['2','5','1122']
+        let competitions= ['2','5']
         //ECL
         //EUROPA LEAGUE
-        //LIBERTADORES
         const fetchCompetitions  = (id) => {
             return axios.get(`/league/${id}`)
             .then (response => response.data[0])

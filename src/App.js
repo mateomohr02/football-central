@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
@@ -27,12 +27,15 @@ import InternationalCompetitions from './views/InternationalCompetitions/Interna
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
 import Store from './views/Store/Store';
 import Reviews from "./views/Reviews/Reviews";
-
+import Admin from './views/Admin/Admin'
 
 function App() {
   const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
@@ -50,6 +53,8 @@ function App() {
 
 
   const isLoginPage = location.pathname === "/";
+
+  console.log(localStorage, 'esto es lo que necesito');
   return (
     <div>
       {localStorage.getItem("loggedIn") === "true" ? (
@@ -63,6 +68,7 @@ function App() {
       )}
       {isLoginPage && <div id="signInDiv"></div>}
 
+      
       <Routes>
         <Route exact path="/inicio" element={<Home />} />
         <Route exact path="/teams" element={<Teams />} />
@@ -96,6 +102,7 @@ function App() {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/reviews" element={<Reviews/>}/>
+        <Route exact path="/admin" element={<Admin/>}/>
         <Route
           path="*"
           element={
