@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfile } from "../../redux/actions/getProfile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import StarsIcon from "@mui/icons-material/Stars";
 import axios from "axios";
 import { Center, Flex } from "@chakra-ui/layout";
@@ -10,6 +10,8 @@ const Profile = () => {
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [uploadedImage, setUploadedImage] = useState("");
+
+  const navigate = useNavigate()
 
   const previewFile = (file) => {
     const reader = new FileReader();
@@ -130,6 +132,11 @@ const Profile = () => {
           </form>
         </div>
       </div>
+      {user.role === 'admin' ?(<div>
+        <button onClick={() => navigate('/admin')}>Panel de Administrador</button>
+      </div>) : ''
+      }
+      
     </div>
   );
 };
