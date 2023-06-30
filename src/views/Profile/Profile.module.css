@@ -1,0 +1,41 @@
+.profilePic {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.formPic{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 100px;
+}
+.tempPic{
+  
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 150px;
+  margin-right: 150px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid rgb(65, 72, 51);
+}
+
+.text {
+  flex-grow: -1; /* Allow the info element to grow and occupy the remaining space */
+  text-align: center; /* Center the content horizontally */
+  margin-right:  auto;
+  margin-left: auto;
+  font-size: 20px;
+}

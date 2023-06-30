@@ -14,6 +14,7 @@ import EngCommunityShield from '../../components/EngCommunityShield/EngCommunity
 import EngFACup from '../../components/EngFACup/EngFACup'
 import EngCarabaoCup from '../../components/EngCarabaoCup/EngCarabaoCup'
 import EngWomenSuperLeague from '../../components/EngWomenSuperLeague/EngWomenSuperLeague'
+import EngLeagueTwo from '../../components/EngLeagueTwo/EngLeagueTwo'
 
 const DetailLeague = () => {
 
@@ -21,7 +22,7 @@ const DetailLeague = () => {
 
     return (
     <div>
-      {id === "636"? <ArgSuperliga/> : (id === '1502' ? <ArgSupercup/> : (id === "82" ? <Bundesliga1/> : (id === '85' ? <Bundesliga2/> : (id === "109" ? <GerDBFPokal/> : (id === "8" ? <EngPremier/> : (id === "9" ? <EngChamp/> : (id === "12" ? <EngLeagueOne/> : (id === "17" ? <EngNationalLeague/> : (id === "23" ? <EngCommunityShield/> : (id === "24" ? <EngFACup/> : (id === '27' ? <EngCarabaoCup/> : (id === "45" ? <EngWomenSuperLeague/> : ""))))))))))))}
+      {id === "636"? <ArgSuperliga/> : (id === '1502' ? <ArgSupercup/> : (id === "82" ? <Bundesliga1/> : (id === '85' ? <Bundesliga2/> : (id === "109" ? <GerDBFPokal/> : (id === "8" ? <EngPremier/> : (id === "9" ? <EngChamp/> : (id === "12" ? <EngLeagueOne/> : (id === "17" ? <EngNationalLeague/> : (id === "23" ? <EngCommunityShield/> : (id === "24" ? <EngFACup/> : (id === '27' ? <EngCarabaoCup/> : (id === "45" ? <EngWomenSuperLeague/> : (id === "14") ? <EngLeagueTwo/> : ''))))))))))))}
     </div>
   )
 }
