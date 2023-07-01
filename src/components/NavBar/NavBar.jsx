@@ -8,8 +8,13 @@ import PlayersFilter from "../PlayersFilter/PlayersFilter.jsx";
 import logo from "../../assets/logo.svg";
 import { getProfile } from "../../redux/actions/getProfile.js";
 
+// Importa los componentes de Material-UI necesarios
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState(null); // Estado para controlar la apertura y cierre del menú
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,9 +34,19 @@ const Navbar = () => {
     setIsAuthenticated(false);
     navigate("/login");
   };
-
+  const handleProfile = ()=>{
+    navigate("/profile")
+  }
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const openMenu = (event) => {
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const closeMenu = () => {
+    setMenuAnchor(null);
   };
 
   const image = useSelector((state) => state.user?.userProfile?.image?.imageUrl);
@@ -100,36 +115,41 @@ const Navbar = () => {
             isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
           }`}
         >
-          <div className="flex w-full items-end flex-col pr-2 mx-4 md:flex-row md:justify-end md:items-center md:mr-6 md:py-0">
+          <div className=" flex w-full items-end flex-col pr-2 mx-4 md:flex-row md:justify-end md:items-center md:mr-6 md:py-0">
             {isAuthenticated ? (
               <>
-                <Link
-                  to="/profile"
-                  className="h-12 w-12 flex justify-center items-center sm:absolute -right-6"
-                >
-                  {image !== "" ? (
-                    <img
-                      src={image}
-                      alt="ProfilePicture"
-                      style={{
-                        borderRadius: "50%",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    />
-                  ) : (
-                    <AccountCircleIcon
-                      fontSize="large"
-                      className="text-pf-white text-2xl"
-                    />
-                  )}
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-                >
-                  Logout
-                </button>
+                <div>
+                 
+                  <button
+                    onClick={openMenu}
+                    className=" h-12 w-12 flex justify-center items-center sm:absolute -right-6 top-0"
+                  >
+                    {image ? (
+                      <img
+                        src={image}
+                        alt="ProfilePicture"
+                        style={{
+                          borderRadius: "50%",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    ) : (
+                      <AccountCircleIcon
+                        fontSize="large"
+                        className="text-pf-white text-2xl"
+                      />
+                    )}
+                  </button>
+                  <Menu
+                    anchorEl={menuAnchor}
+                    open={Boolean(menuAnchor)}
+                    onClose={closeMenu}
+                  >
+                    <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </Menu>
+                </div>
               </>
             ) : (
               <Link
@@ -154,19 +174,6 @@ const Navbar = () => {
               Equipos
             </Link>
 
-            <Link
-              to="#"
-              
-            >
-            <PlayersFilter />  
-            </Link>  
-
-            <Link
-              to="#"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-            >
-              Noticias
-            </Link>
             <Link
               to="/reviews"
               className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
@@ -207,3 +214,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

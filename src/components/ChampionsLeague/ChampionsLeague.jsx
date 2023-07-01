@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChampions } from '../../redux/actions/getChampions';
 import TableGroups from '../TableGroups/TableGroups'
 import PlayOffMatchCard from '../PlayOffMatchCard/PlayOffMatchCard';
+import { resetInternationalLeague } from '../../redux/actions/resetInternationalLeague'
 
 
 const ChampionsLeague = () => {
@@ -11,6 +12,9 @@ const ChampionsLeague = () => {
 
   useEffect(()=>{
     dispatch(getChampions())
+    return () => {
+      dispatch(resetInternationalLeague())
+  }
   }, [dispatch])  
 
   const detailCup = useSelector(state => state.leagueCup.detailCup)

@@ -4,6 +4,7 @@ import {
   GET_DETAIL_TEAM,
   GET_TEAM_BY_COUNTRY_ID,
   GET_TEAM_BY_NAME,
+  GET_TEAM_SQUAD_BY_TEAM_ID,
   RESET_DETAIL_TEAM,
   RESET_SHOWED_TEAMS,
   SEARCH_TEAM_LEAGUE,
@@ -17,7 +18,8 @@ const initialTeamState = {
   team: [],
   teams_filter: [],
   team_filter_combinados: [],
-  teamByCountryId:[]
+  teamByCountryId:[],
+  teamSquad:[]
 };
 
 const teamReducer = (state = initialTeamState, action) => {
@@ -31,8 +33,9 @@ const teamReducer = (state = initialTeamState, action) => {
     case RESET_DETAIL_TEAM:
       return { ...state, detailTeam: action.payload };
 
-    case GET_DETAIL_TEAM:
-      return { ...state, detailTeam: action.payload };
+      case GET_DETAIL_TEAM:
+        return { ...state, detailTeam: action.payload };
+      
 
     case GET_TEAM_BY_NAME:
       return {
@@ -82,6 +85,12 @@ const teamReducer = (state = initialTeamState, action) => {
       return{
         ...state,
         teamByCountryId:action.payload
+      }
+    }
+    case GET_TEAM_SQUAD_BY_TEAM_ID:{
+      return{
+        ...state,
+        teamSquad:action.payload
       }
     }  
     default:
