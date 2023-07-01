@@ -9,8 +9,7 @@ import venueReducer from "./venueReducer";
 import playerReducer from "./playerReducer";
 import newsReducer from "./newsReducer";
 import reviewsReducer from "./reviewsReducer"
-import storeReducer from "./storeReducer"
-
+import storeReducer from "./storeReducer";
 //all reducers get sent dispatch, only one acts on it
 const rootReducer = combineReducers({
   team: teamReducer,

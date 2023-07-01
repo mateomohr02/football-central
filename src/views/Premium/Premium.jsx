@@ -13,7 +13,7 @@ const Premium = () => {
   const userProfile = useSelector((state) => state.user.userProfile);
   const dispatch = useDispatch();
   const loggedUserID = localStorage.getItem("id");
-
+  
   const handleApprove = async (orderID, price) => {
     setPaidFor(true);
     console.log("Before dispatching updateUserProfile");

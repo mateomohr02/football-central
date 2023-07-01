@@ -6,6 +6,7 @@ import {
   REGISTER,
   UPDATED_USER_IMAGE,
   UPDATE_USER_PROFILE,
+  SET_LOGGED_IN_USER
 } from "../actions/actions-type";
 
 const intialUserState = {
@@ -14,6 +15,8 @@ const intialUserState = {
   isPremium: false,
   user: {},
   userProfile: [],
+  searchedUsers: [],
+  roleChanged: false
 };
 
 const userReducer = (state = intialUserState, action) => {
@@ -52,9 +55,24 @@ const userReducer = (state = intialUserState, action) => {
         user: {
           ...state.user,
           username: action.payload.username,
-        },
+        }
+        
       };
-
+      case 'GET_USERS_ADMIN':
+        return{
+          ...state,
+          searchedUsers: action.payload
+        }
+      case 'CHANGE_USER_ROLE':
+        return{
+          ...state,
+          roleChanged: true
+        }
+      case 'RESET_CHANGED_ROLE':
+        return{
+          ...state,
+          roleChanged: false
+        }
       // case UPDATED_USER_IMAGE:
       //   return{...state, user:{...state.user, image:{action.payload}}}
     case PREMIUM:
@@ -62,6 +80,8 @@ const userReducer = (state = intialUserState, action) => {
         ...state,
         isPremium: true,
       };
+      
+   
       
     default:
       return state;
