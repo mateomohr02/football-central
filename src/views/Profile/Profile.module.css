@@ -25,7 +25,7 @@
   margin-left: 50px;
   margin-right: 25px;
   align-items: flex-start;
-  border: 1px solid #3f4044;
+  border: 1px solid #E3E3E3;
 }
 
 .formPic {
@@ -83,22 +83,25 @@
   color: #177245;
 }
 .textBox {
-  border: 2px solid black;
+  border: 2px solid #E3E3E3;
+  color: black;
   text-align: left;
   width: 450px;
   border-radius: 5px;
   padding: 10px;
   font-size: 15px;
+  background-color: #F5F5F5;
 }
 .text {
   flex-grow: 11;
-  text-align: center;
+  text-align: left;
   margin-right: auto;
   margin-left: auto;
   margin-top: 15px;
   margin-bottom: auto;
   font-size: 17px;
   align-items: flex-start;
+  color: black;
 }
 .textCont {
   margin-right: 150px;
@@ -106,6 +109,7 @@
   margin-bottom: auto;
   margin-left: 25px;
 }
+
 .button {
   color: rgb(255, 255, 255);
   background-color: #007fff;
