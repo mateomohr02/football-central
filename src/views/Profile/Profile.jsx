@@ -106,18 +106,22 @@ const Profile = () => {
           </h3>
         </div>
       )}
-      <div className={style.text}>
-        <h3>Username:</h3>
-        <h3>{user.username}</h3>
-        <h3>Email:</h3>
-        <h3>{user.email}</h3>
-        <h3>
-          Cuenta: 
-          {user.isPremium === false ? "Estandar" : "Premium"}
+      <div className={style.textCont}>
+        <h3 className={style.text}>Username:</h3>
+        <h3 className={style.textBox}>{user.username}</h3>
+        <h3 className={style.text}>Email:</h3>
+        <h3 className={style.textBox}>{user.email}</h3>
+        <h3 className={style.text}>
+          Cuenta:
+          {user.isPremium === false ? (
+            <h3 className={style.textBox}>Estandar</h3>
+          ) : (
+            <h3 className={style.textBox}>Premium</h3>
+          )}
           <span>
             {user?.isPremium === false ? (
               <Link to="/premium">
-                <button className={style.button}>Suscribirse</button>
+                <button className={style.button}>Suscríbete a premium</button>
               </Link>
             ) : (
               <StarsIcon />

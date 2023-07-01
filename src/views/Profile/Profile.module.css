@@ -11,6 +11,7 @@
   justify-content: space-between;
   border-radius: 15px;
   height: 550px;
+  width: auto;
   /* align-items: center; */
 }
 
@@ -21,10 +22,10 @@
   object-position: center center;
   border-radius: 50%;
   margin-top: 50px;
-  margin-left: 25px;
-  margin-right: auto;
+  margin-left: 50px;
+  margin-right: 25px;
   align-items: flex-start;
-  border: 2px black;
+  border: 1px solid #3f4044;
 }
 
 .formPic {
@@ -81,17 +82,30 @@
 .confirm:hover {
   color: #177245;
 }
-
+.textBox {
+  border: 2px solid black;
+  text-align: left;
+  width: 450px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 15px;
+}
 .text {
   flex-grow: 11;
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 15px;
+  margin-bottom: auto;
+  font-size: 17px;
+  align-items: flex-start;
+}
+.textCont {
+  margin-right: 150px;
   margin-top: auto;
   margin-bottom: auto;
-  font-size: 20px;
+  margin-left: 25px;
 }
-
 .button {
   color: rgb(255, 255, 255);
   background-color: #007fff;
@@ -101,6 +115,7 @@
   border-radius: 10px;
   border: 2px solid #0064c8;
   display: inline-block;
+  margin-top: 20px;
 }
 
 .button:hover {
