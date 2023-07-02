@@ -6,6 +6,7 @@ import {
   const initialTeamState = {
     reviews:[],
     createreviews:[],
+    reviewMessage: ''
   };
   
   const teamReducer = (state = initialTeamState, action) => {
@@ -15,7 +16,7 @@ import {
   
       case GET_REVIEWS:
         return { ...state, reviews: action.payload };
-  
+      
       default:
         return state;
     }
