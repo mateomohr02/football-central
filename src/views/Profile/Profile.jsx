@@ -50,14 +50,17 @@ const Profile = () => {
     window.location.reload();
   };
 
+
   useEffect(() => {
     dispatch(getProfile(loggedUserID)); // Verifica que loggedUserID tenga un valor válido
   }, [dispatch, loggedUserID]);
   console.log("loggedUserID:", loggedUserID);
-  console.log(user);
+  
+  console.log(user.role, 'ROL USER');
 
   return (
     <div className={style.container}>
+
       <div className={style.profileSection}>
         {currentProfilePic ? (
           <img
@@ -129,15 +132,15 @@ const Profile = () => {
           </span>
         </h3>
       </div>
-      {user.role === "admin" ? (
-        <div>
-          <button onClick={() => navigate("/admin")}>
-            Panel de Administrador
+
+      <div>
+        {user.role === 'admin' ? (<div>
+          <button onClick={() => navigate('/admin')}>
+              PANEL DE ADMINISTRADOR
           </button>
-        </div>
-      ) : (
-        ""
-      )}
+        </div> ): ''}
+      </div>
+      
     </div>
   );
 };

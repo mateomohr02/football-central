@@ -13,7 +13,8 @@ import {
     cart: [],
     createsCart:[],
     loading: false,
-    error: null
+    error: null,
+    newProduct: false
   };
   
   const storeReducer = (state = initialState, action) => {
@@ -28,10 +29,21 @@ import {
       return { ...state, createsCart: action.payload };
       case GET_PRODUCT_CART:
       return { ...state, cart: action.payload };
-      
-      
-      
-     
+      case 'GET_ALL_PRODUCTS':
+            return{
+                ...state,
+                products : action.payload
+            }
+        case 'POST_NEW_PRODUCT':
+            return{
+                ...state,
+                newProduct: true
+            }
+        case 'RESET_NEW_PRODUCT':
+            return{
+                ...state,
+                newProduct: false
+            }
       default:
         return state;
     }
