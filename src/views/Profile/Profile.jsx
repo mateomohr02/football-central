@@ -4,14 +4,16 @@ import { getProfile } from "../../redux/actions/getProfile";
 import { Link, useNavigate } from "react-router-dom";
 import StarsIcon from "@mui/icons-material/Stars";
 import axios from "axios";
-import { Center, Flex } from "@chakra-ui/layout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import style from "./Profile.module.css";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const Profile = () => {
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [uploadedImage, setUploadedImage] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const previewFile = (file) => {
     const reader = new FileReader();
@@ -48,94 +50,96 @@ const Profile = () => {
     window.location.reload();
   };
 
-  const openFileInput = () => {
-    document.getElementById("fileInput").click();
-  };
 
   useEffect(() => {
     dispatch(getProfile(loggedUserID)); // Verifica que loggedUserID tenga un valor válido
   }, [dispatch, loggedUserID]);
   console.log("loggedUserID:", loggedUserID);
+  
+  console.log(user.role, 'ROL USER');
 
   return (
-    <div className="flex flex-col items-center h-screen">
-      <h1 className="text-4xl mb-8">Profile</h1>
-      <div className="bg-white rounded-lg p-8">
-        <div>
-          {/* <h3>ID: {user?.id}</h3> */}
-          <div
+    <div className={style.container}>
+
+      <div className={style.profileSection}>
+        {currentProfilePic ? (
+          <img
+            src={currentProfilePic}
+            alt="currentProfilePic"
+            className={style.profilePic}
+          />
+        ) : (
+          <AccountCircleIcon
+            fontSize="large"
+            className="text-pf-white text-2xl"
             style={{
-              width: "200px",
-              height: "200px",
+              width: "300px",
+              height: "300px",
+              objectFit: "cover",
               borderRadius: "50%",
               overflow: "hidden",
             }}
-          >
-            {currentProfilePic && (
-              <img
-                src={currentProfilePic}
-                alt="currentProfilePic"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-                onClick={openFileInput}
-              />
-            )}
-          </div>
-          <h3>UserName: {user.username}</h3>
-          <h3>Email: {user.email}</h3>
-          {/* <h3>Rol: {user.role}</h3> */}
-          <h3>
-            Premium: {user.isPremium === false ? "No" : "Si"}
-            <span>
-              {user?.isPremium === false ? (
-                <Link to="/premium">
-                  <button className="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Suscribirse
-                  </button>
-                </Link>
-              ) : (
-                <StarsIcon />
-              )}
-            </span>
-          </h3>
-          <form onSubmit={(event) => handleFileSubmit(event)}>
-            <label
-              htmlFor="fileInput"
-              className="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              Add Profile Pic
-            </label>
-            <input
-              id="fileInput"
-              type="file"
-              onChange={(event) => handleFile(event)}
-              required
-              accept="image/png, image/jpg, image/jpeg"
-              style={{ display: "none" }} // Hide the file input
-            />
-            {image && (
-              <img
-                src={image}
-                alt="profilePicture"
-                style={{ width: "200px", height: "200px", objectFit: "cover" }}
-              />
-            )}
-            <button className="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Add Profile Pic
-            </button>
-          </form>
-        </div>
+          />
+        )}
+        <form onSubmit={(event) => handleFileSubmit(event)}>
+          <label htmlFor="fileInput" className={style.label}>
+            Cambiar foto de perfil
+          </label>
+          <input
+            id="fileInput"
+            type="file"
+            onChange={(event) => handleFile(event)}
+            required
+            accept="image/png, image/jpg, image/jpeg"
+            style={{ display: "none" }} // Hide the file input
+          />
+        </form>
       </div>
-      {user.role === 'admin' ?(<div>
-        <button onClick={() => navigate('/admin')}>Panel de Administrador</button>
-      </div>) : ''
-      }
+      {image && (
+        <div className={style.previewSection}>
+          <img src={image} alt="profilePicture" className={style.profilePic} />
+          <h3 className={style.confirm} onClick={handleFileSubmit}>
+            Confirmar Cambios
+          </h3>
+          <h3
+            className={style.cancel}
+            onClick={(click) => window.location.reload()}
+          >
+            Cancelar Cambios
+          </h3>
+        </div>
+      )}
+      <div className={style.textCont}>
+        <h3 className={style.text}>Username:</h3>
+        <h3 className={style.textBox}>{user.username}</h3>
+        <h3 className={style.text}>Email:</h3>
+        <h3 className={style.textBox}>{user.email}</h3>
+        <h3 className={style.text}>
+          Cuenta:
+          {user.isPremium === false ? (
+            <h3 className={style.textBox}>Estandar</h3>
+          ) : (
+            <h3 className={style.textBox}>Premium</h3>
+          )}
+          <span>
+            {user?.isPremium === false ? (
+              <Link to="/premium">
+                <button className={style.button}>Suscríbete a premium</button>
+              </Link>
+            ) : (
+              <StarsIcon />
+            )}
+          </span>
+        </h3>
+      </div>
+
+      <div>
+        {user.role === 'admin' ? (<div>
+          <button onClick={() => navigate('/admin')}>
+              PANEL DE ADMINISTRADOR
+          </button>
+        </div> ): ''}
+      </div>
       
     </div>
   );
