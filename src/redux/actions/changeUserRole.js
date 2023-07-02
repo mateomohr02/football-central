@@ -1,12 +1,11 @@
 import axios from "axios";
 
 export function changeUserRole(infoUser){
-    console.log(infoUser);
+    console.log(infoUser, 'CHANGE ROLE');
     return async function(dispatch){
         try {
-            const response = //await axios.put('/users/role', infoUser) //await axios.put(`/users`)
-            
-            dispatch({
+            const response = await axios.put('/users/role', infoUser) //await axios.put(`/users`)
+                dispatch({
                 type: 'CHANGE_USER_ROLE',
                 payload: true
             })

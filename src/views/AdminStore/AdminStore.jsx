@@ -6,15 +6,17 @@ import { resetNewProduct } from '../../redux/actions/resetNewProduct'
 import validate from './validateProduct'
 
 
+import { fetchProducts } from '../../redux/actions/action-store'
+
 const AdminStore = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.userProfile)
 
-    // if (user.role !== 'admin'){
-    //     navigate('/404')
-    // }
+    if (user.role !== 'admin'){
+        navigate('/404')
+    }
     
 
     const[newProduct, setNewProduct] = useState({})
@@ -51,6 +53,7 @@ const AdminStore = () => {
         dispatch(postProduct(product))
     }
     useEffect(()=>{
+      dispatch(fetchProducts())
         return () => dispatch(resetNewProduct())
     }, [dispatch])
 
@@ -58,10 +61,12 @@ const AdminStore = () => {
 
     return (
       <div>
-          {allProduts ? allProduts.map(p => {
+          {allProduts ? allProduts?.map(p => {
               return (
                   <div>
-                      Producto
+                      <p>{p?.name}</p>
+                      <p>{p?.price}</p>
+                      <p>{p?.sku}</p>
                   </div>
               )
           }): <span>No existen productos</span>}

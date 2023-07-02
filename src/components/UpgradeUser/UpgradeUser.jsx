@@ -39,12 +39,6 @@ const UpgradeUser = () => {
       dispatch(changeUserRole(data))
     }
 
-    useEffect(() => {
-      return () => resetChangedRole()
-    }, [dispatch])
-
-    const roleChanged = useSelector(state => state.user.roleChanged)
-
   return (
     <div>
     <div>
