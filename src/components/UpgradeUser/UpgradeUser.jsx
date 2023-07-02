@@ -24,7 +24,19 @@ const UpgradeUser = () => {
     const searchedUsers = useSelector(state => state.user.searchedUsers)
 
     const handleClickSetAdmin = (userId) => {
-      dispatch(changeUserRole(userId))
+      const data ={
+        userId,
+        newRole: 'admin'
+      }
+      dispatch(changeUserRole(data))
+    }
+
+    const handleClickSetUser = (userId) => {
+      const data ={
+        userId,
+        newRole: 'user'
+      }
+      dispatch(changeUserRole(data))
     }
 
     useEffect(() => {
@@ -32,8 +44,6 @@ const UpgradeUser = () => {
     }, [dispatch])
 
     const roleChanged = useSelector(state => state.user.roleChanged)
-
-    if (roleChanged) alert('Rol del usuario cambiado con éxito')
 
   return (
     <div>
@@ -54,8 +64,8 @@ const UpgradeUser = () => {
           <p>{user.username}</p>
           <p>{user.role}</p>
           <p>{user.id}</p>
-          <button onClick={handleClickSetAdmin(user.id)}>Hacer Administrador</button>
-        </div>
+          {user.role === 'user'?(<button onClick={() => handleClickSetAdmin(user.id)}>Hacer Administrador</button>) : (<button onClick={() => handleClickSetUser(user.id)}>Hacer User</button>)}
+          </div>
       )}):<span>No se encontraron usuarios con este nombre</span>}
     </div>
     </div>
