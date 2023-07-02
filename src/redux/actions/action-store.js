@@ -11,7 +11,7 @@ import {
   export const fetchProducts = () => {
     return async (dispatch) => {
       try {
-        const response = await axios.get('http://localhost:3001/Store/products');
+        const response = await axios.get('/Store/products');
         const products = response.data;
   
         dispatch({ type: 'GET_PRODUCTS', payload: products });
@@ -25,7 +25,7 @@ import {
   export const fetchProductById = (productId) => {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`http://localhost:3001/Store/products/${productId}`);
+        const response = await axios.get(`/Store/products/${productId}`);
         const product = response.data;
   
         dispatch({ type: 'GET_PRODUCTSID', payload: product });
@@ -42,7 +42,7 @@ import {
       
   
       try {
-        const response = await axios.post('http://localhost:3001/Store/products', productData);
+        const response = await axios.post('/Store/products', productData);
         const createdProduct = response.data;
   
         dispatch({ type: 'CREATE_PRODUCT', payload: createdProduct });
@@ -56,7 +56,7 @@ import {
 export const fetchCart = () => {
     return async (dispatch) => {
       try {
-        const response = await axios.get('http://localhost:3001/Store/cart/items');
+        const response = await axios.get('/Store/cart/items');
         const cart = response.data;
   
         dispatch({ type: 'GET_PRODUCT_CART', payload: cart });
