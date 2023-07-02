@@ -2,7 +2,8 @@ import {
     GET_PRODUCTS,
     GET_PRODUCTSID,
     CREATE_PRODUCT,
-    
+    ADD_PRODUCT_CART,
+    GET_PRODUCT_CART
   } from '../actions/actions-type';
   
   const initialState = {
@@ -10,6 +11,7 @@ import {
     product: {},
     cratesProducts: [],
     cart: [],
+    createsCart:[],
     loading: false,
     error: null
   };
@@ -22,6 +24,10 @@ import {
       return { ...state, product: action.payload };
       case CREATE_PRODUCT:
       return { ...state, createsProducts: action.payload };
+      case ADD_PRODUCT_CART:
+      return { ...state, createsCart: action.payload };
+      case GET_PRODUCT_CART:
+      return { ...state, cart: action.payload };
       
       
       

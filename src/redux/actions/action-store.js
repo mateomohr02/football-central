@@ -52,6 +52,37 @@ import {
       }
     };
   };
+
+export const fetchCart = () => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get('http://localhost:3001/Store/cart/items');
+        const cart = response.data;
+  
+        dispatch({ type: 'GET_PRODUCT_CART', payload: cart });
+        console.log('Products fetched:', cart);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+  };
+
+
+  export const addToCart = (userId, productId) => {
+    return async (dispatch) => {
+      try {
+        const payload = { userId, productId };
+        const response = await axios.post('/cart/add', payload);
+        const createdCart = response.data;
+  
+        dispatch({ type: 'ADD_PRODUCT_CART', payload: createdCart });
+        console.log('Product created:', createdCart);
+      } catch (error) {
+        console.log('Error adding product to cart:', error);
+        // Manejo del error...
+      }
+    };
+  };
   
  
   
