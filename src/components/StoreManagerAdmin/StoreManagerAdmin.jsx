@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getAllProducts } from '../../redux/actions/getAllProducts'
+import { fetchProducts } from '../../redux/actions/action-store'
 import { useNavigate } from 'react-router-dom'
 
 const StoreManagerAdmin = () => {
@@ -10,14 +10,16 @@ const StoreManagerAdmin = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(fetchProducts())
     }, [dispatch])
 
     const allProduts = useSelector(state => state.store.products)
 
+    console.log(allProduts, 'PRODUCTOS');
+
   return (
     <div>
-        {allProduts ? allProduts.map(p => {
+        {allProduts !== [] ? allProduts.map(p => {
             return (
                 <div>
                     Producto

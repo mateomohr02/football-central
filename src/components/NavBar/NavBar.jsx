@@ -34,7 +34,9 @@ const Navbar = () => {
     setIsAuthenticated(false);
     navigate("/login");
   };
-
+  const handleProfile = ()=>{
+    navigate("/profile")
+  }
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -144,6 +146,7 @@ const Navbar = () => {
                     open={Boolean(menuAnchor)}
                     onClose={closeMenu}
                   >
+                    <MenuItem onClick={handleProfile}>Profile</MenuItem>
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </Menu>
                 </div>
