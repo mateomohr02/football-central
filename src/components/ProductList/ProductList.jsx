@@ -11,12 +11,11 @@ const ProductList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  console.log("QUE CARAJOS PASA CSM", products)
-
   return (
     <div>
-      {products.map((product) => (
+      {products?.map((product) => (
         <Product
+          id = {product.id}
           key={product.id}
           name={product.name}
           description={product.description}

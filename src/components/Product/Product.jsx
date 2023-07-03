@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/actions/action-store';
+import { getProfile } from '../../redux/actions/getProfile';
 
 const Product = ({ id, name, description, price, image, stock }) => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.user.id); // Obtener el userId del estado
+  
+  const user = useSelector(state => state.user.userProfile)
+
+  const userId = user?.id
 
   const handleAddToCart = (productId) => {
+    console.log(userId, productId, 'DISPATCH');
     dispatch(addToCart(userId, productId));
   };
+
+  useEffect(()=>{
+    dispatch(getProfile())
+  }, [dispatch])
+
+  console.log(userId, 'VER PREVIO DISPATCH');
 
   return (
     <div>

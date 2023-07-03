@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import Cart from '../../components/Cart/Cart';
+import { useNavigate } from 'react-router-dom';
 
 const Store = () => {
-    const [cartItems, setCartItems] = useState([]);
 
-    const addToCart = (product) => {
-        setCartItems([...cartItems, product]);
-    };
-
-    const products = [];
+    const navigate = useNavigate()
 
     return(
         <div>
             <h1>TIENDA</h1>
-            <ProductList products={products} addToCart={addToCart} />
-            <Cart cartItems={cartItems} />
+            <ProductList/>
+
+            <button onClick={()=>navigate('/cart')}>Ver Carrito</button>
+            
         </div>
     );
 };

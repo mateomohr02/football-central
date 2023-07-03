@@ -72,7 +72,8 @@ export const fetchCart = () => {
     return async (dispatch) => {
       try {
         const payload = { userId, productId };
-        const response = await axios.post('/cart/add', payload);
+        console.log(payload);
+        const response = await axios.post('/Store/cart/add', payload);
         const createdCart = response.data;
   
         dispatch({ type: 'ADD_PRODUCT_CART', payload: createdCart });
@@ -83,6 +84,19 @@ export const fetchCart = () => {
       }
     };
   };
+
+  export const getCartbyUserId = (userId) => {
+    return async (dispatch) => {
+
+      const response = []//req al back: búsqueda de cart por userId
+      const cart = response.data
+
+      dispatch({
+        type: 'GET_CART_USER',
+        payload: cart
+      })
+    }
+  }
   
  
   
