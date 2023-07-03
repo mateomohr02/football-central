@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import Register from "./views/Register/Register.jsx";
 import Home from "./views/Home/Home.jsx";
@@ -27,12 +27,17 @@ import InternationalCompetitions from './views/InternationalCompetitions/Interna
 import DetailInternationalLeagues from './views/DetailInternationalLeagues/DetailInternationalLeagues'
 import Store from './views/Store/Store';
 import Reviews from "./views/Reviews/Reviews";
-
+import Admin from './views/Admin/Admin'
+import AdminStore from "./views/AdminStore/AdminStore";
+import Cart from './views/Cart/Cart'
 
 function App() {
   const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn"); // Obtener el valor de loggedIn desde el localStorage
@@ -49,29 +54,18 @@ function App() {
   }, [location.pathname]);
 
 
-  const isLoginPage = location.pathname === "/";
   return (
     <div>
-      {localStorage.getItem("loggedIn") === "true" ? (
-        <NavBar />
-      ) : (
-        (location.pathname === "/" || location.pathname === "/register") ? (
-          location.pathname === "/" ? <Landing /> : <Register />
-        ) : (
-          <Navigate to="/" />
-        )
-      )}
-      {isLoginPage && <div id="signInDiv"></div>}
+      {localStorage.getItem("loggedIn") === "true" && <NavBar />}
 
+      
       <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/register" element={<Register />} />
         <Route exact path="/inicio" element={<Home />} />
         <Route exact path="/teams" element={<Teams />} />
         <Route exact path="/competiciones" element={<Competitions />} />
-        <Route
-          exact path="/competitions/countries/:id"
-          element={<CountryCompetitions />}
-        />
-
+        <Route exact path="/competitions/countries/:id" element={<CountryCompetitions />} />
         <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
         <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
         <Route exact path="/team/:id" element={<DetailTeam />} />
@@ -79,37 +73,16 @@ function App() {
         <Route exact path="/premium" element={<Premium />} />
         <Route exact path="/success" element={<Success />} />
         <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/partido/:id" element={<DetailLivescore/>}/>
-        <Route exact path="/registro" element={<Register />} />
-        <Route exact path="/inicio" element={<Home />} />
-        <Route exact path="/teams" element={<Teams />} />
-        <Route exact path="/competiciones" element={<Competitions />} />
-        <Route exact path="/competitions/countries/:id" element={<CountryCompetitions/>}/>
-        <Route exact path="/competitions/international" element={<InternationalCompetitions/>}/>
-        <Route exact path="/competitions/international/:id" element={<DetailInternationalLeagues/>}/>
-        <Route exact path="/competitions/leagues/:id" element={<DetailLeague />} />
-        <Route exact path="/competitions/cups/:id" element={<DetailCup />} />
-        <Route exact path="/team/:id" element={<DetailTeam />} />
-        <Route exact path="/search" element={<TeamSearch />} />
-        <Route exact path="/premium" element={<Premium />} />
-        <Route exact path="/success" element={<Success />} />
-        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/partido/:id" element={<DetailLivescore />} />
+        <Route exact path="/competitions/international" element={<InternationalCompetitions />} />
+        <Route exact path="/competitions/international/:id" element={<DetailInternationalLeagues />} />
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/reviews" element={<Reviews/>}/>
-        <Route
-          path="*"
-          element={
-            location.pathname !== "/" || location.pathname !== "/register" ? (
-              <NotFound />
-            ) : (
-              <Navigate to="/" replace={true} />
-            )
-          }
-        />
-
+        <Route exact path="/admin" element={<Admin/>}/>
+        <Route exact path="/admin/addProducts" element={<AdminStore/>}/>
+        <Route path="*" element={<NotFound />} />
+        <Route exact path="/cart" element={<Cart/>}/>
       </Routes>
-
-
     </div>
   );
 }

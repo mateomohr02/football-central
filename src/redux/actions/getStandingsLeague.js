@@ -27,6 +27,9 @@ export function getStandingsLeague(id){
     if (id === '12'){
         url = `/standings/season/19794?league_id=${id}`
     }
+    if (id === '14'){
+        url = `/standings/season/19795?league_id=${id}`
+    }
     if (id === '17'){
         url = `/standings/season/19917?league_id=${id}`
     }
@@ -42,6 +45,7 @@ export function getStandingsLeague(id){
     if (id === '45'){
         url = `/standings/season/19989?league_id=${id}`
     }
+    
     
     try {
         //CÓDIGO ASYNC

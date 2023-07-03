@@ -15,6 +15,8 @@ const intialUserState = {
   isPremium: false,
   user: {},
   userProfile: [],
+  searchedUsers: [],
+  roleChanged: false
 };
 
 const userReducer = (state = intialUserState, action) => {
@@ -53,9 +55,24 @@ const userReducer = (state = intialUserState, action) => {
         user: {
           ...state.user,
           username: action.payload.username,
-        },
+        }
+        
       };
-
+      case 'GET_USERS_ADMIN':
+        return{
+          ...state,
+          searchedUsers: action.payload
+        }
+      case 'CHANGE_USER_ROLE':
+        return{
+          ...state,
+          roleChanged: true
+        }
+      case 'RESET_CHANGED_ROLE':
+        return{
+          ...state,
+          roleChanged: false
+        }
       // case UPDATED_USER_IMAGE:
       //   return{...state, user:{...state.user, image:{action.payload}}}
     case PREMIUM:
