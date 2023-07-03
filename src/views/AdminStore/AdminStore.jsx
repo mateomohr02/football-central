@@ -14,11 +14,10 @@ const AdminStore = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.userProfile)
 
-    // if (user.role !== 'admin'){
-    //     navigate('/404')
-    // }
+    if (user.role !== 'admin'){
+        navigate('/404')
+    }
     
-
     const[newProduct, setNewProduct] = useState({})
 
     const [errors, setErrors] = useState({
@@ -46,14 +45,12 @@ const AdminStore = () => {
           }))
       };
 
-    const handleSubmit = (e,product) => {
-        e.preventDefault()
-        
+    const handleSubmit = (e,product) => {        
         console.log(product, 'PRODUCTO DISPATCH');
         dispatch(postProduct(product))
     }
     useEffect(()=>{
-      dispatch(fetchProducts())
+        dispatch(fetchProducts())
         return () => dispatch(resetNewProduct())
     }, [dispatch])
 
