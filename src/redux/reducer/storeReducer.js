@@ -26,7 +26,9 @@ import {
       case CREATE_PRODUCT:
       return { ...state, createsProducts: action.payload };
       case ADD_PRODUCT_CART:
-      return { ...state, createsCart: action.payload };
+      return { ...state,
+      cart: state.cart.push(action.payload)
+      };
       case GET_PRODUCT_CART:
       return { ...state, cart: action.payload };
       case 'GET_ALL_PRODUCTS':

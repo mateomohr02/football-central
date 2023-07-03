@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
-import CartItem from '../CartItem/CartItem'
-import { useSelector } from "react-redux";
+import CartItem from '../../components/CartItem/CartItem'
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
+
 
     const cartItems = useSelector(state => state.store.cart)
     
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
 
-
-    console.log(cartItems, 'CART ITEMS');
 
     return(
         <div>
