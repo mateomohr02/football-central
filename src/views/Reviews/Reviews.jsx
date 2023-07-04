@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getReviews } from '../../redux/actions/action_reviews';
@@ -11,6 +12,7 @@ const Reviews = () => {
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
+
 
   return (
     <div className="h-[90vh] v-full bg-orange-300">
@@ -28,6 +30,7 @@ const Reviews = () => {
           </li>
         ))}
       </ul>
+
     </div>
   );
 };
