@@ -6,7 +6,7 @@ export const getDetailLivescores = () => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        "/livescore/latest"
+        "http://localhost:3001/livescore/latest"
       );
       const data = response.data;
       console.log("la data de detail livescore desde action", data);
