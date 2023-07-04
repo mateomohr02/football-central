@@ -1,3 +1,4 @@
+import { calculateAge } from "../../views/DetailTeam/utils";
 import {
   FILTER_TEAMS,
   FILTER_TEAMSBYCOUNTRY,
@@ -10,7 +11,6 @@ import {
   SEARCH_TEAM_LEAGUE,
   TEAMS,
 } from "../actions/actions-type";
-
 const initialTeamState = {
   teams: [],
   showedTeams: [],
@@ -18,8 +18,8 @@ const initialTeamState = {
   team: [],
   teams_filter: [],
   team_filter_combinados: [],
-  teamByCountryId:[],
-  teamSquad:[]
+  teamByCountryId: [],
+  teamSquad: [],
 };
 
 const teamReducer = (state = initialTeamState, action) => {
@@ -33,9 +33,8 @@ const teamReducer = (state = initialTeamState, action) => {
     case RESET_DETAIL_TEAM:
       return { ...state, detailTeam: action.payload };
 
-      case GET_DETAIL_TEAM:
-        return { ...state, detailTeam: action.payload };
-      
+    case GET_DETAIL_TEAM:
+      return { ...state, detailTeam: action.payload };
 
     case GET_TEAM_BY_NAME:
       return {
@@ -81,18 +80,58 @@ const teamReducer = (state = initialTeamState, action) => {
 
     case TEAMS:
       return { ...state, teams_filter: action.payload };
-    case GET_TEAM_BY_COUNTRY_ID:{
-      return{
+    case GET_TEAM_BY_COUNTRY_ID: {
+      return {
         ...state,
-        teamByCountryId:action.payload
-      }
+        teamByCountryId: action.payload,
+      };
     }
-    case GET_TEAM_SQUAD_BY_TEAM_ID:{
-      return{
+    case GET_TEAM_SQUAD_BY_TEAM_ID: {
+      return {
         ...state,
-        teamSquad:action.payload
-      }
-    }  
+        teamSquad: action.payload,
+      };
+    }
+    case "SORT_TEAM_SQUAD_BY_LASTNAME": {
+      const { orderBy } = action.payload;
+      const { teamSquad } = state;
+
+      const sortedTeamSquad = teamSquad.slice().sort((a, b) => {
+        if (orderBy === "A-Z") {
+          return a[0].lastname.localeCompare(b[0].lastname);
+        } else if (orderBy === "Z-A") {
+          return b[0].lastname.localeCompare(a[0].lastname);
+        }
+        return 0;
+      });
+
+      return {
+        ...state,
+        teamSquad: sortedTeamSquad,
+      };
+    }
+
+    case "SORT_TEAM_SQUAD_BY_AGE": {
+      const { orderBy } = action.payload;
+      const { teamSquad } = state;
+    
+      const sortedTeamSquad = teamSquad.slice().sort((a, b) => {
+        const ageA = calculateAge(a[0].date_of_birth);
+        const ageB = calculateAge(b[0].date_of_birth);
+        if (orderBy === "Youngest") {
+          return ageA - ageB;
+        } else if (orderBy === "Oldest") {
+          return ageB - ageA;
+        }
+        return 0;
+      });
+    
+      return {
+        ...state,
+        teamSquad: sortedTeamSquad,
+      };
+    }
+    
     default:
       return state;
   }
