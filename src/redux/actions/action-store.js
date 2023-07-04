@@ -15,7 +15,7 @@ import {
         const products = response.data;
   
         dispatch({ type: 'GET_PRODUCTS', payload: products });
-        console.log('Products fetched:', products);
+        
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -29,7 +29,7 @@ import {
         const product = response.data;
   
         dispatch({ type: 'GET_PRODUCTSID', payload: product });
-        console.log('Product fetched:', product);
+        
       } catch (error) {
         dispatch({ type: 'FETCH_PRODUCT_FAILURE', payload: error.message });
         console.error('Error fetching product:', error);
@@ -44,7 +44,6 @@ import {
         const createdProduct = response.data;
   
         dispatch({ type: 'CREATE_PRODUCT', payload: createdProduct });
-        console.log('Product created:', createdProduct);
       } catch (error) {
        console.log("erorr pipi")
       }
@@ -55,10 +54,9 @@ import {
     return async (dispatch) => {
       try {
         const payload = { userId, productId };
-        console.log(payload);
         const response = await axios.put('/Store/cart/add', payload);
-        
-        dispatch({ type: 'ADD_PRODUCT_CART', payload: payload });
+        const data = response.data
+        //dispatch({ type: 'ADD_PRODUCT_CART', payload: payload });
         
       } catch (error) {
         console.log('Error adding product to cart:', error);
@@ -85,23 +83,22 @@ import {
         dispatch({
           type:'RESET_CART_STATE',
         }) 
-      
     }
   }
 
-  export const deleteItemCart = (productId) => {
+  export const deleteItemCart = (userId,productId) => {
     return async (dispatch) => {
-      //req al endpoint del back para 
+      const payload = {userId, productId}
+      const response = await axios.put(`/Store/cart/delete`, payload)
       dispatch({
-        type: 'DELETE_ITEM_CART',
-        payload: productId
+        type: 'DELETE_ITEM_CART'
       })
     }
   }
 
 export const clearCart = (userId) => {
   return async (dispatch) => {
-    
+    const response = await axios.delete(`/Store/cart/empty/${userId}`)
     //Requ al endpoint back
     dispatch({
       type: 'CLEAR_CART'

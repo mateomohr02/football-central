@@ -26,8 +26,9 @@ import {
       case CREATE_PRODUCT:
       return { ...state, createsProducts: action.payload };
       case ADD_PRODUCT_CART:
+        const newCart = state.cart.Products.push()
       return { ...state,
-      cart: state.cart.push(action.payload)
+      cart: newCart
       };
       case GET_PRODUCT_CART:
       return { ...state, cart: action.payload };
@@ -58,17 +59,17 @@ import {
             }
         case 'DELETE_ITEM_CART':
             
-            const filteredCart = state.cart.Products.filter(i => i.id  !== action.payload)
+            const filteredCart = state.cart        
 
             return{
                 ...state,
                 cart: filteredCart
             }
-            case 'CLEAR_CART':
-                return{
-                    ...state,
-                    cart: []
-                }
+        case 'CLEAR_CART':
+            return{
+                ...state,
+                cart: []
+            }
       default:
         return state;
     }
