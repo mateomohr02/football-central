@@ -36,16 +36,39 @@ import {
                 ...state,
                 products : action.payload
             }
-        case 'POST_NEW_PRODUCT':
+      case 'POST_NEW_PRODUCT':
+          return{
+              ...state,
+              newProduct: true
+          }
+      case 'RESET_NEW_PRODUCT':
+          return{
+              ...state,
+              newProduct: false
+          }
+      case 'GET_CART_USER':
+          return{
+              ...state,
+              cart: action.payload
+          }
+        case 'RESET_CART_STATE':
             return{
                 ...state,
-                newProduct: true
+                cart: []
             }
-        case 'RESET_NEW_PRODUCT':
+        case 'DELETE_ITEM_CART':
+            
+            const filteredCart = state.cart.Products.filter(i => i.id  !== action.payload)
+
             return{
                 ...state,
-                newProduct: false
+                cart: filteredCart
             }
+            case 'CLEAR_CART':
+                return{
+                    ...state,
+                    cart: []
+                }
       default:
         return state;
     }

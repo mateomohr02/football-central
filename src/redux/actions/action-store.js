@@ -39,8 +39,6 @@ import {
   
   export const createProduct = (productData) => {
     return async (dispatch) => {
-      
-  
       try {
         const response = await axios.post('/Store/products', productData);
         const createdProduct = response.data;
@@ -53,31 +51,15 @@ import {
     };
   };
 
-export const fetchCart = () => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.get('/Store/cart/items');
-        const cart = response.data;
-  
-        dispatch({ type: 'GET_PRODUCT_CART', payload: cart });
-        console.log('Products fetched:', cart);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-  };
-
-
   export const addToCart = (userId, productId) => {
     return async (dispatch) => {
       try {
         const payload = { userId, productId };
         console.log(payload);
-        const response = await axios.post('/Store/cart/add', payload);
-        const createdCart = response.data;
-  
-        dispatch({ type: 'ADD_PRODUCT_CART', payload: createdCart });
-        console.log('Product created:', createdCart);
+        const response = await axios.put('/Store/cart/add', payload);
+        
+        dispatch({ type: 'ADD_PRODUCT_CART', payload: payload });
+        
       } catch (error) {
         console.log('Error adding product to cart:', error);
         // Manejo del error...
@@ -88,7 +70,7 @@ export const fetchCart = () => {
   export const getCartbyUserId = (userId) => {
     return async (dispatch) => {
 
-      const response = []//req al back: búsqueda de cart por userId
+      const response = await axios.get(`/Store/cart/items/${userId}`)//req al back: búsqueda de cart por userId
       const cart = response.data
 
       dispatch({
@@ -97,6 +79,36 @@ export const fetchCart = () => {
       })
     }
   }
+
+  export const resetCartState = () => {
+    return async (dispatch) => {
+        dispatch({
+          type:'RESET_CART_STATE',
+        }) 
+      
+    }
+  }
+
+  export const deleteItemCart = (productId) => {
+    return async (dispatch) => {
+      //req al endpoint del back para 
+      dispatch({
+        type: 'DELETE_ITEM_CART',
+        payload: productId
+      })
+    }
+  }
+
+export const clearCart = (userId) => {
+  return async (dispatch) => {
+    
+    //Requ al endpoint back
+    dispatch({
+      type: 'CLEAR_CART'
+    })
+
+  }
+}
   
  
   
