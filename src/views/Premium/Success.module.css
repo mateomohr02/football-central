@@ -1,0 +1,91 @@
+.reviews-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.reviews-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.reviews-container form {
+    margin-bottom: 20px;
+}
+
+.reviews-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.reviews-container .stars-container {
+    font-family: FontAwesome;
+    color: yellow;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.reviews-container .stars-container::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+}
+
+.reviews-container .stars-container[data-rating="1"]::before {
+    content: "\f005 \f006 \f006 \f006 \f006";
+}
+
+.reviews-container .stars-container[data-rating="2"]::before {
+    content: "\f005 \f005 \f006 \f006 \f006";
+}
+
+.reviews-container .stars-container[data-rating="3"]::before {
+    content: "\f005 \f005 \f005 \f006 \f006";
+}
+
+.reviews-container .stars-container[data-rating="4"]::before {
+    content: "\f005 \f005 \f005 \f005 \f006";
+}
+
+.reviews-container .stars-container[data-rating="5"]::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+}
+
+.reviews-container input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.reviews-container button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.reviews-container button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.reviews-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.reviews-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reviews-container li {
+    margin-bottom: 10px;
+}
+
+.reviews-container li div {
+    margin-bottom: 5px;
+}
+
+.reviews-container li div:first-child {
+    font-weight: bold;
+}
