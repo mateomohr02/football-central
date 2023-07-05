@@ -6,7 +6,11 @@ import {
   REGISTER,
   UPDATED_USER_IMAGE,
   UPDATE_USER_PROFILE,
-  SET_LOGGED_IN_USER
+  SET_LOGGED_IN_USER,
+  CHANGE_USER_ROLE,
+  DELETE_USER,
+  RESET_CHANGED_ROLE,
+  CLEAR_SEARCHED_USERS,
 } from "../actions/actions-type";
 
 const intialUserState = {
@@ -16,7 +20,7 @@ const intialUserState = {
   user: {},
   userProfile: [],
   searchedUsers: [],
-  roleChanged: false
+  roleChanged: null,
 };
 
 const userReducer = (state = intialUserState, action) => {
@@ -41,6 +45,11 @@ const userReducer = (state = intialUserState, action) => {
         ...state,
         registeredUser: action.payload,
       };
+    case DELETE_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
 
     case LOGOUT:
       return {
@@ -55,34 +64,34 @@ const userReducer = (state = intialUserState, action) => {
         user: {
           ...state.user,
           username: action.payload.username,
-        }
-        
+        },
       };
-      case 'GET_USERS_ADMIN':
-        return{
-          ...state,
-          searchedUsers: action.payload
-        }
-      case 'CHANGE_USER_ROLE':
-        return{
-          ...state,
-          roleChanged: true
-        }
-      case 'RESET_CHANGED_ROLE':
-        return{
-          ...state,
-          roleChanged: false
-        }
-      // case UPDATED_USER_IMAGE:
-      //   return{...state, user:{...state.user, image:{action.payload}}}
+    case "GET_USERS_ADMIN":
+      return {
+        ...state,
+        searchedUsers: action.payload,
+      };
+    case CHANGE_USER_ROLE:
+      return {
+        ...state,
+        roleChanged: action.payload,
+      };
+    case RESET_CHANGED_ROLE:
+      return {
+        ...state,
+        roleChanged: null,
+      };
+    case CLEAR_SEARCHED_USERS:
+      return {
+        ...state,
+        searchedUsers: [],
+      };
     case PREMIUM:
       return {
         ...state,
         isPremium: true,
       };
-      
-   
-      
+
     default:
       return state;
   }
