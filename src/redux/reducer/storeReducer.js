@@ -26,8 +26,9 @@ import {
       case CREATE_PRODUCT:
       return { ...state, createsProducts: action.payload };
       case ADD_PRODUCT_CART:
+        const newCart = state.cart.Products.push()
       return { ...state,
-      cart: state.cart.push(action.payload)
+      cart: newCart
       };
       case GET_PRODUCT_CART:
       return { ...state, cart: action.payload };
@@ -36,15 +37,38 @@ import {
                 ...state,
                 products : action.payload
             }
-        case 'POST_NEW_PRODUCT':
+      case 'POST_NEW_PRODUCT':
+          return{
+              ...state,
+              newProduct: true
+          }
+      case 'RESET_NEW_PRODUCT':
+          return{
+              ...state,
+              newProduct: false
+          }
+      case 'GET_CART_USER':
+          return{
+              ...state,
+              cart: action.payload
+          }
+        case 'RESET_CART_STATE':
             return{
                 ...state,
-                newProduct: true
+                cart: []
             }
-        case 'RESET_NEW_PRODUCT':
+        case 'DELETE_ITEM_CART':
+            
+            const filteredCart = state.cart        
+
             return{
                 ...state,
-                newProduct: false
+                cart: filteredCart
+            }
+        case 'CLEAR_CART':
+            return{
+                ...state,
+                cart: []
             }
       default:
         return state;

@@ -32,7 +32,7 @@ const Home = () => {
       dispatch(getLivescoresLatest());
     }, 15000);
   
-    fetchData(); // Llamada inicial para obtener los datos inmediatamente
+    fetchData(); 
   
     return () => {
       clearInterval(fetchDataInterval);
