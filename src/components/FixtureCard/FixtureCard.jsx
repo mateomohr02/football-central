@@ -4,7 +4,7 @@ const FixtureCard = ({
   away,
   awayLogo,
   hour,
-  time,
+  date,
   homeScore,
   awayScore,
   state,
@@ -34,6 +34,7 @@ const FixtureCard = ({
         <div className="md:w-[25%] md:flex  md:justify-center my-2 mr-[2px] md:item-center">
           {/* container de la hora  */}
           <div className=" w-full border-l h-full flex md:flex-col md:justify-center items-center text-base font-semibold text-pf-white">
+            <p className="text-sm">{date}</p>
             <p>{hour}</p>
           </div>
         </div>

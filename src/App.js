@@ -30,6 +30,7 @@ import Reviews from "./views/Reviews/Reviews";
 import Admin from './views/Admin/Admin'
 import AdminStore from "./views/AdminStore/AdminStore";
 import Cart from './views/Cart/Cart'
+import DetailFixtures from "./views/DetailFixtures/DetailFixtures";
 
 function App() {
   const [user, setUser] = useState({}); // Estado para almacenar los datos del usuario logueado (si existe)
@@ -82,6 +83,7 @@ function App() {
         <Route exact path="/admin/addProducts" element={<AdminStore/>}/>
         <Route path="*" element={<NotFound />} />
         <Route exact path="/cart" element={<Cart/>}/>
+        <Route exact path="/fixtures" element={<DetailFixtures/>}/>
       </Routes>
     </div>
   );
