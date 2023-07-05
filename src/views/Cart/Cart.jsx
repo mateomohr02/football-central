@@ -6,11 +6,12 @@ import { getCartbyUserId, deleteItemCart, clearCart } from "../../redux/actions/
 
 import "./PaypalButton.css";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Cart = () => {
-    const location = useLocation()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.userProfile)
     const userId = user.id
@@ -88,27 +89,23 @@ const Cart = () => {
                             <PayPalButtons
                                 className="custom-button"
                                 style={{ layout: "vertical", height: 55, color: "gold" }}
-                                createOrder={() => {
-                                return new Promise((resolve, reject) => {
-                                    // Aquí debes crear la orden de compra en tu backend y obtener el ID de la orden
-                                    // Ejemplo de cómo se podría crear la orden en el backend:
-                                    // axios.post("/api/createOrder", { total: totalCompra })
-                                    //   .then(response => {
-                                    //     const orderId = response.data.orderId;
-                                    //     resolve(orderId);
-                                    //   })
-                                    //   .catch(error => {
-                                    //     reject(error);
-                                    //   });
-                                });
+                                createOrder={(data, actions) => {
+                                    return actions.order.create({
+                                        purchase_units: [
+                                            {
+                                                amount: {
+                                                    value: totalCompra,
+                                                },
+                                            },
+                                        ],
+                                    });
                                 }}
                                 onApprove={(data, actions) => {
-                                // Ejecutar acciones después de que el pago se haya aprobado
+                                    return actions.order.capture().then((details) => {
+                                        navigate('/success')
+                                        
+                                    });
                                 }}
-                                onError={(error) => {
-                                // Manejar errores durante el proceso de pago
-                                }}
-                                onClick={() => handlePayment()}
                             />
                         </PayPalScriptProvider>
                         
