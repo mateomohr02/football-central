@@ -1,0 +1,41 @@
+.productCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 85px;
+  margin-bottom: 20px;
+  /* margin-top: 20px; */
+  align-items: center;
+  justify-items: center;
+  width: 1500px;
+  height: 500px;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 15px;
+  gap: 5px;
+}
+.pagination .pageNum {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-weight: 15px;
+  color: white;
+}
+
+.pagination .pageNum:hover {
+  background-color: #324464;
+  color: black;
+}
+
+.pagination .active {
+  background-color: #324464;
+  padding: 8px 15px;
+  border-radius: 50%;
+}

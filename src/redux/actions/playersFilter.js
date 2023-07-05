@@ -3,7 +3,7 @@ import axios from 'axios';
 export function getPlayersCountry(){
     return async function(dispatch){
         try {
-            const response = await axios.get("http://localhost:3001/player");
+            const response = await axios.get("/players");
             const players = response.data;
             console.log(players);
             
@@ -22,7 +22,7 @@ export function getPlayersCountry(){
 export function getPlayersTeams(){
     return async function(dispatch){
         try {
-            const response = await axios.get("http://localhost:3001/player");
+            const response = await axios.get("/players");
             const players = response.data;
             console.log(players)
             
@@ -41,7 +41,7 @@ export function getPlayersTeams(){
 export function getPlayersHeight(){
     return async function(dispatch){
         try {
-            const response = await axios.get("http://localhost:3001/player");
+            const response = await axios.get("/players");
             const players = response.data;
             console.log(players)
 
