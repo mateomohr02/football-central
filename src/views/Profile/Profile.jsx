@@ -50,98 +50,103 @@ const Profile = () => {
     window.location.reload();
   };
 
-
   useEffect(() => {
     dispatch(getProfile(loggedUserID)); // Verifica que loggedUserID tenga un valor válido
   }, [dispatch, loggedUserID]);
   console.log("loggedUserID:", loggedUserID);
-  
-  console.log(user.role, 'ROL USER');
+
+  console.log(user.role, "ROL USER");
 
   return (
-    <div className={style.container}>
-
-      <div className={style.profileSection}>
-        {currentProfilePic ? (
-          <img
-            src={currentProfilePic}
-            alt="currentProfilePic"
-            className={style.profilePic}
-          />
-        ) : (
-          <AccountCircleIcon
-            fontSize="large"
-            className="text-pf-white text-2xl"
-            style={{
-              width: "300px",
-              height: "300px",
-              objectFit: "cover",
-              borderRadius: "50%",
-              overflow: "hidden",
-            }}
-          />
+    <>
+      <div className={style.container}>
+        <div className={style.profileSection}>
+          {currentProfilePic ? (
+            <img
+              src={currentProfilePic}
+              alt="currentProfilePic"
+              className={style.profilePic}
+            />
+          ) : (
+            <AccountCircleIcon
+              fontSize="large"
+              className="text-pf-white text-2xl"
+              style={{
+                width: "300px",
+                height: "300px",
+                objectFit: "cover",
+                borderRadius: "50%",
+                overflow: "hidden",
+              }}
+            />
+          )}
+          <form onSubmit={(event) => handleFileSubmit(event)}>
+            <label htmlFor="fileInput" className={style.label}>
+              Cambiar foto de perfil
+            </label>
+            <input
+              id="fileInput"
+              type="file"
+              onChange={(event) => handleFile(event)}
+              required
+              accept="image/png, image/jpg, image/jpeg"
+              style={{ display: "none" }} // Hide the file input
+            />
+          </form>
+        </div>
+        {image && (
+          <div className={style.previewSection}>
+            <img
+              src={image}
+              alt="profilePicture"
+              className={style.profilePic}
+            />
+            <h3 className={style.confirm} onClick={handleFileSubmit}>
+              Confirmar Cambios
+            </h3>
+            <h3
+              className={style.cancel}
+              onClick={(click) => window.location.reload()}
+            >
+              Cancelar Cambios
+            </h3>
+          </div>
         )}
-        <form onSubmit={(event) => handleFileSubmit(event)}>
-          <label htmlFor="fileInput" className={style.label}>
-            Cambiar foto de perfil
-          </label>
-          <input
-            id="fileInput"
-            type="file"
-            onChange={(event) => handleFile(event)}
-            required
-            accept="image/png, image/jpg, image/jpeg"
-            style={{ display: "none" }} // Hide the file input
-          />
-        </form>
-      </div>
-      {image && (
-        <div className={style.previewSection}>
-          <img src={image} alt="profilePicture" className={style.profilePic} />
-          <h3 className={style.confirm} onClick={handleFileSubmit}>
-            Confirmar Cambios
-          </h3>
-          <h3
-            className={style.cancel}
-            onClick={(click) => window.location.reload()}
-          >
-            Cancelar Cambios
+        <div className={style.textCont}>
+          <h3 className={style.text}>Username:</h3>
+          <h3 className={style.textBox}>{user.username}</h3>
+          <h3 className={style.text}>Email:</h3>
+          <h3 className={style.textBox}>{user.email}</h3>
+          <h3 className={style.text}>
+            Cuenta:
+            {user.isPremium === false ? (
+              <h3 className={style.textBox}>Estandar</h3>
+            ) : (
+              <h3 className={style.textBox}>Premium</h3>
+            )}
+            <span>
+              {user?.isPremium === false ? (
+                <Link to="/premium">
+                  <button className={style.button}>Suscríbete a premium</button>
+                </Link>
+              ) : (
+                <StarsIcon />
+              )}
+            </span>
           </h3>
         </div>
-      )}
-      <div className={style.textCont}>
-        <h3 className={style.text}>Username:</h3>
-        <h3 className={style.textBox}>{user.username}</h3>
-        <h3 className={style.text}>Email:</h3>
-        <h3 className={style.textBox}>{user.email}</h3>
-        <h3 className={style.text}>
-          Cuenta:
-          {user.isPremium === false ? (
-            <h3 className={style.textBox}>Estandar</h3>
-          ) : (
-            <h3 className={style.textBox}>Premium</h3>
-          )}
-          <span>
-            {user?.isPremium === false ? (
-              <Link to="/premium">
-                <button className={style.button}>Suscríbete a premium</button>
-              </Link>
-            ) : (
-              <StarsIcon />
-            )}
-          </span>
-        </h3>
       </div>
-
-      <div>
-        {user.role === 'admin' ? (<div>
-          <button onClick={() => navigate('/admin')}>
-              PANEL DE ADMINISTRADOR
+      <div className="flex justify-center">
+        {user.role === "admin" && (
+          <button
+            onClick={() => navigate("/admin")}
+            className="bg-red-500 text-white py-4 px-8 rounded-lg"
+          >
+            PANEL DE ADMINISTRADOR
           </button>
-        </div> ): ''}
+        )}
       </div>
-      
-    </div>
+    </>
   );
 };
 
