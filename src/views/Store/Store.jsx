@@ -10,10 +10,8 @@ const Store = () => {
     return(
         <div>
             <h1>TIENDA</h1>
-            <ProductList/>
-
             <button onClick={()=>navigate('/cart')}>Ver Carrito</button>
-            
+            <ProductList/>          
         </div>
     );
 };
