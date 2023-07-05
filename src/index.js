@@ -17,7 +17,7 @@ import store from './redux/store/store.js';
 
 //  axios.defaults.baseURL = 'http://localhost:3001' 
 
-axios.defaults.baseURL = 'http://backpf-production-df38.up.railway.app'
+axios.defaults.baseURL = 'https://backpf-production-df38.up.railway.app'
 
 
 
