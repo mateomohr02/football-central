@@ -31,6 +31,7 @@ const DetailTeam = () => {
         console.error("Error al obtener el estadio:", error);
       });
     }
+    
   }, [dispatch, id]);
 
   const handleOrderBy = (field) => {
@@ -135,7 +136,7 @@ const DetailTeam = () => {
                 <p>{`${player?.[0].lastname}, ${player?.[0].firstname}`}</p>
               </div>
               <div className="w-[25%] h-14 flex justify-center items-center py-1 border-r">
-                <p>{player?.[0].date_of_birth}</p>
+                <p>{player?.[0].date_of_birth.split("T")[0]}</p>
               </div>
               <div className="w-[25%] h-14 flex justify-center items-center py-1 border-r">
                 <p>{player?.[0].height}cm</p>

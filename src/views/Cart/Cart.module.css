@@ -1,108 +1,44 @@
-/* .container {
-  border: 5px solid black;
-}
-
-table {
-  width: 100%;
-}
-
-.product td {
-  border: 5px solid white;
-  width: 25%;
-}
-
-.labelsContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.productLabel {
-  font-weight: bold;
-  text-align: center;
-  left: 50px
-}
-
-.priceLabel {
-  font-weight: bold;
-  text-align: center;
-}
-
-.productName {
-  display: flex;
-  align-items: center;
-}
-
-.productName p {
-  margin: 0;
-  margin-right: 10px;
-}
-
-.imageProduct {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border: 5px solid #293851;
-  border-radius: 10px;
-} */
 .container {
-    border: 5px solid black;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .product td {
-    border: 5px solid white;
-    width: 25%;
-  }
-  
-  .labelsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .productLabel {
-    font-weight: bold;
-    text-align: center;
-    flex-grow: 1;
-    text-align: right;
-    margin-right: -50px; /* Adjust this value as needed */
-  }
-  
-  .priceLabel {
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .productName {
-    display: flex;
-    align-items: center;
-  }
-  
-  .productName p {
-    margin: 0;
-    margin-right: 10px;
-  }
-  
-  .imageProduct {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border: 5px solid #293851;
-    border-radius: 10px;
-  }
-  
-  
-  .imageProduct {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border: 5px solid #293851;
-    border-radius: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: 2rem;
+  align-items: center;
+}
+
+.table {
+  align-items: center;
+  justify-content: space-between;
+  width: 30vw;
+  color: #fff;
+}
+
+.itemImage {
+  width: 4rem;
+}
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #293851;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.finalBtns {
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30vw;
+  margin: 1rem;
+  padding-right: 1rem;
+}
+.btn:hover {
+  color: #84281b;
+}
+.btnEmptyCart {
+  font-size: 1.5rem;
+}
+.btnEmptyCart:hover {
+  color: #84281b;
+}
