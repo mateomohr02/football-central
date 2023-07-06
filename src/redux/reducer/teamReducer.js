@@ -131,6 +131,19 @@ const teamReducer = (state = initialTeamState, action) => {
         teamSquad: sortedTeamSquad,
       };
     }
+    case "RESET_TEAM_SQUAD":{
+      return{
+        ...state,
+        teamSquad:[]
+      }
+    }
+    case "RESET_DETAIL_TEAM":{
+      return{
+        ...state,
+        detailTeam:action.payload
+      }
+    }
+
     
     default:
       return state;

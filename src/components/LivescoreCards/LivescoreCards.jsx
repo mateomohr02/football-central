@@ -46,6 +46,7 @@ const LivescoreCards = () => {
                 )?.score?.goals
               }
               state={
+                
                 match.state?.id === 2
                   ? "PT"
                   : match.state?.id === 22
@@ -53,7 +54,7 @@ const LivescoreCards = () => {
                   : match.state?.id === 3
                   ? "ET"
                   : match.state?.id === 5 
-                  ? "Finalizó"
+                  ? "Fin"
                   : match.state?.id === 1
                   ? "Pronto"
                   : ""
