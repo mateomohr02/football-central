@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: 2rem;
+  align-items: center;
+}
+
+.table{
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+    color: #fff ;
+}
+
+.itemImage{
+  width: 4rem;
+}
+.tableContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #293851;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.finalBtns{
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30vw;
+  margin: 1rem;
+  padding-right: 1rem;
+}
+
+.btnEmptyCart{
+  font-size: 1.5rem;
+}

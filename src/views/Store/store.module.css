@@ -1,0 +1,31 @@
+.container {
+  background-color: #293851;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  position: fixed;
+  top: 105px; /* Adjust the distance from the top of the screen */
+  bottom: 45px; /* Adjust the distance from the bottom of the screen */
+  left: 85px;
+  right: 85px;
+  /* overflow-y: auto;  */
+}
+
+.tienda{
+  color:white;
+  font-size: 25px
+}
+
+.carrito{
+  padding-top: 15px;
+  color: white;
+  text-decoration: underline;
+}
+
+.carrito:hover{
+  color: blueviolet;
+}

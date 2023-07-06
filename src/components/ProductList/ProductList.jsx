@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/actions/action-store";
 import Product from "../Product/Product";
 import ReactPaginate from "react-paginate";
-
+import style from "./ProductList.module.css";
 const ProductList = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(
@@ -11,7 +11,7 @@ const ProductList = () => {
   );
   const [totalPages, setTotalPages] = useState(0);
   const products = useSelector((state) => state.store.products);
-  const itemsPerPage = 1;
+  const itemsPerPage = 3;
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -38,23 +38,30 @@ const ProductList = () => {
 
   return (
     <div>
-      {page?.map((product) => (
-        <Product
-          id={product.id}
-          key={product.id}
-          name={product.name}
-          description={product.description}
-          price={product.price}
-          image={product.image_path}
-          stock={product.stock}
-        />
-      ))}
+      <div className={style.productCards}>
+        {page?.map((product) => (
+          <Product
+            id={product.id}
+            key={product.id}
+            image={product.image_path}
+            name={product.name}
+            description={product.description}
+            price={product.price}
+            stock={product.stock}
+          />
+        ))}
+      </div>
       <ReactPaginate
         pageCount={totalPages}
         onPageChange={handlePageChange}
         forcePage={currentPage}
-        previousLabel={showPrevButton ? "Previous" : null}
-        nextLabel={showNextButton ? "Next" : null}
+        previousLabel={showPrevButton ? "< prev" : null}
+        nextLabel={showNextButton ? "next >" : null}
+        containerClassName={style.pagination}
+        pageClassName={style.pageNum}
+        previousLinkClassName={style.pageNum}
+        nextLinkClassName={style.pageNum}
+        activeLinkClassName={style.active}
       />
     </div>
   );
