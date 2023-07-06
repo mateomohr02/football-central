@@ -6,8 +6,10 @@ import LivescoreCard from "../../components/LivescoreCard/LivescoreCard";
 import { formatMatch } from "../../components/MatchCards/formatMatch";
 import { getFixtureByDateRange } from "../../redux/actions/getFixtureByDateRange";
 import { getLivescoresLatest } from "../../redux/actions/getLivescoresLatest";
+import loader from '../../assets/logo-loader.gif'
 
 const DetailFixtures = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const livescores = useSelector((state) => state.livescores.livescores);
   const fixtureByDateRange = useSelector(
     (state) => state.fixture.fixtureByDateRange
@@ -26,6 +28,10 @@ const DetailFixtures = () => {
         ]);
       } catch (error) {
         console.log(error.message);
+      }finally {
+        setTimeout(() => {
+          setIsLoading(false); // Establecer isLoading en false después del retraso
+        }, 1500)
       }
     };
 
@@ -104,6 +110,14 @@ const DetailFixtures = () => {
         (selectedDate === "dayAfterTomorrow" && matchDate === dayAfterTomorrow))
     );
   });
+
+  if (isLoading) {
+    return (
+      <div >
+        <img className="max-h-44 mx-auto my-24" src={loader} alt="Loading..." />
+      </div>
+    );
+  }
 
   return (
     <div className="w-[85%] mx-auto">

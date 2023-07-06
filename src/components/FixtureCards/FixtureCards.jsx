@@ -9,9 +9,9 @@ export const FixtureCards = () => {
   const fixture = formatMatch(fixtureByDateRange);
   console.log('nueva formatMatch', fixture);
 
-  const today = moment().format("YYYY-MM-DD");
-  const tomorrow = moment().add(1, "day").format("YYYY-MM-DD");
-  const dayAfterTomorrow = moment().add(2, "days").format("YYYY-MM-DD");
+  const today = moment().format("YY-MM-DD");
+  const tomorrow = moment().add(1, "day").format("YY-MM-DD");
+  const dayAfterTomorrow = moment().add(2, "days").format("YY-MM-DD");
 
   const todayMatches = fixture.filter((match) => {
     const matchDate = match.starting_at.split(" ")[0];
