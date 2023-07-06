@@ -32,7 +32,6 @@ const Product = ({ id, name, description, price, image, stock }) => {
         <p className={style.productDesc}>{description}</p>
         <p className={style.productDesc}>{stock} left in stock</p>
         <p>Price: ${price}</p>
-        <p> in your cart</p>
       </div>
       {stock > 0 ? (
         <button onClick={() => handleAddToCart(id)} className={style.button}>
