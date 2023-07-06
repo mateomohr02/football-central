@@ -157,15 +157,15 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <div className={style.container}>
-        <table>
+    <div className={style.container}>
+      <div className={style.tableContainer}>
+        <table className={style.table}>
           <tbody>
             <tr>
               <td colSpan="2" className={style.productLabel}>
-                Product
+                Productos
               </td>
-              <td className={style.priceLabel}>Price</td>
+              <td className={style.priceLabel}>Precio</td>
               <td></td>
             </tr>
             {products?.map((p) => {
@@ -175,9 +175,10 @@ const Cart = () => {
                 <tr key={p.id} className={style.product}>
                   <td>
                     <img
+                    
                       src={p?.image_path}
                       alt={`Imágen de ${p?.name}`}
-                      className={style.imageProduct}
+                      className={style.itemImage}
                     />
                   </td>
                   <td className={style.productInfo}>
@@ -197,24 +198,17 @@ const Cart = () => {
                 </tr>
               );
             })}
+                </tbody>
+              </table>
             {products ? (
-              <tr>
-                <td colSpan="4">
-                  <button onClick={() => handleEmptyCart()}>
-                    Vaciar Carrito
+              <div className={style.finalBtns}>
+                  <button className={`${style.btnEmptyCart}`} onClick={() => handleEmptyCart()}>
+                    Vaciar
                   </button>
-                </td>
-              </tr>
-            ) : null}
-            <tr>
-              <td colSpan="4">
-                <p>TOTAL: ${totalCompra}</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <span>Finalizar Compra</span>
-      </div>
+                <p className={style}>Total: ${totalCompra}</p>
+              </div>
+              ) : null}
+      
       <PayPalScriptProvider
         options={{
           "client-id":
@@ -229,7 +223,7 @@ const Cart = () => {
               purchase_units: [
                 {
                   amount: {
-                    value:totalCompra,
+                    value: totalCompra,
                   },
                 },
               ],
@@ -242,6 +236,7 @@ const Cart = () => {
           }}
         />
       </PayPalScriptProvider>
+      </div>      
     </div>
   );
 };
