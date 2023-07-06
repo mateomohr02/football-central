@@ -234,6 +234,10 @@ const Cart = () => {
               navigate("/success");
             });
           }}
+          onCancel={() => {}}
+            onError={(err) => {
+              console.log("Paypal Checkout Error:", err);
+            }}
         />
       </PayPalScriptProvider>
       </div>      
