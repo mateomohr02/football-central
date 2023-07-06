@@ -108,14 +108,14 @@ const DetailFixtures = () => {
   return (
     <div className="w-[85%] mx-auto">
       <div className="w-full">
-        <div className="w-full h-56 bg-gray-100">
+        <div className="w-full h-56 bg-gray-100 rounded-b-xl border-white">
           <div className="h-[70%] flex justify-start items-center pl-5">
             <h1 className="font-bold text-6xl text-pf-blue ">
               Fixture General
             </h1>
           </div>
 
-          <div className="w-full bg-pf-blue h-[30%] flex justify-end items-center pr-5 gap-7">
+          <div className="w-full rounded-b-xl bg-pf-blue h-[30%] flex justify-end items-center pr-5 gap-7">
             <select
               value={selectedLeague}
               onChange={handleLeagueChange}
@@ -196,7 +196,23 @@ const DetailFixtures = () => {
                             item.description === "CURRENT" &&
                             item.score.participant === "away"
                         )?.score?.goals || 0
+                        
                       }
+                      state={
+                
+                        match.state?.id === 2
+                          ? "PT"
+                          : match.state?.id === 22
+                          ? "ST"
+                          : match.state?.id === 3
+                          ? "ET"
+                          : match.state?.id === 5 
+                          ? "Fin"
+                          : match.state?.id === 1
+                          ? "Pronto"
+                          : ""
+                      }
+                      time={match.periods?.[match.periods.length - 1]?.minutes || "En juego"}
                     />
                   ))}
               </div>
