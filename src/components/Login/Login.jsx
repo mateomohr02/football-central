@@ -124,11 +124,11 @@ const Login = () => {
           onSuccess={async (credentialResponse) => {
             try {
               localStorage.setItem("loggedIn", "true");
-              console.log("CREDENTIAL",credentialResponse); // Asegúrate de que puedes ver el token en la consola
-                const tokenId = credentialResponse.credential; // Aquí obtenemos el token de la respuesta
+              console.log("CREDENTIAL",credentialResponse); 
+                const tokenId = credentialResponse.credential; 
                const response = await axios.post("/users/login/google", { tokenId });
-               console.log("Logeado"); // Datos de usuario devueltos por el servidor
-               console.log("DATA",response.data); // Datos de usuario devueltos por el servidor
+               console.log("Logeado");
+               console.log("DATA",response.data); 
                localStorage.setItem("id", response.data.id);
                localStorage.setItem("token", tokenId);
                navigate("/inicio");

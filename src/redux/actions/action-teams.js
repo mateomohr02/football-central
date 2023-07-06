@@ -3,7 +3,7 @@ import axios from "axios";
 export function getTeams() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/team");
+      const response = await axios.get("/team");
       const teams = response.data;
         console.log(teams)
       dispatch({
@@ -20,7 +20,7 @@ export function getTeams() {
 export function getTeamsNational() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/team");
+      const response = await axios.get("/team");
       const teams = response.data;
       console.log(teams);
       
