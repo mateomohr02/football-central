@@ -5,10 +5,9 @@ export const updateUserProfile = (id, data) => {
   console.log(data)
   return async function (dispatch) {
     try {
-      console.log("Updating user profile:", data);
-      const token = localStorage.getItem("token"); // Obtener el token del almacenamiento local
+      const token = localStorage.getItem("token"); 
       const headers = {
-        Authorization: `Bearer ${token}`, // Agregar el token al encabezado de autorización
+        Authorization: `Bearer ${token}`, 
       };
       console.log(token)
       console.log(headers)

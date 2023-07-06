@@ -3,7 +3,7 @@ import axios from "axios";
 export function getNews() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/News");
+      const response = await axios.get("/News");
       const News = response.data;
         console.log(News)
       dispatch({

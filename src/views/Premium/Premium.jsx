@@ -16,10 +16,7 @@ const Premium = () => {
   
   const handleApprove = async (orderID, price) => {
     setPaidFor(true);
-    console.log("Before dispatching updateUserProfile");
     await dispatch(updateUserProfile(loggedUserID, { isPremium: true }));
-    console.log("After dispatching updateUserProfile");
-    console.log("UserProfile:", userProfile);
   };
 
   return (
