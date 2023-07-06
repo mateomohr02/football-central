@@ -11,15 +11,9 @@ import { Provider } from 'react-redux';
 
 import store from './redux/store/store.js';
 
-
-
-
-
 //  axios.defaults.baseURL = 'http://localhost:3001' 
 
 axios.defaults.baseURL = 'https://backpf-production-df38.up.railway.app'
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
