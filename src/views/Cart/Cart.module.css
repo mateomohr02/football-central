@@ -6,17 +6,17 @@
   align-items: center;
 }
 
-.table{
-    align-items: center;
-    justify-content: space-between;
-    width: 30vw;
-    color: #fff ;
+.table {
+  align-items: center;
+  justify-content: space-between;
+  width: 30vw;
+  color: #fff;
 }
 
-.itemImage{
+.itemImage {
   width: 4rem;
 }
-.tableContainer{
+.tableContainer {
   display: flex;
   flex-direction: column;
   background-color: #293851;
@@ -24,7 +24,7 @@
   border-radius: 1rem;
 }
 
-.finalBtns{
+.finalBtns {
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,12 @@
   margin: 1rem;
   padding-right: 1rem;
 }
-
-.btnEmptyCart{
+.btn:hover {
+  color: #84281b;
+}
+.btnEmptyCart {
   font-size: 1.5rem;
+}
+.btnEmptyCart:hover {
+  color: #84281b;
 }

@@ -191,7 +191,7 @@ const Cart = () => {
                     </p>
                   </td>
                   <td>
-                    <button onClick={() => handleDeleteItem(p?.id)}>
+                    <button onClick={() => handleDeleteItem(p?.id)} className={`${style.btn}`}>
                       Quitar
                     </button>
                   </td>
