@@ -15,6 +15,7 @@ const DetailTeam = () => {
 
   const team = useSelector((state) => state.team.detailTeam);
   const playersId = team.players;
+  console.log(playersId);
   const teamSquad = useSelector((state) => state.team.teamSquad);
   const venue = useSelector((state) => state.venue.venue);
 
@@ -25,14 +26,21 @@ const DetailTeam = () => {
 
   useEffect(() => {
     dispatch(getDetailTeam(id));
-    dispatch(getTeamSquadByTeamId(playersId));
+  }, [dispatch, id]);
+  
+  useEffect(() => {
+    if (playersId) {
+      dispatch(getTeamSquadByTeamId(playersId));
+    }
+  }, [dispatch, playersId]);
+  
+  useEffect(() => {
     if (team && team.venue_id) {
       dispatch(getVenueById(team.venue_id)).catch((error) => {
         console.error("Error al obtener el estadio:", error);
       });
     }
-    
-  }, [dispatch, id]);
+  }, [dispatch, team, team.venue_id]);
 
   const handleOrderBy = (field) => {
     setOrderBy((prevOrderBy) => {
@@ -54,8 +62,10 @@ const DetailTeam = () => {
     return squad.sort((a, b) => {
       if (orderBy.field === "lastname") {
         if (orderBy.direction === "asc") {
+          console.log(squad, 'SQUAD');
           return a[0].lastname.localeCompare(b[0].lastname);
         } else {
+          console.log(squad, 'SQUAD')
           return b[0].lastname.localeCompare(a[0].lastname);
         }
       } else if (orderBy.field === "age") {
@@ -127,6 +137,7 @@ const DetailTeam = () => {
           </div>
         </div>
         {sortedTeamSquad.map((player) => {
+          console.log(player, 'JUGADOR');
           return (
             <div className="flex bg-gray-100">
               <div className="w-[25%] h-14 flex justify-center items-center py-1 border-r">
