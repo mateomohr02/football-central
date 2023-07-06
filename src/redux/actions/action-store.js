@@ -13,8 +13,9 @@ import {
       try {
         const response = await axios.get('/Store/products');
         const products = response.data;
+        const sortedProducts = [...products].sort((a, b) => b.id - a.id)
   
-        dispatch({ type: 'GET_PRODUCTS', payload: products });
+        dispatch({ type: 'GET_PRODUCTS', payload: sortedProducts });
         
       } catch (error) {
         console.error('Error fetching products:', error);

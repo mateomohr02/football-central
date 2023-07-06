@@ -12,9 +12,9 @@ const Product = ({ id, name, description, price, image, stock }) => {
 
   const userId = user?.id;
 
-  const handleAddToCart = (productId) => {
+  const handleAddToCart = async (productId) => {
     console.log(userId, productId, "DISPATCH");
-    dispatch(addToCart(userId, productId));
+    await dispatch(addToCart(userId, productId));
     navigate("/cart")
   };
 
@@ -32,12 +32,15 @@ const Product = ({ id, name, description, price, image, stock }) => {
         <p className={style.productDesc}>{description}</p>
         <p className={style.productDesc}>{stock} left in stock</p>
         <p>Price: ${price}</p>
-          </div>
-        {stock > 0 ? (
-          <button onClick={() => handleAddToCart(id)} className={style.button}>Add to Cart</button>
-        ) : (
-          <p>Out of Stock</p>
-        )}
+        <p> in your cart</p>
+      </div>
+      {stock > 0 ? (
+        <button onClick={() => handleAddToCart(id)} className={style.button}>
+          Add to Cart
+        </button>
+      ) : (
+        <p>Out of Stock</p>
+      )}
     </div>
   );
 };
