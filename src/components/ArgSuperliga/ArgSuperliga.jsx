@@ -215,21 +215,22 @@ const ArgSuperliga = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="w-[90vw] bg-red-500 mx-auto mt-5 rounded-xl">
-      <div className="w-full h-[45%] bg-blue-500 mx-auto mt-5">
-        <div className=" bg-white flex flex-row justify-start items-center gap-5 h-full w-[80%] rounded-xl  p-5">
-          <div className="bg-orange-500 w-[30%] h-full flex justify-center items-center">
+    <div className="w-[90vw] mx-auto mt-5 rounded-xl">
+      <div className="w-full h-[45%] mx-auto mt-5">
+        <div className=" bg-white flex flex-row justify-start items-center gap-3 h-full w-full rounded-t-xl  p-3">
+          <div className=" w-[30%] h-full flex justify-center items-center">
             <img src={argLeague?.image_path} alt="" className="max-h-[90%]" />
           </div>
           <h1 className="text-[80px]">{argLeague?.name}</h1>
+          <h2 className="text-[40px] ml-5">Torneo Binance 2023</h2>
         </div>
       </div>
       <div className="flex flex-col">
 
 
-        <div className="flex flex-row h-[500px] w-full bg-yellow-400"> {/* contenedor posiciones y goleadores */}
+        <div className="flex flex-row h-[500px] w-full "> {/* contenedor posiciones y goleadores */}
 
-          <div className="w-[50%] ml-auto overflow-y-scroll ">
+          <div className="w-[50%] ml-auto overflow-y-scroll bg-white ">
         <div className="bg-pf-blue w-[90%] h-10 mx-auto flex justify-start items-center pl-6">
           <h4 className="font-bold text-lg  text-white">POSICIONES </h4>
         </div>
@@ -330,7 +331,7 @@ const ArgSuperliga = () => {
 
         <div className="flex flex-row"> {/* contenedor rojas y amarillas */}
 
-          <div className="w-[50%]"> {/* amarillas */}
+          <div className="w-[50%] bg-white"> {/* amarillas */}
         <div className="bg-pf-blue w-[90%] h-10 mx-auto flex justify-start items-center pl-6 gap-4">
             <h4 className="font-bold text-lg  text-white">TARJETAS AMARILLAS</h4>
             <SquareIcon className="text-yellow-500"/>
@@ -378,8 +379,8 @@ const ArgSuperliga = () => {
           }
           </div>
 
-          <div className="w-[50%]">{/* rojas */}
-        <div className="bg-pf-blue w-[90%] h-10 mx-auto flex justify-start items-center pl-6">
+          <div className="w-[50%] bg-white">{/* rojas */}
+        <div className="bg-pf-blue w-[90%] h-10 mx-auto flex justify-start items-center pl-6 gap-4">
             <h4 className="font-bold text-lg  text-white">TARJETAS ROJAS</h4>
             <SquareIcon className="text-red-500"/>
           </div>

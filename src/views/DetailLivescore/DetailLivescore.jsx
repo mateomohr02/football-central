@@ -3,13 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getLivescoresLatest } from "../../redux/actions/getLivescoresLatest";
 import { resetLivescores } from "../../redux/actions/resetLivescores";
+import unknownLineup from "../../assets/unknown lineup.svg";
+
 
 const DetailLivescore = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [activeTab, setActiveTab] = useState("resumen");
+  const [activeTab, setActiveTab] = useState("alineaciones");
 
   const showAlineaciones = activeTab === "alineaciones";
+  const showEnvivo= activeTab === "envivo";
+ 
+
 
   useEffect(() => {
     setInterval(() => {
@@ -30,8 +35,8 @@ const DetailLivescore = () => {
 
   const home = {
     name:
-      match.name.split("vs")[0].trim() ||
-      match.participants?.[0]?.name ||
+    match.participants?.[0]?.name ||
+    match.name.split("vs")[0].trim() ||
       "Home",
     logo: match.participants?.[0]?.image_path || "",
     score:
@@ -63,8 +68,8 @@ const DetailLivescore = () => {
 
   const away = {
     name:
-      match.name.split("vs")[1].trim() ||
-      match.participants?.[1]?.name ||
+    match.participants?.[1]?.name ||
+    match.name.split("vs")[1].trim() ||
       "Away",
     logo: match.participants?.[1]?.image_path || "",
     score:
@@ -94,14 +99,16 @@ const DetailLivescore = () => {
     logo: match.league?.image_path,
   };
 
+
   return (
     <div className="h-90vh w-full flex md:justify-center ">
-      <div className="h-[80vh] w-[80vw] bg-pf-white mt-5 rounded-xl">
+      <div className="h-[80vh] w-[80vw] bg-gray-100 mt-5 rounded-xl">
         <div className="h-[50%]  w-full flex md:flex-col md:justify-center items-center">
           <div className="w-full h-[15%] flex bg-pf-blue -mt-5">
             <div className="border-b w-full h-full pl-4 flex md:justify-center items-center">
               <h4 className="text-xl text-pf-white">{league.name}</h4>
               <img src={league.logo} alt="" className="max-h-[75%]" />
+              <div></div>
             </div>
           </div>
 
@@ -109,8 +116,10 @@ const DetailLivescore = () => {
           <div className="w-[90%] h-[75%] flex  md:flex-row ">
             {/* nombre del local */}
             <div className=" w-[40%] flex md:flex-col md:justify-start items-center">
-              <div className="h-[85%] w-full flex md:justify-center items-center">
-                <img src={home.logo} alt="" className="max-h-[98%]" />
+              <div className="mt-2 h-[90%] w-full flex md:justify-center items-center ">
+                <div className="bg-gray-300 rounded-full max-h-full p-3">
+                  <img src={home.logo} alt="" className="max-h-[95%]" />
+                </div>
               </div>
               <div className="h-[15%] w-full  flex md:justify-center items-center">
                 <h1 className="text-2xl uppercase text-black font-bold text-bebas-font">
@@ -136,8 +145,15 @@ const DetailLivescore = () => {
                     <p className="text-[30px] font-bold text-black">Pronto</p>
                   ) : (
                     <p className="text-[30px] font-bold text-black">
-                      {match.periods?.[match.periods.length - 1]?.minutes || ""}
-                      '
+                      {match.periods && match.periods.length > 0 ? (
+                        <>
+                          {match.periods[match.periods.length - 1].minutes ||
+                            ""}
+                          '
+                        </>
+                      ) : (
+                        "Pronto"
+                      )}
                     </p>
                   )}
                 </p>
@@ -146,8 +162,10 @@ const DetailLivescore = () => {
 
             <div className=" w-[40%] flex md:flex-col md:justify-end items-center">
               {/* nombre del visitante */}
-              <div className="h-[85%] w-full flex md:justify-center items-center">
-                <img src={away.logo} alt="" className="max-h-[98%]" />
+              <div className="mt-2 h-[90%] w-full flex md:justify-center items-center ">
+                <div className="bg-gray-300 rounded-full max-h-full p-3">
+                  <img src={away.logo} alt="" className="max-h-[95%]"/>
+                </div>
               </div>
               <div className="h-[15%] w-full flex md:justify-center items-center">
                 <h1 className="text-2xl uppercase text-black font-bold ">
@@ -158,97 +176,115 @@ const DetailLivescore = () => {
           </div>
         </div>
         <div></div>
-        <div className="flex overflow-x-auto whitespace-nowrap h-[16%] ">
-          <button
-            className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-gray-700 border border-b-0 border-gray-300 sm:text-base dark:border-gray-500 rounded-t-md dark:text-white whitespace-nowrap focus:outline-none ${
-              activeTab === "resumen" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("resumen")}
-          >
-            Resumen
-          </button>
-          <button
-            className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-gray-700 bg-transparent border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${
-              activeTab === "envivo" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("envivo")}
-          >
-            En vivo
-          </button>
-          <button
-            className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-gray-700 bg-transparent border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${
-              activeTab === "alineaciones" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("alineaciones")}
-          >
-            Alineaciones
-          </button>
-          <button
-            className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-gray-700 bg-transparent border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${
-              activeTab === "estadisticas" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("estadisticas")}
-          >
-            Estadísticas
-          </button>
-        </div>
-        {showAlineaciones && (
-  <div className="bg-pf-white w-full flex flex-row justify-between">
-    <div className="flex flex-col w-[50%]">
-      <div className="flex flex-col">
-        <h2 className="uppercase">Alineación del equipo local</h2>
-        {home.lineup.map((player, index) => (
-          <div className="h-[40px] w-full flex justify-start items-center">
-            <div className="bg-pf-white w-full h-12 border-y border-gray-400 flex justify-start items-center pl-3">
-              <p className="uppercase flex items-center font-medium text-gray-800" key={`home-player-${index}`}>
-                {player}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-col">
-        <h2 className="uppercase">Suplentes</h2>
-        {home.substitutes.map((player, index) => (
-          <div className="h-[40px] w-full flex justify-start items-center">
-            <div className="bg-pf-white w-full h-12 border-y border-gray-400 flex justify-start items-center pl-3">
-              <p className="uppercase text-gray-800" key={`home-player-${index}`}>
-                {player}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+     
 
-    <div className="flex flex-col w-[50%]">
-      <div className="flex flex-col justify-end">
-        <h2 className="uppercase">Alineación del equipo visitante</h2>
-        {away.lineup.map((player, index) => (
-          <div className="h-[40px] w-full flex justify-end items-center">
-            <div className="bg-pf-white w-full h-12 border-y border-gray-400 flex justify-start items-center pl-3">
-              <p className="uppercase" key={`away-player-${index}`}>
-                {player}
-              </p>
+        {showAlineaciones && (
+          <div className=" w-full flex flex-row justify-center bg-red-500">
+
+            {/* contenedor */}
+            <div className="flex flex-col w-[50%] justify-start pl-5">
+
+
+              {/* contenedor local */}
+              <div className="flex flex-col w-[90%] h-96">
+                <div className="w-80 h-10 mx-auto bg-pf-blue rounded-lg flex justify-center items-center">
+                  <h2 className="uppercase font-bold text-lg text-white">
+                    LOCAL
+                  </h2>
+                </div>
+                {home.lineup.length > 0 ? (
+                  home.lineup.map((player, index) => (
+                    <div className="h-[40px] w-full flex justify-start items-center">
+                      <div className="w-full h-6 border-b flex justify-start items-center">
+                        <p
+                          className="flex items-center font-medium text-gray-800"
+                          key={`home-player-${index}`}
+                        >
+                          {player}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <img src={unknownLineup} alt="Alineaciones no disponibles" />
+                )}
+              </div>
+
+
+              <div className="w-[90%] h-96 flex flex-col mt-5 ">
+                <div className="w-80 h-10 mx-auto bg-pf-blue rounded-lg flex justify-center items-center">
+                  <h2 className="uppercase font-bold text-lg text-white">
+                    Suplentes
+                  </h2>
+                </div>
+                {home.substitutes.map((player, index) => (
+                  <div className="h-[40px] w-full flex justify-start items-center">
+                    <div className="w-full h-6 border-b flex justify-start items-center">
+                      <p
+                        className="flex items-center font-medium text-gray-800"
+                        key={`home-player-${index}`}
+                      >
+                        {player}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+            <div className="flex flex-col w-[50%] justify-start pl-5 bg-yellow-500">
+
+              <div className="flex flex-col w-[90%] h-96">
+                <div className="w-80 h-10 mx-auto bg-pf-blue rounded-lg flex justify-center items-center">
+                  <h2 className="uppercase font-bold text-lg text-white">
+                    VISITANTE
+                  </h2>
+                </div>
+                {away.lineup.length > 0 ? (
+                  away.lineup.map((player, index) => (
+                    <div className="h-[40px] w-full flex justify-start items-center">
+                      <div className="w-full h-12 border-b flex justify-start items-center">
+                        <p
+                          className="flex items-center font-medium text-gray-800"
+                          key={`away-player-${index}`}
+                        >
+                          {player}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <img src={unknownLineup} alt="Alineaciones no disponibles" />
+                )}
+              </div>
+              <div className="flex flex-col mt-5 w-full">
+                <div className="w-[75%] h-10 bg-pf-blue rounded-lg mx-auto flex justify-center items-center">
+                  <h2 className="uppercase font-bold text-lg text-white">
+                    Suplentes
+                  </h2>
+                </div>
+                {away.substitutes.map((player, index) => (
+                  <div className="h-[40px] w-full flex justify-start items-center">
+                    <div className="w-full h-12 border-b flex justify-start items-center">
+                      <p
+                        className="flex items-center font-medium text-gray-800"
+                        key={`home-player-${index}`}
+                      >
+                        {player}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="flex flex-col">
-        <h2 className="uppercase">Suplentes</h2>
-        {away.substitutes.map((player, index) => (
-          <div className="h-[40px] w-full flex justify-start items-center">
-            <div className="bg-pf-white w-full h-12 border-y border-gray-400 flex justify-start items-center pl-3">
-              <p className="uppercase" key={`home-player-${index}`}>
-                {player}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
+        )}
+        <div>
+
+</div>
+
+
 
       </div>
     </div>
