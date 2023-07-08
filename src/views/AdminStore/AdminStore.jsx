@@ -61,7 +61,7 @@ const AdminStore = () => {
 
   return (
     <>
-      <div className="container mx-auto w-1/2">
+      <div className="container pl-10 pb-10">
         <br />
         <h3 className="text-lg font-bold text-white">Nuevo Producto</h3>
         <form className="mt-4" onSubmit={(e) => handleSubmit(e, newProduct)}>
@@ -243,7 +243,7 @@ const AdminStore = () => {
               <th className="py-2 px-4 border-b text-center">Stock</th>
               <th className="py-2 px-4 border-b text-center">Categoría</th>
               <th className="py-2 px-4 border-b text-center">Marca</th>
-              <th className="py-2 px-4 border-b text-center">Imagen</th>
+              {/* <th className="py-2 px-4 border-b text-center">Imagen</th> */}
               <th className="py-2 px-4 border-b text-center">Editar</th>
               <th className="py-2 px-4 border-b text-center">Deshabilitar</th>
               <th className="py-2 px-4 border-b text-center">Borrar</th>
@@ -273,9 +273,9 @@ const AdminStore = () => {
                     {p?.category}
                   </td>
                   <td className="py-2 px-4 border-b text-center">{p?.brand}</td>
-                  <td className="py-2 px-4 border-b text-center">
+                  {/* <td className="py-2 px-4 border-b text-center">
                     {p?.image_path}
-                  </td>
+                  </td> */}
                   <td className="py-2 px-4 border-b text-center">
                     <button className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">
                       Editar
