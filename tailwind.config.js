@@ -17,7 +17,8 @@ module.exports = {
         "main-font":["Geologica", "sans-serif"],
         "text-font":["Montserrat", "sans-serif"],
         "bebas-font":['Bebas Neue', "sans-serif"]
-      }
+      },
+      
     },
   },
   plugins: [],
